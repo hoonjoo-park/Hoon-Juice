@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { graphql, Link } from 'gatsby';
-import { GatsbyImage, getSrc, getImage } from 'gatsby-plugin-image';
+import { getImage } from 'gatsby-plugin-image';
 import * as _ from 'lodash';
 import { lighten, setLightness } from 'polished';
 import React from 'react';
@@ -43,6 +43,7 @@ interface PageTemplateProps {
         date: string;
         userDate: string;
         image: any;
+        thumbnail?: string;
         excerpt: string;
         tags: string[];
         author: Author[];
@@ -85,6 +86,7 @@ export interface PageContext {
   };
   frontmatter: {
     image: any;
+    thumbnail?: string;
     excerpt: string;
     title: string;
     date: string;
@@ -121,11 +123,8 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
         <meta property="og:title" content={post.frontmatter.title} />
         <meta property="og:description" content={post.frontmatter.excerpt || post.excerpt} />
         <meta property="og:url" content={config.siteUrl + location.pathname} />
-        {post.frontmatter.image && (
-          <meta
-            property="og:image"
-            content={`${config.siteUrl}${getSrc(post.frontmatter.image)}`}
-          />
+        {post.frontmatter.thumbnail && (
+          <meta property="og:image" content={`${post.frontmatter.thumbnail}`} />
         )}
         <meta property="article:published_time" content={post.frontmatter.date} />
         {/* not sure if modified time possible */}
@@ -140,11 +139,8 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
         <meta name="twitter:title" content={post.frontmatter.title} />
         <meta name="twitter:description" content={post.frontmatter.excerpt || post.excerpt} />
         <meta name="twitter:url" content={config.siteUrl + location.pathname} />
-        {post.frontmatter.image && (
-          <meta
-            name="twitter:image"
-            content={`${config.siteUrl}${getSrc(post.frontmatter.image)}`}
-          />
+        {post.frontmatter.thumbnail && (
+          <meta name="twitter:image" content={`${post.frontmatter.thumbnail}`} />
         )}
         <meta name="twitter:label1" content="Written by" />
         <meta name="twitter:data1" content={post.frontmatter.author[0].name} />
@@ -225,13 +221,14 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
                 </PostFullByline>
               </PostFullHeader>
 
-              {post.frontmatter.image && (
+              {post.frontmatter.thumbnail && (
                 <PostFullImage>
-                  <GatsbyImage
+                  <img src={post.frontmatter.thumbnail} alt="thumbnail" />
+                  {/* <GatsbyImage
                     image={getImage(post.frontmatter.image)!}
                     style={{ height: '100%' }}
                     alt={post.frontmatter.title}
-                  />
+                  /> */}
                 </PostFullImage>
               )}
               <PostContent htmlAst={post.htmlAst} />
@@ -330,7 +327,8 @@ const PostFullCustomExcerpt = styled.p`
 
   @media (prefers-color-scheme: dark) {
     /* color: color(var(--midgrey) l(+10%)); */
-    color: ${lighten('0.1', colors.midgrey)};
+    color: #ffffff;
+    /* color: ${lighten('0.1', colors.midgrey)}; */
   }
 `;
 
@@ -409,17 +407,20 @@ export const PostFullTitle = styled.h1`
   }
 
   @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
   }
 `;
 
 const PostFullImage = styled.figure`
-  margin: 25px 0 50px;
-  height: 800px;
+  margin: 25px auto 50px;
+  /* height: 800px; */
+  max-width: 700px;
   background: ${colors.lightgrey} center center;
   background-size: cover;
   border-radius: 5px;
-
+  img {
+    border-radius: 5px;
+  }
   @media (max-width: 1170px) {
     margin: 25px -6vw 50px;
     border-radius: 0;
@@ -459,6 +460,7 @@ export const query = graphql`
         date
         tags
         excerpt
+        thumbnail
         image {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)

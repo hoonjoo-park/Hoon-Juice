@@ -42,7 +42,7 @@ const NotFoundPage = (props: NotFoundTemplateProps) => {
               <ErrorCode>404</ErrorCode>
               <ErrorDescription>Page not found</ErrorDescription>
               <Link css={ErrorLink} to="/">
-                Go to the front page →
+                이전 페이지로 돌아가기 →
               </Link>
             </section>
 

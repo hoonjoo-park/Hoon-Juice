@@ -311,7 +311,7 @@ export const ResponsiveHeaderBackground = styled.div<{ backgroundImage?: string 
     }
   }
   @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
     /* background: var(--darkmode); */
     background: ${colors.darkmode};
 

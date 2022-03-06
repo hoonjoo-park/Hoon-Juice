@@ -175,9 +175,10 @@ export const PostFullContent = styled.section`
 
   code {
     padding: 0 5px 2px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     line-height: 1em;
     font-weight: 400 !important;
+    color: #d64f78;
     /* background: var(--whitegrey); */
     background: ${colors.whitegrey};
     border-radius: 3px;
@@ -455,8 +456,8 @@ export const PostFullContent = styled.section`
     }
 
     code {
-      color: #fff;
-      background: #000;
+      color: #fc5185;
+      background: #eeeeee;
     }
 
     hr {

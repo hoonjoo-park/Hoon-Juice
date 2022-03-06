@@ -155,6 +155,7 @@ export const pageQuery = graphql`
             tags
             draft
             excerpt
+            thumbnail
             image {
               childImageSharp {
                 gatsbyImageData(layout: FULL_WIDTH)
