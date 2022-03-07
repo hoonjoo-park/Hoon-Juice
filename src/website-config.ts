@@ -62,8 +62,8 @@ const config: WebsiteConfig = {
   lang: 'ko',
   siteUrl: 'https://hoonjoo-park.github.io',
   github: 'https://github.com/hoonjoo-park',
-  facebook: 'https://www.facebook.com/ghost',
-  twitter: 'https://twitter.com/tryghost',
+  // facebook: 'https://www.facebook.com/ghost',
+  // twitter: 'https://twitter.com/tryghost',
   showSubscribe: false,
   mailchimpAction:
     'https://twitter.us19.list-manage.com/subscribe/post?u=a89b6987ac248c81b0b7f3a0f&amp;id=7d777b7d75',

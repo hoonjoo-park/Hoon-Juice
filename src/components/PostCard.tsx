@@ -36,11 +36,6 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
           <PostCardImage className="post-card-image">
             {post.frontmatter?.thumbnail && (
               <img src={post.frontmatter.thumbnail} alt="thumbnail" />
-              // <GatsbyImage
-              //   image={getImage(post.frontmatter.image)!}
-              //   alt={`${post.frontmatter.title} cover image`}
-              //   style={{ height: '100%' }}
-              // />
             )}
           </PostCardImage>
         </Link>
@@ -171,6 +166,10 @@ const PostCardImage = styled.div`
 
   @media (prefers-color-scheme: dark) {
     background: ${colors.darkmode};
+  }
+  img {
+    height: 100%;
+    object-fit: cover;
   }
 `;
 

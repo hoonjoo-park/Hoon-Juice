@@ -129,11 +129,11 @@ export const pageQuery = graphql`
         node {
           id
           description
-          image {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
-            }
-          }
+          # image {
+          #   childImageSharp {
+          #     gatsbyImageData(layout: FULL_WIDTH)
+          #   }
+          # }
         }
       }
     }
@@ -151,11 +151,11 @@ export const pageQuery = graphql`
             excerpt
             tags
             date
-            image {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
-            }
+            # image {
+            #   childImageSharp {
+            #     gatsbyImageData(layout: FULL_WIDTH)
+            #   }
+            # }
             author {
               name
               bio

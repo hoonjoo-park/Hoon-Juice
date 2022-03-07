@@ -156,11 +156,11 @@ export const pageQuery = graphql`
             draft
             excerpt
             thumbnail
-            image {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
-            }
+            # image {
+            #   childImageSharp {
+            #     gatsbyImageData(layout: FULL_WIDTH)
+            #   }
+            # }
             author {
               name
               bio

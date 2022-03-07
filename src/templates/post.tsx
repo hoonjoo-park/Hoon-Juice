@@ -85,7 +85,7 @@ export interface PageContext {
     };
   };
   frontmatter: {
-    image: any;
+    image?: any;
     thumbnail?: string;
     excerpt: string;
     title: string;
@@ -461,11 +461,11 @@ export const query = graphql`
         tags
         excerpt
         thumbnail
-        image {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
-          }
-        }
+        # image {
+        #   childImageSharp {
+        #     gatsbyImageData(layout: FULL_WIDTH)
+        #   }
+        # }
         author {
           name
           bio

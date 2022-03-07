@@ -43,9 +43,7 @@ interface AuthorTemplateProps {
     };
     authorYaml: {
       name: string;
-      website?: string;
-      twitter?: string;
-      facebook?: string;
+      Github?: string;
       location?: string;
       profile_image?: any;
       bio?: string;
@@ -138,36 +136,14 @@ const Author = ({ data, location }: AuthorTemplateProps) => {
                       {totalCount === 1 && '1 post'}
                       {totalCount === 0 && 'No posts'}
                     </div>
-                    {author.website && (
+                    {author.Github && (
                       <AuthorSocialLink className="author-social-link">
                         <AuthorSocialLinkAnchor
-                          href={author.website}
+                          href={author.Github}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Website
-                        </AuthorSocialLinkAnchor>
-                      </AuthorSocialLink>
-                    )}
-                    {author.twitter && (
-                      <AuthorSocialLink className="author-social-link">
-                        <AuthorSocialLinkAnchor
-                          href={`https://twitter.com/${author.twitter}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Twitter
-                        </AuthorSocialLinkAnchor>
-                      </AuthorSocialLink>
-                    )}
-                    {author.facebook && (
-                      <AuthorSocialLink className="author-social-link">
-                        <AuthorSocialLinkAnchor
-                          href={`https://www.facebook.com/${author.facebook}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Facebook
+                          Github
                         </AuthorSocialLinkAnchor>
                       </AuthorSocialLink>
                     )}
@@ -180,7 +156,9 @@ const Author = ({ data, location }: AuthorTemplateProps) => {
         <main id="site-main" css={[SiteMain, outer]}>
           <div css={inner}>
             <div css={[PostFeed]}>
-              {edges.map(({ node }) => <PostCard key={node.fields.slug} post={node} />)}
+              {edges.map(({ node }) => (
+                <PostCard key={node.fields.slug} post={node} />
+              ))}
             </div>
           </div>
         </main>
@@ -194,16 +172,9 @@ export const pageQuery = graphql`
   query ($author: String) {
     authorYaml(name: { eq: $author }) {
       name
-      website
-      twitter
+      Github
       bio
-      facebook
       location
-      profile_image {
-        childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH)
-        }
-      }
       avatar {
         childImageSharp {
           gatsbyImageData(quality: 100, breakpoints: [40, 80, 120], layout: FULL_WIDTH)
@@ -224,11 +195,11 @@ export const pageQuery = graphql`
             tags
             date
             draft
-            image {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
-            }
+            # image {
+            #   childImageSharp {
+            #     gatsbyImageData(layout: FULL_WIDTH)
+            #   }
+            # }
             author {
               name
               bio
