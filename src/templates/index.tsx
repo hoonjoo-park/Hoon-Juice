@@ -25,6 +25,7 @@ import {
 } from '../styles/shared';
 import config from '../website-config';
 import { PageContext } from './post';
+import styled from '@emotion/styled';
 
 export interface IndexProps {
   pageContext: {
@@ -45,7 +46,7 @@ export interface IndexProps {
 const IndexPage: React.FC<IndexProps> = props => {
   const width = getImage(props.data.header)?.width;
   const height = getImage(props.data.header)?.height;
-
+  const latestPosts = props.data.allMarkdownRemark.edges.slice(0, 5);
   return (
     <IndexLayout css={HomePosts}>
       <Helmet>
@@ -104,13 +105,14 @@ const IndexPage: React.FC<IndexProps> = props => {
         </div>
         <main id="site-main" css={[SiteMain, outer]}>
           <div css={[inner, Posts]}>
+            <LatestPostTitle>최신 포스트</LatestPostTitle>
             <div css={[PostFeed]}>
-              {props.data.allMarkdownRemark.edges.map(
-                (post, index) =>
+              {latestPosts.map(
+                post =>
                   // filter out drafts in production
                   (post.node.frontmatter.draft !== true ||
                     process.env.NODE_ENV !== 'production') && (
-                    <PostCard key={post.node.fields.slug} post={post.node} large={index === 0} />
+                    <PostCard key={post.node.fields.slug} post={post.node} large={true} />
                   ),
               )}
             </div>
@@ -190,14 +192,25 @@ const HomePosts = css`
     .post-card-large {
       flex: 1 1 100%;
       flex-direction: row;
+      justify-content: space-between;
       padding-bottom: 40px;
-      min-height: 280px;
+      min-height: 180px;
       border-top: 0;
+      cursor: pointer;
+      overflow: visible;
+      &:hover h2 {
+        color: #1c6dd0;
+        transition: all 0.2s ease-in-out;
+      }
+      &:hover .post-card-image-link {
+        transform: translateY(-3px);
+        box-shadow: 0px 10px 17px -3px rgba(0, 0, 0, 0.75);
+      }
     }
 
     .post-card-large .post-card-title {
       margin-top: 0;
-      font-size: 3.2rem;
+      font-size: 2.8rem;
     }
 
     .post-card-large:not(.no-image) .post-card-header {
@@ -206,9 +219,15 @@ const HomePosts = css`
 
     .post-card-large .post-card-image-link {
       position: relative;
-      flex: 1 1 auto;
+      flex: 0 1 auto;
       margin-bottom: 0;
-      min-height: 380px;
+      min-width: 270px;
+      min-height: 180px;
+      transition: all 0.2s ease-in-out;
+      img {
+        border-radius: 10px;
+        object-fit: fill;
+      }
     }
 
     .post-card-large .post-card-image {
@@ -218,13 +237,14 @@ const HomePosts = css`
     }
 
     .post-card-large .post-card-content {
-      flex: 0 1 361px;
+      flex: 0 1 420px;
+      /* margin-right: 10rem; */
       justify-content: center;
     }
 
     .post-card-large .post-card-title {
       margin-top: 0;
-      font-size: 3.2rem;
+      font-size: 2.8rem;
     }
 
     .post-card-large .post-card-content-link {
@@ -241,6 +261,13 @@ const HomePosts = css`
       line-height: 1.5em;
     }
   }
+`;
+
+const LatestPostTitle = styled.h3`
+  margin: 80px 0 0 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+  padding: 0 60px;
 `;
 
 export default IndexPage;

@@ -22,8 +22,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
   // 2018-08-20
   const datetime = format(date, 'yyyy-MM-dd');
   // 20 AUG 2018
-  const displayDatetime = format(date, 'dd LLL yyyy');
-
+  const displayDatetime = format(date, 'yyyy년 MM월 dd일');
   return (
     <article
       className={`post-card ${post.frontmatter.thumbnail ? '' : 'no-image'} ${
@@ -31,15 +30,6 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
       }`}
       css={[PostCardStyles, large && PostCardLarge]}
     >
-      {post.frontmatter.thumbnail && (
-        <Link className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}>
-          <PostCardImage className="post-card-image">
-            {post.frontmatter?.thumbnail && (
-              <img src={post.frontmatter.thumbnail} alt="thumbnail" />
-            )}
-          </PostCardImage>
-        </Link>
-      )}
       <PostCardContent className="post-card-content">
         <Link className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}>
           <PostCardHeader className="post-card-header">
@@ -84,6 +74,15 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
           </PostCardBylineContent>
         </PostCardMeta>
       </PostCardContent>
+      {post.frontmatter.thumbnail && (
+        <Link className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}>
+          <PostCardImage className="post-card-image">
+            {post.frontmatter?.thumbnail && (
+              <img src={post.frontmatter.thumbnail} alt="thumbnail" />
+            )}
+          </PostCardImage>
+        </Link>
+      )}
     </article>
   );
 };
@@ -95,7 +94,7 @@ const PostCardStyles = css`
   flex-direction: column;
   overflow: hidden;
   margin: 0 0 40px;
-  padding: 0 20px 40px;
+  padding: 0 40px 40px;
   min-height: 220px;
   background-size: cover;
 `;
@@ -116,7 +115,7 @@ const PostCardLarge = css`
       position: relative;
       flex: 1 1 auto;
       margin-bottom: 0;
-      min-height: 380px;
+      min-height: 300px;
     }
 
     .post-card-image {
@@ -126,7 +125,7 @@ const PostCardLarge = css`
     }
 
     .post-card-content {
-      flex: 0 1 361px;
+      flex: 0 1 420px;
       justify-content: center;
     }
 
@@ -168,8 +167,9 @@ const PostCardImage = styled.div`
     background: ${colors.darkmode};
   }
   img {
+    width: 100%;
     height: 100%;
-    object-fit: cover;
+    border-radius: 10px;
   }
 `;
 
