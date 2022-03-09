@@ -62,8 +62,18 @@ const ReadNextAside = styled.aside`
   background: ${lighten('-0.05', colors.darkgrey)};
 
   .post-card {
+    max-width: 360px;
+    margin-left: auto;
     padding-bottom: 0;
     border-bottom: none;
+    .post-card-content {
+      transition: all 0.2s ease-in-out;
+      order: 2;
+    }
+    .post-card-image-link {
+      transition: all 0.2s ease-in-out;
+      order: 1;
+    }
   }
   .post-card:after {
     display: none;
@@ -98,7 +108,11 @@ const ReadNextAside = styled.aside`
   .author-profile-image {
     background: ${lighten('-0.05', colors.darkgrey)};
   }
-
+  @media (max-width: 1170px) {
+    & > div {
+      max-width: 784px;
+    }
+  }
   @media (max-width: 650px) {
     .post-card {
       flex: 1 1 auto;

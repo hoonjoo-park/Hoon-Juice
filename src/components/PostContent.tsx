@@ -153,12 +153,12 @@ export const PostFullContent = styled.section`
 
   blockquote {
     margin: 0 0 1.5em;
-    padding: 0 1.5em;
+    padding: 0.5em 1.5em;
     border-left: #3eb0ef 3px solid;
   }
   @media (max-width: 500px) {
     blockquote {
-      padding: 0 1.3em;
+      padding: 0.3em 1.3em;
     }
   }
 
@@ -287,14 +287,14 @@ export const PostFullContent = styled.section`
   }
   @media (max-width: 800px) {
     h2 {
-      margin-bottom: 0.3em;
+      margin-bottom: 0.5em;
       font-size: 2.8rem;
       line-height: 1.25em;
     }
   }
 
   h3 {
-    margin: 0.5em 0 0.2em;
+    margin: 1.5em 0 0.5em;
     font-size: 2.5rem;
     line-height: 1.3em;
     font-weight: 600;
@@ -415,7 +415,7 @@ export const PostFullContent = styled.section`
   table th {
     /* color: var(--darkgrey); */
     color: ${colors.darkgrey};
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.2px;
     text-align: left;
@@ -460,7 +460,16 @@ export const PostFullContent = styled.section`
       color: #fc5185;
       background: #eeeeee;
     }
-
+    blockquote {
+      width: 100%;
+      background: #303030;
+      border-radius: 3px;
+      p {
+        font-style: normal;
+        font-weight: 400;
+        color: #ffffff;
+      }
+    }
     hr {
       /* border-top-color: color(var(--darkmode) l(+8%)); */
       /* border-top-color: ${lighten('0.08', colors.darkmode)}; */
@@ -497,7 +506,8 @@ export const PostFullContent = styled.section`
     table th {
       color: rgba(255, 255, 255, 0.85);
       /* background-color: color(var(--darkmode) l(+8%)); */
-      background-color: ${lighten('0.08', colors.darkmode)};
+      /* background-color: ${lighten('0.08', colors.darkmode)}; */
+      background-color: #364f6b;
     }
 
     table th,
@@ -570,8 +580,8 @@ export const PostFullContent = styled.section`
   /* Inline code */
   *:not(pre) > code[class*='language-'] {
     border-radius: 0.3em;
-    background: rgb(1, 22, 39);
-    color: white;
+    background: #2d2d2d;
+    color: #fc5185;
     padding: 0.15em 0.5em;
     white-space: normal;
   }

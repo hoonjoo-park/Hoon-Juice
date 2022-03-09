@@ -422,19 +422,21 @@ const PostFullImage = styled.figure`
     border-radius: 5px;
   }
   @media (max-width: 1170px) {
-    margin: 25px -6vw 50px;
+    margin: 25px auto 50px;
+    max-width: 1040px;
+    padding: 0 11vw;
+    background: none;
     border-radius: 0;
-    img {
-      max-width: 1170px;
-    }
   }
 
   @media (max-width: 800px) {
-    height: 400px;
+    max-height: 250px;
+    padding: 0 5vw;
   }
   @media (max-width: 500px) {
     margin-bottom: 4vw;
     height: 350px;
+    padding: 0;
   }
 `;
 

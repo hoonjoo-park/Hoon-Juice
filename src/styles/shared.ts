@@ -44,7 +44,7 @@ export const SiteTitle = styled.h1`
   font-weight: 900;
 
   @media (max-width: 500px) {
-    font-size: 4.2rem;
+    font-size: 3.2rem;
   }
 `;
 

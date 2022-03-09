@@ -261,6 +261,28 @@ const HomePosts = css`
       line-height: 1.5em;
     }
   }
+  @media (max-width: 795px) {
+    .post-card-large {
+      cursor: pointer;
+      overflow: visible;
+      &:hover h2 {
+        color: #1c6dd0;
+        transition: all 0.2s ease-in-out;
+      }
+      &:hover .post-card-image-link {
+        transform: translateY(-3px);
+        box-shadow: 0px 10px 17px -3px rgba(0, 0, 0, 0.75);
+      }
+    }
+    .post-card-content {
+      transition: all 0.2s ease-in-out;
+      order: 2;
+    }
+    .post-card-image-link {
+      transition: all 0.2s ease-in-out;
+      order: 1;
+    }
+  }
 `;
 
 const LatestPostTitle = styled.h3`
@@ -268,6 +290,9 @@ const LatestPostTitle = styled.h3`
   font-size: 2.8rem;
   font-weight: 700;
   padding: 0 60px;
+  @media (max-width: 795px) {
+    padding: 0 20px;
+  }
 `;
 
 export default IndexPage;
