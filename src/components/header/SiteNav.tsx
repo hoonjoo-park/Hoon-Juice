@@ -10,6 +10,8 @@ import { SocialLink } from '../../styles/shared';
 import config from '../../website-config';
 import { SiteNavLogo } from './SiteNavLogo';
 import { Github } from '../icons/github';
+import { FiSun } from 'react-icons/fi';
+import { BsMoonStarsFill } from 'react-icons/bs';
 
 interface SiteNavProps {
   isHome?: boolean;
@@ -115,6 +117,10 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
                   <Github />
                 </a>
               )}
+              <DarkLight css={SocialLink}>
+                <FiSun />
+                <BsMoonStarsFill />
+              </DarkLight>
             </SocialLinks>
           </SiteNavRight>
         </nav>
@@ -248,6 +254,13 @@ const SocialLinks = styled.div`
   align-items: center;
   & a > svg {
     height: 2rem;
+  }
+`;
+const DarkLight = styled.button`
+  background-color: transparent;
+  svg {
+    height: 2rem;
+    font-size: 2rem;
   }
 `;
 
