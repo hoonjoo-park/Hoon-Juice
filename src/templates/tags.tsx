@@ -24,6 +24,7 @@ import {
 import { PageContext } from './post';
 import { Helmet } from 'react-helmet';
 import config from '../website-config';
+import { RecoilRoot } from 'recoil';
 
 interface TagTemplateProps {
   location: Location;
@@ -55,68 +56,70 @@ const Tags = ({ pageContext, data, location }: TagTemplateProps) => {
   const tagData = data.allTagYaml.edges.find(n => n.node.id.toLowerCase() === tag.toLowerCase());
 
   return (
-    <IndexLayout>
-      <Helmet>
-        <html lang={config.lang} />
-        <title>
-          {tag} - {config.title}
-        </title>
-        <meta name="description" content={tagData?.node ? tagData.node.description : ''} />
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`${tag} - ${config.title}`} />
-        <meta property="og:url" content={config.siteUrl + location.pathname} />
-        {config.facebook && <meta property="article:publisher" content={config.facebook} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${tag} - ${config.title}`} />
-        <meta name="twitter:url" content={config.siteUrl + location.pathname} />
-        {config.twitter && (
-          <meta
-            name="twitter:site"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
-      </Helmet>
-      <Wrapper>
-        <header className="site-archive-header" css={[SiteHeader, SiteArchiveHeader]}>
-          <div css={[outer, SiteNavMain]}>
+    <RecoilRoot>
+      <IndexLayout>
+        <Helmet>
+          <html lang={config.lang} />
+          <title>
+            {tag} - {config.title}
+          </title>
+          <meta name="description" content={tagData?.node ? tagData.node.description : ''} />
+          <meta property="og:site_name" content={config.title} />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={`${tag} - ${config.title}`} />
+          <meta property="og:url" content={config.siteUrl + location.pathname} />
+          {config.facebook && <meta property="article:publisher" content={config.facebook} />}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={`${tag} - ${config.title}`} />
+          <meta name="twitter:url" content={config.siteUrl + location.pathname} />
+          {config.twitter && (
+            <meta
+              name="twitter:site"
+              content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+            />
+          )}
+        </Helmet>
+        <Wrapper>
+          <header className="site-archive-header" css={[SiteHeader, SiteArchiveHeader]}>
+            <div css={[outer, SiteNavMain]}>
+              <div css={inner}>
+                <SiteNav isHome={false} />
+              </div>
+            </div>
+            <ResponsiveHeaderBackground
+              css={[outer, SiteHeaderBackground]}
+              backgroundImage={getSrc(tagData?.node?.image)}
+              className="site-header-background"
+            >
+              <SiteHeaderContent css={inner} className="site-header-content">
+                <SiteTitle className="site-title">{tag}</SiteTitle>
+                <SiteDescription className="site-description">
+                  {tagData?.node.description ? (
+                    tagData.node.description
+                  ) : (
+                    <>
+                      A collection of {totalCount > 1 && `${totalCount} posts`}
+                      {totalCount === 1 && '1 post'}
+                      {totalCount === 0 && 'No posts'}
+                    </>
+                  )}
+                </SiteDescription>
+              </SiteHeaderContent>
+            </ResponsiveHeaderBackground>
+          </header>
+          <main id="site-main" css={[SiteMain, outer]}>
             <div css={inner}>
-              <SiteNav isHome={false} />
+              <div css={[PostFeed]}>
+                {edges.map(({ node }) => (
+                  <PostCard key={node.fields.slug} post={node} />
+                ))}
+              </div>
             </div>
-          </div>
-          <ResponsiveHeaderBackground
-            css={[outer, SiteHeaderBackground]}
-            backgroundImage={getSrc(tagData?.node?.image)}
-            className="site-header-background"
-          >
-            <SiteHeaderContent css={inner} className="site-header-content">
-              <SiteTitle className="site-title">{tag}</SiteTitle>
-              <SiteDescription className="site-description">
-                {tagData?.node.description ? (
-                  tagData.node.description
-                ) : (
-                  <>
-                    A collection of {totalCount > 1 && `${totalCount} posts`}
-                    {totalCount === 1 && '1 post'}
-                    {totalCount === 0 && 'No posts'}
-                  </>
-                )}
-              </SiteDescription>
-            </SiteHeaderContent>
-          </ResponsiveHeaderBackground>
-        </header>
-        <main id="site-main" css={[SiteMain, outer]}>
-          <div css={inner}>
-            <div css={[PostFeed]}>
-              {edges.map(({ node }) => (
-                <PostCard key={node.fields.slug} post={node} />
-              ))}
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </Wrapper>
-    </IndexLayout>
+          </main>
+          <Footer />
+        </Wrapper>
+      </IndexLayout>
+    </RecoilRoot>
   );
 };
 

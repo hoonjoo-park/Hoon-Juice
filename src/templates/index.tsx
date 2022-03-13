@@ -26,6 +26,7 @@ import {
 import config from '../website-config';
 import { PageContext } from './post';
 import styled from '@emotion/styled';
+import { RecoilRoot } from 'recoil';
 
 export interface IndexProps {
   pageContext: {
@@ -48,86 +49,88 @@ const IndexPage: React.FC<IndexProps> = props => {
   const height = getImage(props.data.header)?.height;
   const latestPosts = props.data.allMarkdownRemark.edges.slice(0, 5);
   return (
-    <IndexLayout css={HomePosts}>
-      <Helmet>
-        <html lang={config.lang} />
-        <title>{config.title}</title>
-        <meta name="description" content={config.description} />
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={config.title} />
-        <meta property="og:description" content={config.description} />
-        <meta property="og:url" content={config.siteUrl} />
-        <meta property="og:image" content={`${config.siteUrl}${getSrc(props.data.header)}`} />
-        {config.facebook && <meta property="article:publisher" content={config.facebook} />}
-        {config.googleSiteVerification && (
-          <meta name="google-site-verification" content={config.googleSiteVerification} />
-        )}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.description} />
-        <meta name="twitter:url" content={config.siteUrl} />
-        <meta name="twitter:image" content={`${config.siteUrl}${getSrc(props.data.header)}`} />
-        {config.twitter && (
-          <meta
-            name="twitter:site"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
-        <meta property="og:image:width" content={width?.toString()} />
-        <meta property="og:image:height" content={height?.toString()} />
-      </Helmet>
-      <Wrapper>
-        <div
-          css={[outer, SiteHeader, SiteHeaderStyles]}
-          className="site-header-background"
-          style={{
-            backgroundImage: `url('${getSrc(props.data.header)}')`,
-          }}
-        >
-          <div css={inner}>
-            <SiteNav isHome />
-            <SiteHeaderContent className="site-header-content">
-              <SiteTitle className="site-title">
-                {props.data.logo ? (
-                  <img
-                    style={{ maxHeight: '55px' }}
-                    src={getSrc(props.data.logo)}
-                    alt={config.title}
-                  />
-                ) : (
-                  config.title
-                )}
-              </SiteTitle>
-              <SiteDescription>{config.description}</SiteDescription>
-            </SiteHeaderContent>
-          </div>
-        </div>
-        <main id="site-main" css={[SiteMain, outer]}>
-          <div css={[inner, Posts]}>
-            <LatestPostTitle>최신 포스트</LatestPostTitle>
-            <div css={[PostFeed]}>
-              {latestPosts.map(
-                post =>
-                  // filter out drafts in production
-                  (post.node.frontmatter.draft !== true ||
-                    process.env.NODE_ENV !== 'production') && (
-                    <PostCard key={post.node.fields.slug} post={post.node} large={true} />
-                  ),
-              )}
+    <RecoilRoot>
+      <IndexLayout css={HomePosts}>
+        <Helmet>
+          <html lang={config.lang} />
+          <title>{config.title}</title>
+          <meta name="description" content={config.description} />
+          <meta property="og:site_name" content={config.title} />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={config.title} />
+          <meta property="og:description" content={config.description} />
+          <meta property="og:url" content={config.siteUrl} />
+          <meta property="og:image" content={`${config.siteUrl}${getSrc(props.data.header)}`} />
+          {config.facebook && <meta property="article:publisher" content={config.facebook} />}
+          {config.googleSiteVerification && (
+            <meta name="google-site-verification" content={config.googleSiteVerification} />
+          )}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={config.title} />
+          <meta name="twitter:description" content={config.description} />
+          <meta name="twitter:url" content={config.siteUrl} />
+          <meta name="twitter:image" content={`${config.siteUrl}${getSrc(props.data.header)}`} />
+          {config.twitter && (
+            <meta
+              name="twitter:site"
+              content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+            />
+          )}
+          <meta property="og:image:width" content={width?.toString()} />
+          <meta property="og:image:height" content={height?.toString()} />
+        </Helmet>
+        <Wrapper>
+          <div
+            css={[outer, SiteHeader, SiteHeaderStyles]}
+            className="site-header-background"
+            style={{
+              backgroundImage: `url('${getSrc(props.data.header)}')`,
+            }}
+          >
+            <div css={inner}>
+              <SiteNav isHome />
+              <SiteHeaderContent className="site-header-content">
+                <SiteTitle className="site-title">
+                  {props.data.logo ? (
+                    <img
+                      style={{ maxHeight: '55px' }}
+                      src={getSrc(props.data.logo)}
+                      alt={config.title}
+                    />
+                  ) : (
+                    config.title
+                  )}
+                </SiteTitle>
+                <SiteDescription>{config.description}</SiteDescription>
+              </SiteHeaderContent>
             </div>
           </div>
-        </main>
-        {props.children}
-        {props.pageContext.numPages > 1 && (
-          <Pagination
-            currentPage={props.pageContext.currentPage}
-            numPages={props.pageContext.numPages}
-          />
-        )}
-        <Footer />
-      </Wrapper>
-    </IndexLayout>
+          <main id="site-main" css={[SiteMain, outer]}>
+            <div css={[inner, Posts]}>
+              <LatestPostTitle>최신 포스트</LatestPostTitle>
+              <div css={[PostFeed]}>
+                {latestPosts.map(
+                  post =>
+                    // filter out drafts in production
+                    (post.node.frontmatter.draft !== true ||
+                      process.env.NODE_ENV !== 'production') && (
+                      <PostCard key={post.node.fields.slug} post={post.node} large={true} />
+                    ),
+                )}
+              </div>
+            </div>
+          </main>
+          {props.children}
+          {props.pageContext.numPages > 1 && (
+            <Pagination
+              currentPage={props.pageContext.currentPage}
+              numPages={props.pageContext.numPages}
+            />
+          )}
+          <Footer />
+        </Wrapper>
+      </IndexLayout>
+    </RecoilRoot>
   );
 };
 

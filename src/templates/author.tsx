@@ -26,6 +26,7 @@ import {
 import { PageContext } from './post';
 import { Helmet } from 'react-helmet';
 import config from '../website-config';
+import { RecoilRoot } from 'recoil';
 
 interface AuthorTemplateProps {
   location: Location;
@@ -72,99 +73,101 @@ const Author = ({ data, location }: AuthorTemplateProps) => {
   const totalCount = edges.length;
 
   return (
-    <IndexLayout>
-      <Helmet>
-        <html lang={config.lang} />
-        <title>
-          {author.name} - {config.title}
-        </title>
-        <meta name="description" content={author.bio} />
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="profile" />
-        <meta property="og:title" content={`${author.name} - ${config.title}`} />
-        <meta property="og:url" content={config.siteUrl + location.pathname} />
-        <meta property="article:publisher" content="https://www.facebook.com/ghost" />
-        <meta property="article:author" content="https://www.facebook.com/ghost" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={`${author.name} - ${config.title}`} />
-        <meta name="twitter:url" content={config.siteUrl + location.pathname} />
-        {config.twitter && (
-          <meta
-            name="twitter:site"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
-        {config.twitter && (
-          <meta
-            name="twitter:creator"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
-      </Helmet>
-      <Wrapper>
-        <header className="site-archive-header" css={[SiteHeader, SiteArchiveHeader]}>
-          <div css={[outer, SiteNavMain]}>
-            <div css={inner}>
-              <SiteNav isHome={false} />
+    <RecoilRoot>
+      <IndexLayout>
+        <Helmet>
+          <html lang={config.lang} />
+          <title>
+            {author.name} - {config.title}
+          </title>
+          <meta name="description" content={author.bio} />
+          <meta property="og:site_name" content={config.title} />
+          <meta property="og:type" content="profile" />
+          <meta property="og:title" content={`${author.name} - ${config.title}`} />
+          <meta property="og:url" content={config.siteUrl + location.pathname} />
+          <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+          <meta property="article:author" content="https://www.facebook.com/ghost" />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content={`${author.name} - ${config.title}`} />
+          <meta name="twitter:url" content={config.siteUrl + location.pathname} />
+          {config.twitter && (
+            <meta
+              name="twitter:site"
+              content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+            />
+          )}
+          {config.twitter && (
+            <meta
+              name="twitter:creator"
+              content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+            />
+          )}
+        </Helmet>
+        <Wrapper>
+          <header className="site-archive-header" css={[SiteHeader, SiteArchiveHeader]}>
+            <div css={[outer, SiteNavMain]}>
+              <div css={inner}>
+                <SiteNav isHome={false} />
+              </div>
             </div>
-          </div>
 
-          <ResponsiveHeaderBackground
-            backgroundImage={getSrc(author.profile_image)}
-            css={[outer, SiteHeaderBackground]}
-            className="site-header-background"
-          >
-            <div css={inner}>
-              <SiteHeaderContent css={AuthorHeader} className="site-header-content author-header">
-                <img
-                  style={{ marginTop: '8px' }}
-                  css={[AuthorProfileImage, AuthorProfileBioImage]}
-                  src={getSrc(data.authorYaml.avatar)}
-                  alt={author.name}
-                />
-                <AuthHeaderContent className="author-header-content">
-                  <SiteTitle className="site-title">{author.name}</SiteTitle>
-                  {author.bio && <AuthorBio className="author-bio">{author.bio}</AuthorBio>}
-                  <div css={AuthorMeta} className="author-meta">
-                    {author.location && (
-                      <div className="author-location" css={[HiddenMobile]}>
-                        {author.location}
+            <ResponsiveHeaderBackground
+              backgroundImage={getSrc(author.profile_image)}
+              css={[outer, SiteHeaderBackground]}
+              className="site-header-background"
+            >
+              <div css={inner}>
+                <SiteHeaderContent css={AuthorHeader} className="site-header-content author-header">
+                  <img
+                    style={{ marginTop: '8px' }}
+                    css={[AuthorProfileImage, AuthorProfileBioImage]}
+                    src={getSrc(data.authorYaml.avatar)}
+                    alt={author.name}
+                  />
+                  <AuthHeaderContent className="author-header-content">
+                    <SiteTitle className="site-title">{author.name}</SiteTitle>
+                    {author.bio && <AuthorBio className="author-bio">{author.bio}</AuthorBio>}
+                    <div css={AuthorMeta} className="author-meta">
+                      {author.location && (
+                        <div className="author-location" css={[HiddenMobile]}>
+                          {author.location}
+                        </div>
+                      )}
+                      <div className="author-stats" css={[HiddenMobile]}>
+                        {totalCount > 1 && `${totalCount} posts`}
+                        {totalCount === 1 && '1 post'}
+                        {totalCount === 0 && 'No posts'}
                       </div>
-                    )}
-                    <div className="author-stats" css={[HiddenMobile]}>
-                      {totalCount > 1 && `${totalCount} posts`}
-                      {totalCount === 1 && '1 post'}
-                      {totalCount === 0 && 'No posts'}
+                      {author.Github && (
+                        <AuthorSocialLink className="author-social-link">
+                          <AuthorSocialLinkAnchor
+                            href={author.Github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Github
+                          </AuthorSocialLinkAnchor>
+                        </AuthorSocialLink>
+                      )}
                     </div>
-                    {author.Github && (
-                      <AuthorSocialLink className="author-social-link">
-                        <AuthorSocialLinkAnchor
-                          href={author.Github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Github
-                        </AuthorSocialLinkAnchor>
-                      </AuthorSocialLink>
-                    )}
-                  </div>
-                </AuthHeaderContent>
-              </SiteHeaderContent>
+                  </AuthHeaderContent>
+                </SiteHeaderContent>
+              </div>
+            </ResponsiveHeaderBackground>
+          </header>
+          <main id="site-main" css={[SiteMain, outer]}>
+            <div css={inner}>
+              <div css={[PostFeed]}>
+                {edges.map(({ node }) => (
+                  <PostCard key={node.fields.slug} post={node} />
+                ))}
+              </div>
             </div>
-          </ResponsiveHeaderBackground>
-        </header>
-        <main id="site-main" css={[SiteMain, outer]}>
-          <div css={inner}>
-            <div css={[PostFeed]}>
-              {edges.map(({ node }) => (
-                <PostCard key={node.fields.slug} post={node} />
-              ))}
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </Wrapper>
-    </IndexLayout>
+          </main>
+          <Footer />
+        </Wrapper>
+      </IndexLayout>
+    </RecoilRoot>
   );
 };
 

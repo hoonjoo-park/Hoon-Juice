@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import { darken } from 'polished';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -19,115 +19,89 @@ interface SiteNavProps {
   post?: any;
 }
 
-interface SiteNavState {
-  showTitle: boolean;
-}
-
-class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
-  titleRef = React.createRef<HTMLSpanElement>();
-  lastScrollY = 0;
-  ticking = false;
-  state = { showTitle: false };
-
-  componentDidMount(): void {
-    this.lastScrollY = window.scrollY;
-    if (this.props.isPost) {
-      window.addEventListener('scroll', this.onScroll, { passive: true });
+const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
+  const titleRef = useRef<HTMLSpanElement | null>(null);
+  const [showTitle, setShowTitle] = useState(false);
+  useEffect(() => {
+    if (isPost) {
+      window.addEventListener('scroll', onScroll, { passive: true });
     }
-  }
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
-  componentWillUnmount(): void {
-    window.removeEventListener('scroll', this.onScroll);
-  }
-
-  onScroll = () => {
-    if (!this.titleRef || !this.titleRef.current) {
+  const onScroll = () => {
+    if (!titleRef || !titleRef.current) {
       return;
     }
-
-    if (!this.ticking) {
-      requestAnimationFrame(this.update);
-    }
-
-    this.ticking = true;
+    requestAnimationFrame(update);
   };
 
-  update = () => {
-    if (!this.titleRef || !this.titleRef.current) {
+  const update = () => {
+    if (!titleRef || !titleRef.current) {
       return;
     }
-
-    this.lastScrollY = window.scrollY;
-
-    const trigger = this.titleRef.current.getBoundingClientRect().top;
-    const triggerOffset = this.titleRef.current.offsetHeight + 35;
-
+    const trigger = titleRef.current.getBoundingClientRect().top;
+    const triggerOffset = titleRef.current.offsetHeight + 35;
     // show/hide post title
-    if (this.lastScrollY >= trigger + triggerOffset) {
-      this.setState({ showTitle: true });
+    if (window.scrollY >= trigger + triggerOffset) {
+      setShowTitle(true);
     } else {
-      this.setState({ showTitle: false });
+      setShowTitle(false);
     }
-
-    this.ticking = false;
   };
-
-  render() {
-    const { isHome = false, isPost = false, post = {} } = this.props;
-    return (
-      <>
-        <nav css={SiteNavStyles}>
-          <SiteNavLeft className="site-nav-left">
-            {!isHome && <SiteNavLogo />}
-            <SiteNavContent css={[this.state.showTitle ? HideNav : '']}>
-              <ul css={NavStyles} role="menu">
-                <li role="menuitem">
-                  <Link to="/" activeClassName="nav-current">
-                    Home
-                  </Link>
-                </li>
-                <li role="menuitem">
-                  <Link to="/posts" activeClassName="nav-current">
-                    POSTS
-                  </Link>
-                </li>
-                <li role="menuitem">
-                  <Link to="/about" activeClassName="nav-current">
-                    About
-                  </Link>
-                </li>
-              </ul>
-              {isPost && (
-                <NavPostTitle ref={this.titleRef} className="nav-post-title">
-                  {post.title}
-                </NavPostTitle>
-              )}
-            </SiteNavContent>
-          </SiteNavLeft>
-          <SiteNavRight>
-            <SocialLinks>
-              {config.github && (
-                <a
-                  css={SocialLink}
-                  href={config.github}
-                  title="Twitter"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github />
-                </a>
-              )}
-              <DarkLight css={SocialLink}>
-                <FiSun />
-                <BsMoonStarsFill />
-              </DarkLight>
-            </SocialLinks>
-          </SiteNavRight>
-        </nav>
-      </>
-    );
-  }
-}
+  return (
+    <nav css={SiteNavStyles}>
+      <SiteNavLeft className={showTitle ? 'site-nav-left showTitle' : 'site-nav-left'}>
+        {!isHome && <SiteNavLogo />}
+        <SiteNavContent>
+          <ul css={NavStyles} role="menu">
+            <li role="menuitem">
+              <Link to="/" activeClassName="nav-current">
+                Home
+              </Link>
+            </li>
+            <li role="menuitem">
+              <Link to="/posts" activeClassName="nav-current">
+                POSTS
+              </Link>
+            </li>
+            <li role="menuitem">
+              <Link to="/about" activeClassName="nav-current">
+                About
+              </Link>
+            </li>
+          </ul>
+          {isPost && (
+            <NavPostTitle ref={titleRef} className="nav-post-title">
+              {post.title}
+            </NavPostTitle>
+          )}
+        </SiteNavContent>
+      </SiteNavLeft>
+      <SiteNavRight>
+        <SocialLinks>
+          {config.github && (
+            <a
+              css={SocialLink}
+              href={config.github}
+              title="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github />
+            </a>
+          )}
+          <DarkLight css={SocialLink}>
+            <BsMoonStarsFill />
+            {/* <FiSun /> */}
+          </DarkLight>
+        </SocialLinks>
+      </SiteNavRight>
+    </nav>
+  );
+};
 
 export const SiteNavMain = css`
   position: fixed;
@@ -174,6 +148,18 @@ const SiteNavLeft = styled.div`
   @media (max-width: 700px) {
     margin-right: 0;
     padding-left: 5vw;
+  }
+  &.showTitle {
+    & ul {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-175%);
+    }
+    & .nav-post-title {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 
