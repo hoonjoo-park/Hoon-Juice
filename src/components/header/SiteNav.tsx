@@ -12,6 +12,8 @@ import { SiteNavLogo } from './SiteNavLogo';
 import { Github } from '../icons/github';
 import { FiSun } from 'react-icons/fi';
 import { BsMoonStarsFill } from 'react-icons/bs';
+import { useRecoilState } from 'recoil';
+import { themeMode } from '../../recoil';
 
 interface SiteNavProps {
   isHome?: boolean;
@@ -22,6 +24,7 @@ interface SiteNavProps {
 const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
   const titleRef = useRef<HTMLSpanElement | null>(null);
   const [showTitle, setShowTitle] = useState(false);
+  const [theme, setTheme] = useRecoilState<string>(themeMode);
   useEffect(() => {
     if (isPost) {
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -50,6 +53,10 @@ const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
     } else {
       setShowTitle(false);
     }
+  };
+  const handleTheme = () => {
+    if (theme === 'DARK') return setTheme('LIGHT');
+    setTheme('DARK');
   };
   return (
     <nav css={SiteNavStyles}>
@@ -93,9 +100,8 @@ const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
               <Github />
             </a>
           )}
-          <DarkLight css={SocialLink}>
-            <BsMoonStarsFill />
-            {/* <FiSun /> */}
+          <DarkLight css={SocialLink} onClick={handleTheme}>
+            {theme === 'DARK' ? <BsMoonStarsFill /> : <FiSun />}
           </DarkLight>
         </SocialLinks>
       </SiteNavRight>
@@ -269,19 +275,6 @@ const NavPostTitle = styled.span`
   .dash:before {
     content: '– ';
     opacity: 0.5;
-  }
-`;
-
-const HideNav = css`
-  ul {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-175%);
-  }
-  .nav-post-title {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
   }
 `;
 

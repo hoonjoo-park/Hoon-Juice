@@ -11,6 +11,7 @@ import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
 import { inner, outer, PostFeed, SiteHeader, SiteNavMain } from '../styles/shared';
 import { PageContext } from '../templates/post';
+import { RecoilRoot } from 'recoil';
 
 interface NotFoundTemplateProps {
   data: {
@@ -27,34 +28,36 @@ const NotFoundPage = (props: NotFoundTemplateProps) => {
   const { edges } = props.data.allMarkdownRemark;
 
   return (
-    <IndexLayout>
-      <Wrapper>
-        <header css={[SiteHeader, outer]}>
-          <div css={[outer, SiteNavMain]}>
-            <div css={inner}>
-              <SiteNav isHome={false} />
+    <RecoilRoot>
+      <IndexLayout>
+        <Wrapper>
+          <header css={[SiteHeader, outer]}>
+            <div css={[outer, SiteNavMain]}>
+              <div css={inner}>
+                <SiteNav isHome={false} />
+              </div>
             </div>
-          </div>
-        </header>
-        <main id="site-main" css={[outer, ErrorContent]} className="error-content">
-          <div css={[inner]}>
-            <section style={{ textAlign: 'center' }}>
-              <ErrorCode>404</ErrorCode>
-              <ErrorDescription>Page not found</ErrorDescription>
-              <Link css={ErrorLink} to="/">
-                이전 페이지로 돌아가기 →
-              </Link>
-            </section>
+          </header>
+          <main id="site-main" css={[outer, ErrorContent]} className="error-content">
+            <div css={[inner]}>
+              <section style={{ textAlign: 'center' }}>
+                <ErrorCode>404</ErrorCode>
+                <ErrorDescription>Page not found</ErrorDescription>
+                <Link css={ErrorLink} to="/">
+                  이전 페이지로 돌아가기 →
+                </Link>
+              </section>
 
-            <div css={PostFeed} className="post-feed">
-              {edges.map(({ node }) => (
-                <PostCard key={node.fields.slug} post={node} />
-              ))}
+              <div css={PostFeed} className="post-feed">
+                {edges.map(({ node }) => (
+                  <PostCard key={node.fields.slug} post={node} />
+                ))}
+              </div>
             </div>
-          </div>
-        </main>
-      </Wrapper>
-    </IndexLayout>
+          </main>
+        </Wrapper>
+      </IndexLayout>
+    </RecoilRoot>
   );
 };
 

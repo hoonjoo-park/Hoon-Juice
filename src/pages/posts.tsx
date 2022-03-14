@@ -17,6 +17,7 @@ import { colors } from '../styles/colors';
 import { PostFull, PostFullHeader, PostFullTitle } from '../templates/post';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
+import { RecoilRoot } from 'recoil';
 
 const PageTemplate = css`
   .site-main {
@@ -35,34 +36,36 @@ const PageTemplate = css`
 
 const Posts: React.FC = () => {
   return (
-    <IndexLayout>
-      <Helmet>
-        <title>POSTS</title>
-      </Helmet>
-      <Wrapper css={PageTemplate}>
-        <header className="site-archive-header no-image" css={[SiteHeader, SiteArchiveHeader]}>
-          <div css={[outer, SiteNavMain]}>
-            <div css={inner}>
-              <SiteNav isHome={false} />
+    <RecoilRoot>
+      <IndexLayout>
+        <Helmet>
+          <title>POSTS</title>
+        </Helmet>
+        <Wrapper css={PageTemplate}>
+          <header className="site-archive-header no-image" css={[SiteHeader, SiteArchiveHeader]}>
+            <div css={[outer, SiteNavMain]}>
+              <div css={inner}>
+                <SiteNav isHome={false} />
+              </div>
             </div>
-          </div>
-        </header>
-        <main id="site-main" className="site-main" css={[SiteMain, outer]}>
-          <div css={inner}>
-            <article className="post page" css={[PostFull, NoImage]}>
-              <PostFullHeader className="post-full-header">
-                <PostFullTitle className="post-full-title">POSTS</PostFullTitle>
-              </PostFullHeader>
+          </header>
+          <main id="site-main" className="site-main" css={[SiteMain, outer]}>
+            <div css={inner}>
+              <article className="post page" css={[PostFull, NoImage]}>
+                <PostFullHeader className="post-full-header">
+                  <PostFullTitle className="post-full-title">POSTS</PostFullTitle>
+                </PostFullHeader>
 
-              <PostFullContent className="post-full-content">
-                <div className="post-content">{/* <h5>Posts</h5> */}</div>
-              </PostFullContent>
-            </article>
-          </div>
-        </main>
-        <Footer />
-      </Wrapper>
-    </IndexLayout>
+                <PostFullContent className="post-full-content">
+                  <div className="post-content">{/* <h5>Posts</h5> */}</div>
+                </PostFullContent>
+              </article>
+            </div>
+          </main>
+          <Footer />
+        </Wrapper>
+      </IndexLayout>
+    </RecoilRoot>
   );
 };
 
