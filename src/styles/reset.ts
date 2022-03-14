@@ -1,8 +1,10 @@
 import { css } from '@emotion/react';
 import { lighten } from 'polished';
 import { colors } from './colors';
+import { themeType } from './theme';
 
-export const reset = css`
+export const reset = (theme: themeType) => css`
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
   html,
   body,
   div,
@@ -260,9 +262,8 @@ export const reset = css`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   body {
-    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
     overflow-x: hidden;
-    color: ${lighten('-0.3', colors.midgrey)};
+    color: ${lighten('-0.3', theme.fontColor)};
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
       Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
@@ -271,7 +272,7 @@ export const reset = css`
     font-style: normal;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
-    background: #fff;
+    background: ${theme.bgColor};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: 'liga' on;

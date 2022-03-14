@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import _ from 'lodash';
 import { lighten } from 'polished';
 import React from 'react';
@@ -31,7 +31,11 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
       css={[PostCardStyles, large && PostCardLarge]}
     >
       <PostCardContent className="post-card-content">
-        <Link className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}>
+        <div
+          className="post-card-content-link"
+          css={PostCardContentLink}
+          onClick={() => navigate(post.fields.slug)}
+        >
           <PostCardHeader className="post-card-header">
             {post.frontmatter.tags && config.showAllTags && (
               <PostCardPrimaryTag className="post-card-primary-tag">
@@ -55,7 +59,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
           <PostCardExcerpt className="post-card-excerpt">
             <p>{post.frontmatter.excerpt || post.excerpt}</p>
           </PostCardExcerpt>
-        </Link>
+        </div>
         <PostCardMeta className="post-card-meta">
           <AuthorList authors={post.frontmatter.author} tooltip="small" />
           <PostCardBylineContent className="post-card-byline-content">
