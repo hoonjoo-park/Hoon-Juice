@@ -252,8 +252,11 @@ export const reset = (theme: themeType) => css`
   td,
   th {
     padding: 0;
+    color: ${theme.fontColor};
   }
-
+  code.language-text {
+    background-color: ${theme.codeBG} !important;
+  }
   html {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -263,7 +266,7 @@ export const reset = (theme: themeType) => css`
   }
   body {
     overflow-x: hidden;
-    color: ${lighten('-0.3', theme.fontColor)};
+    color: ${theme.fontColor};
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
       Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
@@ -272,7 +275,8 @@ export const reset = (theme: themeType) => css`
     font-style: normal;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
-    background: ${theme.bgColor};
+    transition: background-color 0.1s ease-in;
+    background-color: ${theme.bgColor};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: 'liga' on;
@@ -291,7 +295,10 @@ export const reset = (theme: themeType) => css`
     padding: 0;
     height: 1px;
     border: 0;
-    border-top: 1px solid ${lighten('0.1', colors.lightgrey)};
+    border-top: 1px solid ${theme.HR};
+  }
+  .post-full-byline {
+    border-top: 1px solid ${theme.HR};
   }
 
   audio,
@@ -371,6 +378,8 @@ export const reset = (theme: themeType) => css`
     margin: 1.5em 0;
     padding: 0 1.6em 0 1.6em;
     border-left: ${colors.whitegrey} 0.5em solid;
+    background-color: ${theme.quoteColor};
+    color: ${theme.fontColor};
   }
 
   blockquote p {
@@ -394,7 +403,8 @@ export const reset = (theme: themeType) => css`
   }
 
   a {
-    color: ${lighten('-0.05', colors.blue)};
+    /* color: ${lighten('-0.05', colors.blue)}; */
+    color: ${theme.fontColor};
     text-decoration: none;
   }
 
@@ -466,15 +476,15 @@ export const reset = (theme: themeType) => css`
 
   /* globals from screen.css */
   body {
-    background: #fff;
+    background: ${theme.bgColor};
   }
-  @media (prefers-color-scheme: dark) {
-    body {
-      color: #ffffff;
-      background: ${colors.darkmode};
+  footer.mainFooter {
+    background: ${theme.footerColor};
+    & * {
+      color: ${theme.fontColor};
     }
-    img {
-      opacity: 0.9;
-    }
+  }
+  .loader {
+    background-color: ${theme.bgColor};
   }
 `;

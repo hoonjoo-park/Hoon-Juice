@@ -1,10 +1,15 @@
 import { atom } from 'recoil';
 
-let defaultTheme = 'DARK';
-const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; //get the default prefered mode
-defaultTheme = isDarkMode ? 'DARK' : 'LIGHT';
+const getTheme = () => {
+  const savedTheme = window.localStorage.getItem('THEME');
+  if (savedTheme) {
+    return savedTheme;
+  } else {
+    return 'DARK';
+  }
+};
 
 export const themeMode = atom({
   key: 'theme',
-  default: defaultTheme,
+  default: getTheme(),
 });

@@ -27,6 +27,8 @@ import config from '../website-config';
 import { PageContext } from './post';
 import styled from '@emotion/styled';
 import { RecoilRoot } from 'recoil';
+import { lighten } from 'polished';
+import { colors } from '../styles/colors';
 
 export interface IndexProps {
   pageContext: {
@@ -207,7 +209,7 @@ const HomePosts = css`
       }
       &:hover .post-card-image-link {
         transform: translateY(-3px);
-        box-shadow: 0px 10px 17px -3px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 7px 25px -3px rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -262,6 +264,8 @@ const HomePosts = css`
       margin-bottom: 1.5em;
       font-size: 1.8rem;
       line-height: 1.5em;
+      font-weight: 500;
+      color: ${lighten('0.001', colors.midgrey)};
     }
   }
   @media (max-width: 795px) {

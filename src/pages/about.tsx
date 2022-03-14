@@ -17,21 +17,12 @@ import {
   SiteNavMain,
 } from '../styles/shared';
 import { NoImage, PostFull, PostFullHeader, PostFullTitle } from '../templates/post';
-import { colors } from '../styles/colors';
 import { RecoilRoot } from 'recoil';
 
 const PageTemplate = css`
   .site-main {
     margin-top: 64px;
     padding-bottom: 4vw;
-    background: #fff;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .site-main {
-      /* background: var(--darkmode); */
-      background: ${colors.darkmode};
-    }
   }
 `;
 

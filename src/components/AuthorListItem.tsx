@@ -12,7 +12,7 @@ import { AuthorProfileImage } from './PostCard';
 import styled from '@emotion/styled';
 
 interface AuthorListItemProps {
-  tooltip: 'small' | 'large';
+  tooltip: 'small' | 'large' | null;
   author: Author;
 }
 
@@ -208,7 +208,7 @@ const AuthorCardStyles = css`
 
   @media (prefers-color-scheme: dark) {
     /* background: color(var(--darkmode) l(+4%)); */
-    background: ${lighten('0.04', colors.darkmode)};
+    /* background: ${lighten('0.04', colors.darkmode)}; */
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
 
     :before {

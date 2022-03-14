@@ -9,7 +9,7 @@ import { outer, inner } from '../styles/shared';
 import config from '../website-config';
 
 export const Footer: React.FC = () => (
-  <footer css={[outer, SiteFooter]}>
+  <footer className="mainFooter" css={[outer, SiteFooter]}>
     <div css={[inner, SiteFooterContent]}>
       <section className="copyright">
         <Link to="/">{config.title}</Link> &copy; {new Date().getFullYear()}{' '}
@@ -36,7 +36,7 @@ const SiteFooter = css`
   padding-top: 40px;
   padding-bottom: 40px;
   color: #fff;
-  background: ${setLightness('0.0015', colors.darkgrey)};
+  /* background: ${setLightness('0.0015', colors.darkgrey)}; */
 `;
 
 const SiteFooterContent = css`
@@ -44,13 +44,9 @@ const SiteFooterContent = css`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  color: rgba(255, 255, 255, 0.7);
   font-size: 1.5rem;
-  a {
-    color: rgba(255, 255, 255, 0.7);
-  }
   a:hover {
-    color: rgba(255, 255, 255, 1);
+    color: ${colors.blue};
     text-decoration: none;
   }
   @media (max-width: 650px) {

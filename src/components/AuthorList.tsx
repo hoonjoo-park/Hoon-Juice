@@ -6,7 +6,7 @@ import { Author } from '../templates/post';
 import { AuthorListItem } from './AuthorListItem';
 
 interface AuthorListProps {
-  tooltip: 'small' | 'large';
+  tooltip: 'small' | 'large' | null;
   authors: Author[];
 }
 

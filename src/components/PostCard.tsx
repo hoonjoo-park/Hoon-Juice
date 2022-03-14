@@ -29,44 +29,41 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
         large ? 'post-card-large' : ''
       }`}
       css={[PostCardStyles, large && PostCardLarge]}
+      onClick={() => navigate(post.fields.slug)}
     >
       <PostCardContent className="post-card-content">
-        <div
-          className="post-card-content-link"
-          css={PostCardContentLink}
-          onClick={() => navigate(post.fields.slug)}
-        >
+        <div className="post-card-content-link" css={PostCardContentLink}>
           <PostCardHeader className="post-card-header">
             {post.frontmatter.tags && config.showAllTags && (
               <PostCardPrimaryTag className="post-card-primary-tag">
                 {post.frontmatter.tags.map((tag, idx) => (
                   <React.Fragment key={tag}>
                     {idx > 0 && <>, &nbsp;</>}
-                    <Link to={`/tags/${_.kebabCase(tag)}/`}>{tag}</Link>
+                    <span>{tag}</span>
                   </React.Fragment>
                 ))}
               </PostCardPrimaryTag>
             )}
             {post.frontmatter.tags && !config.showAllTags && (
               <PostCardPrimaryTag className="post-card-primary-tag">
-                <Link to={`/tags/${_.kebabCase(post.frontmatter.tags[0])}/`}>
-                  {post.frontmatter.tags[0]}
-                </Link>
+                <span>{post.frontmatter.tags[0]}</span>
               </PostCardPrimaryTag>
             )}
-            <PostCardTitle className="post-card-title">{post.frontmatter.title}</PostCardTitle>
+            <PostCardTitle className="post-card-title" onClick={() => navigate(post.fields.slug)}>
+              {post.frontmatter.title}
+            </PostCardTitle>
           </PostCardHeader>
           <PostCardExcerpt className="post-card-excerpt">
             <p>{post.frontmatter.excerpt || post.excerpt}</p>
           </PostCardExcerpt>
         </div>
         <PostCardMeta className="post-card-meta">
-          <AuthorList authors={post.frontmatter.author} tooltip="small" />
+          <AuthorList authors={post.frontmatter.author} tooltip={null} />
           <PostCardBylineContent className="post-card-byline-content">
             <span>
               {post.frontmatter.author.map((author, index) => (
                 <React.Fragment key={author.name}>
-                  <Link to={`/author/${_.kebabCase(author.name)}/`}>{author.name}</Link>
+                  <span>{author.name}</span>
                   {post.frontmatter.author.length - 1 > index && ', '}
                 </React.Fragment>
               ))}
@@ -168,7 +165,7 @@ const PostCardImage = styled.div`
   background-size: cover;
 
   @media (prefers-color-scheme: dark) {
-    background: ${colors.darkmode};
+    /* background: ${colors.darkmode}; */
   }
   img {
     width: 100%;
@@ -187,7 +184,7 @@ const PostCardContentLink = css`
   position: relative;
   display: block;
   /* color: var(--darkgrey); */
-  color: ${colors.darkgrey};
+  /* color: ${colors.darkgrey}; */
 
   :hover {
     text-decoration: none;
@@ -208,18 +205,9 @@ const PostCardTitle = styled.h2`
   margin: 0 0 0.4em;
   line-height: 1.15em;
   transition: color 0.2s ease-in-out;
-
-  @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.85);
-  }
 `;
 
-const PostCardExcerpt = styled.section`
-  @media (prefers-color-scheme: dark) {
-    /* color: color(var(--midgrey) l(+10%)); */
-    color: ${lighten('0.1', colors.midgrey)} !important;
-  }
-`;
+const PostCardExcerpt = styled.section``;
 
 const PostCardMeta = styled.footer`
   display: flex;
@@ -233,7 +221,7 @@ const PostCardBylineContent = styled.div`
   flex-direction: column;
   margin: 4px 0 0 10px;
   /* color: color(var(--midgrey) l(+10%)); */
-  color: ${lighten('0.1', colors.midgrey)};
+  /* color: ${lighten('0.1', colors.midgrey)}; */
   font-size: 1.2rem;
   line-height: 1.4em;
   font-weight: 400;
@@ -246,13 +234,13 @@ const PostCardBylineContent = styled.div`
 
   a {
     /* color: color(var(--darkgrey) l(+20%)); */
-    color: ${lighten('0.2', colors.darkgrey)};
+    /* color: ${lighten('0.2', colors.darkgrey)} !important; */
     font-weight: 600;
   }
 
   @media (prefers-color-scheme: dark) {
     a {
-      color: rgba(255, 255, 255, 0.75);
+      /* color: rgba(255, 255, 255, 0.75); */
     }
   }
 `;
@@ -286,6 +274,6 @@ export const AuthorProfileImage = css`
   object-fit: cover;
 
   @media (prefers-color-scheme: dark) {
-    background: ${colors.darkmode};
+    /* background: ${colors.darkmode}; */
   }
 `;

@@ -24,7 +24,7 @@ interface SiteNavProps {
 const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
   const titleRef = useRef<HTMLSpanElement | null>(null);
   const [showTitle, setShowTitle] = useState(false);
-  const [theme, setTheme] = useRecoilState<string>(themeMode);
+  const [theme, setTheme] = useRecoilState(themeMode);
   useEffect(() => {
     if (isPost) {
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -55,8 +55,13 @@ const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
     }
   };
   const handleTheme = () => {
-    if (theme === 'DARK') return setTheme('LIGHT');
+    if (theme === 'DARK') {
+      setTheme('LIGHT');
+      window.localStorage.setItem('THEME', 'LIGHT');
+      return;
+    }
     setTheme('DARK');
+    window.localStorage.setItem('THEME', 'DARK');
   };
   return (
     <nav css={SiteNavStyles}>
@@ -250,6 +255,8 @@ const SocialLinks = styled.div`
 `;
 const DarkLight = styled.button`
   background-color: transparent;
+  outline: none;
+  color: #fff;
   svg {
     height: 2rem;
     font-size: 2rem;

@@ -30,9 +30,9 @@ export const SiteNavMain = css`
 export const SiteMain = css`
   flex-grow: 1;
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     background: ${colors.darkmode};
-  }
+  } */
 `;
 
 export const SiteTitle = styled.h1`
@@ -72,7 +72,7 @@ export const PostFeed = css`
   flex-wrap: wrap;
   margin: 0 -20px;
   padding: 50px 0 0;
-  background: #fff;
+  /* background: #fff; */
 
   /* Special Template Styles */
   padding: 80px 0 5vw;
@@ -80,7 +80,7 @@ export const PostFeed = css`
   border-top-right-radius: 3px;
 
   @media (prefers-color-scheme: dark) {
-    background: ${colors.darkmode};
+    /* background: ${colors.darkmode}; */
   }
 `;
 
@@ -155,7 +155,7 @@ export const SiteHeaderStyles = css`
 
   @media (prefers-color-scheme: dark) {
     :before {
-      background: rgba(0, 0, 0, 0.2);
+      /* background: rgba(0, 0, 0, 0.2); */
     }
   }
 `;
@@ -169,7 +169,7 @@ export const AuthorProfileImage = css`
 
   @media (prefers-color-scheme: dark) {
     box-shadow: 0 0 0 6px hsla(0, 0%, 100%, 0.04);
-    background: ${colors.darkmode};
+    /* background: ${colors.darkmode}; */
   }
 `;
 

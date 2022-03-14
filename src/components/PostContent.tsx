@@ -32,7 +32,6 @@ export const PostFullContent = styled.section`
   min-height: 230px;
   font-size: 2rem;
   line-height: 1.6em;
-  background: #fff;
 
   @media (max-width: 1170px) {
     padding: 0 11vw;
@@ -112,7 +111,7 @@ export const PostFullContent = styled.section`
   strong,
   em {
     /* color: color(var(--darkgrey) l(-5%)); */
-    color: ${lighten('-0.05', colors.darkgrey)};
+    /* color: ${lighten('-0.05', colors.darkgrey)}; */
   }
 
   small {
@@ -383,33 +382,6 @@ export const PostFullContent = styled.section`
 
   table {
     -webkit-overflow-scrolling: touch;
-    background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0
-        center,
-      radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-    background-attachment: scroll, scroll;
-    background-size: 10px 100%, 10px 100%;
-    background-repeat: no-repeat;
-  }
-
-  table td:first-of-type {
-    background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    background-size: 20px 100%;
-    background-repeat: no-repeat;
-  }
-
-  table td:last-child {
-    background-image: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    background-position: 100% 0;
-    background-size: 20px 100%;
-    background-repeat: no-repeat;
   }
 
   table th {
@@ -426,14 +398,14 @@ export const PostFullContent = styled.section`
 
   table th,
   table td {
-    padding: 6px 12px;
+    padding: 6px 24px;
     /* border: color(var(--whitegrey) l(-1%) s(-5%)) 1px solid; */
     border: ${lighten('-0.01', colors.whitegrey)} 1px solid;
   }
 
   @media (prefers-color-scheme: dark) {
     /* background: var(--darkmode); */
-    background: ${colors.darkmode};
+    /* background: ${colors.darkmode}; */
 
     h1,
     h2,
@@ -444,36 +416,34 @@ export const PostFullContent = styled.section`
     }
 
     a {
-      color: #fff;
+      /* color: #fff; */
       box-shadow: inset 0 -1px 0 #fff;
     }
 
     strong {
-      color: #fff;
+      /* color: #fff; */
     }
 
     em {
-      color: #fff;
+      /* color: #fff; */
     }
 
     code {
       color: #fc5185;
-      background: #eeeeee;
     }
     blockquote {
       width: 100%;
-      background: #303030;
+      /* background: #303030; */
       border-radius: 3px;
       p {
         font-style: normal;
         font-weight: 400;
-        color: #ffffff;
+        /* color: #ffffff; */
       }
     }
     hr {
       /* border-top-color: color(var(--darkmode) l(+8%)); */
       /* border-top-color: ${lighten('0.08', colors.darkmode)}; */
-      border-top-color: #3b4049;
     }
 
     hr:after {
@@ -485,28 +455,8 @@ export const PostFullContent = styled.section`
       color: rgba(255, 255, 255, 0.6);
     }
 
-    table td:first-of-type {
-      /* background-image: linear-gradient(
-        to right,
-        var(--darkmode) 50%,
-        color(var(--darkmode) a(0%)) 100%
-      ); */
-      background-image: linear-gradient(to right, ${colors.darkmode} 50%, ${colors.darkmode} 100%);
-    }
-
-    table td:last-child {
-      /* background-image: linear-gradient(
-        to left,
-        var(--darkmode) 50%,
-        color(var(--darkmode) a(0%)) 100%
-      ); */
-      background-image: linear-gradient(270deg, #191b1f 50%, rgba(25, 27, 31, 0));
-    }
-
     table th {
       color: rgba(255, 255, 255, 0.85);
-      /* background-color: color(var(--darkmode) l(+8%)); */
-      /* background-color: ${lighten('0.08', colors.darkmode)}; */
       background-color: #364f6b;
     }
 
@@ -580,7 +530,6 @@ export const PostFullContent = styled.section`
   /* Inline code */
   *:not(pre) > code[class*='language-'] {
     border-radius: 0.3em;
-    background: #2d2d2d;
     color: #fc5185;
     padding: 0.15em 0.5em;
     white-space: normal;
