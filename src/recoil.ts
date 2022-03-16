@@ -5,7 +5,10 @@ const getTheme = () => {
   if (savedTheme) {
     return savedTheme;
   } else {
-    return 'DARK';
+    const isDarkMode =
+      window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const defaultTheme = isDarkMode ? 'DARK' : 'LIGHT';
+    return defaultTheme;
   }
 };
 
