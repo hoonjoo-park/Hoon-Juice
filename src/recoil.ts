@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 const getTheme = () => {
-  let defaultTheme;
+  let defaultTheme = 'LIGHT';
   if (typeof window !== 'undefined') {
     const savedTheme = window.localStorage.getItem('THEME');
     if (savedTheme) {
@@ -14,6 +14,7 @@ const getTheme = () => {
       return defaultTheme;
     }
   }
+  return defaultTheme;
 };
 
 export const themeMode = atom({

@@ -284,10 +284,6 @@ export const reset = () => css`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   body {
-    &.LIGHT {
-      --font-color: #191f28;
-      --bg-color: #ffffff;
-    }
     &.DARK {
       --font-color: #ffffff;
       --bg-color: #191b1f;

@@ -7,13 +7,14 @@ exports.onRenderBody = ({ setPreBodyComponents }) => {
       dangerouslySetInnerHTML: {
         __html: `
         (()=>{
+          let defaultTheme = 'LIGHT';
           const savedTheme = window.localStorage.getItem('THEME');
           if (savedTheme) {
             document.body.className = savedTheme;
           } else {
             const isDarkMode =
               window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = isDarkMode ? 'DARK' : 'LIGHT';
+            defaultTheme = isDarkMode ? 'DARK' : 'LIGHT';
             document.body.className = defaultTheme;
           }
         })()

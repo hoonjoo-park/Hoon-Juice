@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Global } from '@emotion/react';
 import favicon from '../../src/favicon.ico';
 import { reset } from '../styles/reset';
+import '../styles/globals.css';
 
 interface IndexProps {
   className?: string;
