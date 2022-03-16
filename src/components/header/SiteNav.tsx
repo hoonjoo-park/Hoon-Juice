@@ -12,8 +12,7 @@ import { SiteNavLogo } from './SiteNavLogo';
 import { Github } from '../icons/github';
 import { FiSun } from 'react-icons/fi';
 import { BsMoonStarsFill } from 'react-icons/bs';
-import { useRecoilState } from 'recoil';
-import { themeMode } from '../../recoil';
+import useDarkMode from '../../hooks/useDarkMode';
 
 interface SiteNavProps {
   isHome?: boolean;
@@ -24,7 +23,13 @@ interface SiteNavProps {
 const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
   const titleRef = useRef<HTMLSpanElement | null>(null);
   const [showTitle, setShowTitle] = useState(false);
-  const [theme, setTheme] = useRecoilState(themeMode);
+  const [theme, setTheme] = useDarkMode();
+  const currentTheme = document.body.className;
+  useEffect(() => {
+    if (theme !== currentTheme) {
+      setTheme(currentTheme);
+    }
+  }, [currentTheme]);
   useEffect(() => {
     if (isPost) {
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -53,15 +58,6 @@ const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
     } else {
       setShowTitle(false);
     }
-  };
-  const handleTheme = () => {
-    if (theme === 'DARK') {
-      setTheme('LIGHT');
-      window.localStorage.setItem('THEME', 'LIGHT');
-      return;
-    }
-    setTheme('DARK');
-    window.localStorage.setItem('THEME', 'DARK');
   };
   return (
     <nav css={SiteNavStyles}>
@@ -105,7 +101,7 @@ const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
               <Github />
             </a>
           )}
-          <DarkLight css={SocialLink} onClick={handleTheme}>
+          <DarkLight css={SocialLink} onClick={() => setTheme(theme)}>
             {theme === 'DARK' ? <BsMoonStarsFill /> : <FiSun />}
           </DarkLight>
         </SocialLinks>

@@ -1,10 +1,21 @@
 import { css } from '@emotion/react';
 import { lighten } from 'polished';
 import { colors } from './colors';
-import { themeType } from './theme';
 
-export const reset = (theme: themeType) => css`
+export const reset = () => css`
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  :root {
+    --light-grey: #eaeaea;
+    --medium-grey: #bababa;
+    --heavy-grey: #3b4049;
+    --black: #000000;
+    --bg-color: #ffffff;
+    --font-color: #191f28;
+    --quote-bg: var(--light-grey);
+    --hr-color: var(--medium-grey);
+    --footer-color: var(--light-grey);
+    --code-bg: #ececec;
+  }
   html,
   body,
   div,
@@ -110,6 +121,10 @@ export const reset = (theme: themeType) => css`
   table {
     border-spacing: 0;
     border-collapse: collapse;
+  }
+  table th,
+  table td {
+    border: 1px solid var(--font-color);
   }
   img {
     max-width: 100%;
@@ -252,10 +267,15 @@ export const reset = (theme: themeType) => css`
   td,
   th {
     padding: 0;
-    color: ${theme.fontColor};
+  }
+  th {
+    color: #ffffff;
+  }
+  td {
+    color: var(--font-color);
   }
   code.language-text {
-    background-color: ${theme.codeBG} !important;
+    background-color: var(--code-bg) !important;
   }
   html {
     overflow-x: hidden;
@@ -265,8 +285,19 @@ export const reset = (theme: themeType) => css`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   body {
+    &.LIGHT {
+      --font-color: #191f28;
+      --bg-color: #ffffff;
+    }
+    &.DARK {
+      --font-color: #ffffff;
+      --bg-color: #191b1f;
+      --quote-bg: #303030;
+      --hr-color: #3b4049;
+      --footer-color: var(--black);
+      --code-bg: #2d2d2d;
+    }
     overflow-x: hidden;
-    color: ${theme.fontColor};
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
       Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
@@ -276,10 +307,12 @@ export const reset = (theme: themeType) => css`
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
     transition: background-color 0.1s ease-in;
-    background-color: ${theme.bgColor};
+    color: var(--font-color);
+    background-color: var(--bg-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: 'liga' on;
+    font-feature-settings: 'liga' on;
   }
 
   ::selection {
@@ -295,10 +328,10 @@ export const reset = (theme: themeType) => css`
     padding: 0;
     height: 1px;
     border: 0;
-    border-top: 1px solid ${theme.HR};
+    border-top: 1px solid var(--hr-color);
   }
   .post-full-byline {
-    border-top: 1px solid ${theme.HR};
+    border-top: 1px solid var(--hr-color);
   }
 
   audio,
@@ -378,8 +411,8 @@ export const reset = (theme: themeType) => css`
     margin: 1.5em 0;
     padding: 0 1.6em 0 1.6em;
     border-left: ${colors.whitegrey} 0.5em solid;
-    background-color: ${theme.quoteColor};
-    color: ${theme.fontColor};
+    background-color: var(--quote-bg);
+    color: var(--font-color);
   }
 
   blockquote p {
@@ -404,7 +437,7 @@ export const reset = (theme: themeType) => css`
 
   a {
     /* color: ${lighten('-0.05', colors.blue)}; */
-    color: ${theme.fontColor};
+    color: var(--font-color);
     text-decoration: none;
   }
 
@@ -473,18 +506,10 @@ export const reset = (theme: themeType) => css`
     font-size: 1.4rem;
     font-weight: 500;
   }
-
-  /* globals from screen.css */
-  body {
-    background: ${theme.bgColor};
-  }
   footer.mainFooter {
-    background: ${theme.footerColor};
-    & * {
-      color: ${theme.fontColor};
+    background: var(--footer-color);
+    & {
+      color: var(--font-color);
     }
-  }
-  .loader {
-    background-color: ${theme.bgColor};
   }
 `;

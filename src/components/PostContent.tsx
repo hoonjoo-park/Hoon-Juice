@@ -28,7 +28,7 @@ const PostContent = ({ htmlAst }: PostContentProps) => (
 export const PostFullContent = styled.section`
   position: relative;
   margin: 0 auto;
-  padding: 0 170px 6vw;
+  padding: 0 170px 1vw;
   min-height: 230px;
   font-size: 2rem;
   line-height: 1.6em;
@@ -166,7 +166,6 @@ export const PostFullContent = styled.section`
     color: inherit;
     font-size: inherit;
     line-height: inherit;
-    font-style: italic;
   }
 
   blockquote p:last-child {
@@ -245,18 +244,6 @@ export const PostFullContent = styled.section`
 
   hr + p {
     margin-top: 1.2em;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    /* color: color(var(--darkgrey) l(-5%)); */
-    color: ${lighten('-0.05', colors.darkgrey)};
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-      'Open Sans', 'Helvetica Neue', sans-serif; */
   }
 
   h1 {
@@ -386,91 +373,19 @@ export const PostFullContent = styled.section`
 
   table th {
     /* color: var(--darkgrey); */
-    color: ${colors.darkgrey};
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.2px;
     text-align: left;
     text-transform: uppercase;
     /* background-color: color(var(--whitegrey) l(+4%)); */
-    background-color: ${lighten('0.04', colors.whitegrey)};
+    background-color: #364f6b;
   }
 
   table th,
   table td {
     padding: 6px 24px;
     /* border: color(var(--whitegrey) l(-1%) s(-5%)) 1px solid; */
-    border: ${lighten('-0.01', colors.whitegrey)} 1px solid;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    /* background: var(--darkmode); */
-    /* background: ${colors.darkmode}; */
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h6 {
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    a {
-      /* color: #fff; */
-      box-shadow: inset 0 -1px 0 #fff;
-    }
-
-    strong {
-      /* color: #fff; */
-    }
-
-    em {
-      /* color: #fff; */
-    }
-
-    code {
-      color: #fc5185;
-    }
-    blockquote {
-      width: 100%;
-      /* background: #303030; */
-      border-radius: 3px;
-      p {
-        font-style: normal;
-        font-weight: 400;
-        /* color: #ffffff; */
-      }
-    }
-    hr {
-      /* border-top-color: color(var(--darkmode) l(+8%)); */
-      /* border-top-color: ${lighten('0.08', colors.darkmode)}; */
-    }
-
-    hr:after {
-      background: #17191c;
-      box-shadow: ${colors.darkmode} 0 0 0 5px;
-    }
-
-    figcaption {
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    table th {
-      color: rgba(255, 255, 255, 0.85);
-      background-color: #364f6b;
-    }
-
-    table th,
-    table td {
-      /* border: color(var(--darkmode) l(+8%)) 1px solid; */
-      border: ${lighten('0.08', colors.darkmode)} 1px solid;
-    }
-
-    .kg-bookmark-container,
-    .kg-bookmark-container:hover {
-      color: rgba(255, 255, 255, 0.75);
-      box-shadow: 0 0 1px rgba(255, 255, 255, 0.9);
-    }
   }
 
   /* Start Syntax Highlighting */

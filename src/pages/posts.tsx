@@ -13,7 +13,6 @@ import {
   SiteMain,
   SiteNavMain,
 } from '../styles/shared';
-import { colors } from '../styles/colors';
 import { PostFull, PostFullHeader, PostFullTitle } from '../templates/post';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
@@ -24,13 +23,6 @@ const PageTemplate = css`
     margin-top: 64px;
     padding-bottom: 4vw;
     /* background: #fff; */
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .site-main {
-      /* background: var(--darkmode); */
-      /* background: ${colors.darkmode}; */
-    }
   }
 `;
 

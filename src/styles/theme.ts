@@ -12,7 +12,7 @@ export const DARK = {
   fontColor: '#ffffff',
   footerColor: `#000000`,
   quoteColor: '#303030',
-  codeBG: '2d2d2d',
+  codeBG: '#2d2d2d',
   HR: '#3b4049',
 };
 export interface themeType {

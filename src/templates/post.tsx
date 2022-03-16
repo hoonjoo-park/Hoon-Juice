@@ -12,7 +12,6 @@ import styled from '@emotion/styled';
 import { Footer } from '../components/Footer';
 import SiteNav, { SiteNavMain } from '../components/header/SiteNav';
 import PostContent from '../components/PostContent';
-import { ReadNext } from '../components/ReadNext';
 import { Wrapper } from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
@@ -97,7 +96,7 @@ export interface PageContext {
   };
 }
 
-const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
+const PageTemplate = ({ data, location }: PageTemplateProps) => {
   const post = data.markdownRemark;
   let width: number | undefined;
   let height: number | undefined;
@@ -240,14 +239,6 @@ const PageTemplate = ({ data, pageContext, location }: PageTemplateProps) => {
               </article>
             </div>
           </main>
-
-          <ReadNext
-            currentPageSlug={location.pathname}
-            tags={post.frontmatter.tags}
-            relatedPosts={data.relatedPosts}
-            pageContext={pageContext}
-          />
-
           <Footer />
         </Wrapper>
       </IndexLayout>
@@ -434,11 +425,6 @@ export const query = graphql`
         tags
         excerpt
         thumbnail
-        # image {
-        #   childImageSharp {
-        #     gatsbyImageData(layout: FULL_WIDTH)
-        #   }
-        # }
         author {
           name
           bio

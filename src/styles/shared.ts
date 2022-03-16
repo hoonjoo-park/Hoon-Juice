@@ -29,10 +29,6 @@ export const SiteNavMain = css`
 
 export const SiteMain = css`
   flex-grow: 1;
-
-  /* @media (prefers-color-scheme: dark) {
-    background: ${colors.darkmode};
-  } */
 `;
 
 export const SiteTitle = styled.h1`
@@ -78,10 +74,6 @@ export const PostFeed = css`
   padding: 80px 0 5vw;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-
-  @media (prefers-color-scheme: dark) {
-    /* background: ${colors.darkmode}; */
-  }
 `;
 
 export const SocialLink = css`
@@ -152,12 +144,6 @@ export const SiteHeaderStyles = css`
     height: 140px;
     background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
   }
-
-  @media (prefers-color-scheme: dark) {
-    :before {
-      /* background: rgba(0, 0, 0, 0.2); */
-    }
-  }
 `;
 
 export const AuthorProfileImage = css`
@@ -166,11 +152,6 @@ export const AuthorProfileImage = css`
   width: 60px;
   height: 60px;
   border: none;
-
-  @media (prefers-color-scheme: dark) {
-    box-shadow: 0 0 0 6px hsla(0, 0%, 100%, 0.04);
-    /* background: ${colors.darkmode}; */
-  }
 `;
 
 // tag and author post lists
@@ -224,12 +205,6 @@ export const ResponsiveHeaderBackground = styled.div<{ backgroundImage?: string 
       display: block;
       height: 140px;
       background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
-    }
-
-    @media (prefers-color-scheme: dark) {
-      &:before {
-        background: rgba(0, 0, 0, 0.6);
-      }
     }
   `}
 
@@ -310,21 +285,6 @@ export const ResponsiveHeaderBackground = styled.div<{ backgroundImage?: string 
       padding-bottom: 10px;
     }
   }
-  @media (prefers-color-scheme: dark) {
-    color: #ffffff;
-    /* background: var(--darkmode); */
-    background: ${colors.darkmode};
-
-    .site-header-content {
-      /* border-bottom-color: color(var(--darkmode) l(+15%)); */
-      /* border-bottom-color: ${lighten('0.15', colors.darkmode)}; */
-      border-bottom-color: #272a30;
-    }
-
-    .author-social-link a {
-      color: rgba(255, 255, 255, 0.75);
-    }
-  }
   `}
 `;
 
@@ -393,22 +353,6 @@ export const NoImage = css`
 
     .no-image .site-header-content {
       padding: 12vw 0 20px;
-    }
-  }
-  @media (prefers-color-scheme: dark) {
-    .no-image {
-      color: rgba(255, 255, 255, 0.9);
-      /* background: var(--darkmode); */
-      background: ${colors.darkmode};
-    }
-
-    .no-image .site-header-content {
-      /* border-bottom-color: color(var(--darkmode) l(+15%)); */
-      border-bottom-color: ${lighten('0.15', colors.darkmode)};
-    }
-
-    .no-image .author-social-link a {
-      color: rgba(255, 255, 255, 0.75);
     }
   }
 `;

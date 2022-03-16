@@ -1,7 +1,6 @@
 import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import * as _ from 'lodash';
-import { lighten } from 'polished';
 import React, { useState } from 'react';
 
 import { css } from '@emotion/react';
@@ -205,17 +204,6 @@ const AuthorCardStyles = css`
   @media (max-width: 650px) {
     display: none;
   }
-
-  @media (prefers-color-scheme: dark) {
-    /* background: color(var(--darkmode) l(+4%)); */
-    /* background: ${lighten('0.04', colors.darkmode)}; */
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
-
-    :before {
-      /* border-top-color: color(var(--darkmode) l(+4%)); */
-      border-top-color: ${lighten('0.04', colors.darkmode)};
-    }
-  }
 `;
 
 const AuthorAvatar = css`
@@ -224,17 +212,11 @@ const AuthorAvatar = css`
   margin: 0 -4px;
   width: 40px;
   height: 40px;
-  border: #fff 2px solid;
+  border: var(--bg-color) 2px solid;
   border-radius: 100%;
-  transition: all 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99) 700ms;
 
   @media (max-width: 500px) {
     width: 36px;
     height: 36px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    /* border-color: color(var(--darkgrey) l(+2%)); */
-    border-color: ${lighten('0.02', colors.darkgrey)};
   }
 `;

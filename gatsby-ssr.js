@@ -1,0 +1,27 @@
+const React = require('react');
+
+exports.onRenderBody = ({ setPreBodyComponents }) => {
+  setPreBodyComponents([
+    React.createElement('script', {
+      key: 'darkMode',
+      dangerouslySetInnerHTML: {
+        __html: `
+        (()=>{
+          const savedTheme = window.localStorage.getItem('THEME');
+          console.log(savedTheme);
+          if (savedTheme) {
+            document.body.className = savedTheme;
+            return;
+          } else {
+            const isDarkMode =
+              window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = isDarkMode ? 'DARK' : 'LIGHT';
+            document.body.className = defaultTheme;
+            return;
+          }
+        })()
+        `,
+      },
+    }),
+  ]);
+};
