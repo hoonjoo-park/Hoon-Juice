@@ -22,7 +22,6 @@ const PageTemplate = css`
   .site-main {
     margin-top: 64px;
     padding-bottom: 4vw;
-    /* background: #fff; */
   }
 `;
 

@@ -10,13 +10,15 @@ interface IndexProps {
 
 const IndexLayout: React.FC<IndexProps> = props => {
   return (
-    <div className={props.className}>
-      <Helmet>
-        <link rel="icon" href={favicon} type="image/x-icon" />
-      </Helmet>
+    <>
       <Global styles={reset} />
-      {props.children}
-    </div>
+      <div className={props.className}>
+        <Helmet>
+          <link rel="icon" href={favicon} type="image/x-icon" />
+        </Helmet>
+        {props.children}
+      </div>
+    </>
   );
 };
 

@@ -70,11 +70,6 @@ export const pageQuery = graphql`
             title
             date
             tags
-            # image {
-            #   childImageSharp {
-            #     gatsbyImageData(layout: FULL_WIDTH)
-            #   }
-            # }
             author {
               name
               bio

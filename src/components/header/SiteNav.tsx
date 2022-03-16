@@ -24,12 +24,14 @@ const SiteNav = ({ isHome, isPost, post }: SiteNavProps) => {
   const titleRef = useRef<HTMLSpanElement | null>(null);
   const [showTitle, setShowTitle] = useState(false);
   const [theme, setTheme] = useDarkMode();
-  const currentTheme = document.body.className;
   useEffect(() => {
-    if (theme !== currentTheme) {
-      setTheme(currentTheme);
+    if (typeof window !== 'undefined') {
+      const currentTheme = document.body.className;
+      if (theme !== currentTheme) {
+        setTheme(currentTheme);
+      }
     }
-  }, [currentTheme]);
+  }, []);
   useEffect(() => {
     if (isPost) {
       window.addEventListener('scroll', onScroll, { passive: true });
