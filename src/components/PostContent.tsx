@@ -436,6 +436,7 @@ export const PostFullContent = styled.section`
     color: #fc5185;
     padding: 0.15em 0.5em;
     white-space: normal;
+    border: 1px solid #fc5185;
   }
 
   .token.attr-name {
