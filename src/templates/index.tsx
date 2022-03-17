@@ -195,7 +195,8 @@ export const pageQuery = graphql`
 const HomePosts = css`
   @media (min-width: 795px) {
     .post-card-large {
-      flex: 1 1 100%;
+      flex: 1 0 100%;
+      flex-wrap: nowrap;
       flex-direction: row;
       justify-content: space-between;
       padding-bottom: 40px;
@@ -231,7 +232,7 @@ const HomePosts = css`
       transition: all 0.2s ease-in-out;
       img {
         border-radius: 10px;
-        object-fit: fill;
+        object-fit: cover;
       }
     }
 
@@ -272,6 +273,9 @@ const HomePosts = css`
     .post-card-large {
       cursor: pointer;
       overflow: visible;
+      max-height: 150px;
+      min-height: 150px;
+      padding: 0 40px;
       &:hover h2 {
         color: #1c6dd0;
         transition: all 0.2s ease-in-out;
@@ -282,12 +286,62 @@ const HomePosts = css`
       }
     }
     .post-card-content {
+      flex-basis: 100%;
+      justify-content: space-between;
       transition: all 0.2s ease-in-out;
-      order: 2;
+      /* order: 2; */
+    }
+    .post-card-large .post-card-title {
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-size: 2.4rem;
+    }
+    .post-card-large .post-card-excerpt p {
+      margin-bottom: 1rem;
     }
     .post-card-image-link {
       transition: all 0.2s ease-in-out;
-      order: 1;
+      & > div {
+        height: 100%;
+      }
+      /* order: 1; */
+      img {
+        width: 45vw;
+        object-fit: cover;
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    .post-card-large {
+      padding: 0 24px;
+      max-height: 100px;
+      min-height: 100px;
+      h2 {
+        font-size: 2.4rem;
+      }
+    }
+    .post-card-content {
+      padding: 0;
+    }
+    .post-card-large .post-card-title {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .post-card-large .post-card-excerpt p {
+      font-size: 1.6rem;
+    }
+    .post-card-large .post-card-meta {
+      & > .author-list {
+        display: none;
+      }
+    }
+    .post-card-large .post-card-byline-content {
+      margin: 0;
+      & > span:first-child {
+        display: none;
+      }
     }
   }
 `;
@@ -299,6 +353,11 @@ const LatestPostTitle = styled.h3`
   padding: 0 60px;
   @media (max-width: 795px) {
     padding: 0 20px;
+  }
+  @media (max-width: 600px) {
+    margin-top: 60px;
+    padding: 0;
+    font-size: 2.6rem;
   }
 `;
 

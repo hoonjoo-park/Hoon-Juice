@@ -8,6 +8,9 @@ import { colors } from './colors';
 export const outer = css`
   position: relative;
   padding: 0 5vw;
+  @media (max-width: 600px) {
+    padding: 0 24px;
+  }
 `;
 
 // Centered content container blocks
@@ -40,7 +43,7 @@ export const SiteTitle = styled.h1`
   font-weight: 900;
 
   @media (max-width: 500px) {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
   }
 `;
 
@@ -65,15 +68,13 @@ export const Posts = css`
 export const PostFeed = css`
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: column;
   margin: 0 -20px;
-  padding: 50px 0 0;
-  /* background: #fff; */
-
-  /* Special Template Styles */
   padding: 80px 0 5vw;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  @media (max-width: 600px) {
+    padding: 60px 0 5vw;
+  }
 `;
 
 export const SocialLink = css`

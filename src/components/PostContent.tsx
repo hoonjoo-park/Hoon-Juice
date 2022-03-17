@@ -101,10 +101,8 @@ export const PostFullContent = styled.section`
   }
 
   a:hover {
-    /* color: var(--blue); */
     color: ${colors.blue};
     text-decoration: none;
-    /* box-shadow: var(--blue) 0 -1px 0 inset; */
     box-shadow: ${colors.blue} 0 -1px 0 inset;
   }
 
@@ -178,7 +176,6 @@ export const PostFullContent = styled.section`
     line-height: 1em;
     font-weight: 400 !important;
     color: #d64f78;
-    /* background: var(--whitegrey); */
     background: ${colors.whitegrey};
     border-radius: 3px;
   }
@@ -189,22 +186,15 @@ export const PostFullContent = styled.section`
 
   pre {
     overflow-x: auto;
-    /* margin: 1.5em 0 3em; */
     padding: 20px;
     max-width: 100%;
-    /* border: color(var(--darkgrey) l(-10%)) 1px solid; */
-    /* border: ${lighten('-0.1', colors.darkgrey)} 1px solid; */
-    /* color: var(--whitegrey); */
     color: ${colors.whitegrey};
     font-size: 1.4rem;
     line-height: 1.5em;
-    /* background: color(var(--darkgrey) l(-3%)); */
-    /* background: ${lighten('-0.03', colors.darkgrey)}; */
     border-radius: 5px;
   }
 
   pre ::selection {
-    /* color: color(var(--midgrey) l(-25%)); */
     color: ${lighten('-0.25', colors.midgrey)};
   }
 
@@ -236,7 +226,6 @@ export const PostFullContent = styled.section`
     margin-left: -10px;
     width: 1px;
     height: 30px;
-    /* background: color(var(--lightgrey) l(+10%)); */
     background: ${lighten('0.1', colors.lightgrey)};
     box-shadow: #fff 0 0 0 5px;
     transform: rotate(45deg);

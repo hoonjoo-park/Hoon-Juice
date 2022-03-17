@@ -51,6 +51,7 @@ const SiteFooterContent = css`
   }
   @media (max-width: 650px) {
     flex-direction: column;
+    padding: 32px 0;
   }
 `;
 
