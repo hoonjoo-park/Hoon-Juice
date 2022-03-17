@@ -344,6 +344,16 @@ const HomePosts = css`
       }
     }
   }
+  @media (max-width: 500px) {
+    .post-card-large {
+      padding: 0 24px;
+      max-height: 100px;
+      min-height: 100px;
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
 `;
 
 const LatestPostTitle = styled.h3`
@@ -358,6 +368,11 @@ const LatestPostTitle = styled.h3`
     margin-top: 60px;
     padding: 0;
     font-size: 2.6rem;
+  }
+  @media (max-width: 500px) {
+    margin-top: 40px;
+    padding: 0;
+    font-size: 2.4rem;
   }
 `;
 

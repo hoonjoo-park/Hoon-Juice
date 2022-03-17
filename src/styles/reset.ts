@@ -124,7 +124,7 @@ export const reset = () => css`
   }
   table th,
   table td {
-    border: 1px solid var(--font-color);
+    border: 0.5px solid var(--font-color);
   }
   img {
     max-width: 100%;
@@ -413,7 +413,7 @@ export const reset = () => css`
   blockquote p {
     margin: 0.8em 0;
     font-size: 1.2em;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   blockquote small {

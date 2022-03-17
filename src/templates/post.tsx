@@ -110,6 +110,7 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
   const datetime = format(date, 'yyyy-MM-dd');
   // 20 AUG 2018
   const displayDatetime = format(date, 'dd LLL yyyy');
+  console.log(post.htmlAst);
   return (
     <RecoilRoot>
       <IndexLayout className="post-template">
@@ -228,11 +229,6 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
                 {post.frontmatter.thumbnail && (
                   <PostFullImage>
                     <img src={post.frontmatter.thumbnail} alt="thumbnail" />
-                    {/* <GatsbyImage
-                    image={getImage(post.frontmatter.image)!}
-                    style={{ height: '100%' }}
-                    alt={post.frontmatter.title}
-                  /> */}
                   </PostFullImage>
                 )}
                 <PostContent htmlAst={post.htmlAst} />
@@ -367,6 +363,8 @@ const PostFullByline = styled.div`
 
 export const PostFullTitle = styled.h1`
   margin: 0 0 0.2em;
+  font-size: 3.3rem;
+  font-weight: 600;
   @media (max-width: 500px) {
     margin-top: 0.2em;
     font-size: 3.3rem;
@@ -377,8 +375,7 @@ const PostFullImage = styled.figure`
   margin: 25px auto 50px;
   /* height: 800px; */
   max-width: 700px;
-  background: ${colors.lightgrey} center center;
-  background-size: cover;
+  background: none;
   border-radius: 5px;
   img {
     border-radius: 5px;

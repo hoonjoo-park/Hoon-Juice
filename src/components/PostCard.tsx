@@ -100,6 +100,9 @@ const PostCardStyles = css`
 `;
 
 const PostCardLarge = css`
+  :not(.no-image) .post-card-header {
+    margin-top: 0;
+  }
   @media (min-width: 795px) {
     flex: 1 1 100%;
     flex-direction: row;
@@ -154,7 +157,7 @@ const PostCardImageLink = css`
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 5px 5px 0 0;
+  border-radius: 10px;
 `;
 
 const PostCardImage = styled.div`

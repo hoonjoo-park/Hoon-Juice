@@ -9,7 +9,6 @@ const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {},
 }).Compiler;
-
 const Ast = ({ ast, ...props }: any) => {
   ast.properties = props;
   return renderAst(ast);

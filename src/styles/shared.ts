@@ -42,7 +42,7 @@ export const SiteTitle = styled.h1`
   line-height: 1em;
   font-weight: 900;
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     font-size: 2.8rem;
   }
 `;
@@ -74,6 +74,9 @@ export const PostFeed = css`
   padding: 80px 0 5vw;
   @media (max-width: 600px) {
     padding: 60px 0 5vw;
+  }
+  @media (max-width: 500px) {
+    padding: 40px 0 5vw;
   }
 `;
 
