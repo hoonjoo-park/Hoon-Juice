@@ -6,15 +6,9 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  // Sometimes, optional fields tend to get not picked up by the GraphQL
-  // interpreter if not a single content uses it. Therefore, we're putting them
-  // through `createNodeField` so that the fields still exist and GraphQL won't
-  // trip up. An empty string is still required in replacement to `null`.
-  // eslint-disable-next-line default-case
   switch (node.internal.type) {
     case 'MarkdownRemark': {
       const { layout, primaryTag } = node.frontmatter;
-      // const { relativePath } = getNode(node.parent);
       const value = createFilePath({ node, getNode });
       const [month, day, year] = new Date(node.frontmatter.date)
         .toLocaleDateString('en-EN', {

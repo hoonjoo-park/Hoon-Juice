@@ -288,6 +288,7 @@ const HomePosts = css`
     }
     .post-card-large .post-card-excerpt p {
       margin-bottom: 1rem;
+      color: #738a94;
     }
     .post-card-image-link {
       transition: all 0.2s ease-in-out;
@@ -312,15 +313,17 @@ const HomePosts = css`
     }
     .post-card-content {
       padding: 0;
+      justify-content: center;
     }
     .post-card-large .post-card-title {
       margin-top: 0;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-size: 2rem;
       font-weight: 600;
     }
     .post-card-large .post-card-excerpt p {
       font-size: 1.6rem;
+      margin-bottom: 0.5rem;
     }
     .post-card-large .post-card-meta {
       & > .author-list {

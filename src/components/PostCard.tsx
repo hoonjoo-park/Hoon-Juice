@@ -34,7 +34,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
       <PostCardContent className="post-card-content">
         <div className="post-card-content-link" css={PostCardContentLink}>
           <PostCardHeader className="post-card-header">
-            {post.frontmatter.tags && config.showAllTags && (
+            {post.frontmatter.tags[0] !== '' && config.showAllTags && (
               <PostCardPrimaryTag className="post-card-primary-tag">
                 {post.frontmatter.tags.map((tag, idx) => (
                   <React.Fragment key={tag}>
@@ -44,7 +44,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
                 ))}
               </PostCardPrimaryTag>
             )}
-            {post.frontmatter.tags && !config.showAllTags && (
+            {post.frontmatter.tags[0] !== '' && !config.showAllTags && (
               <PostCardPrimaryTag className="post-card-primary-tag">
                 <span>{post.frontmatter.tags[0]}</span>
               </PostCardPrimaryTag>
@@ -191,12 +191,16 @@ const PostCardContentLink = css`
 
 const PostCardPrimaryTag = styled.div`
   margin: 0 0 0.2em;
-  /* color: var(--blue); */
-  color: ${colors.blue};
-  font-size: 1.2rem;
+  color: #1c6dd0;
+  font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.2px;
   text-transform: uppercase;
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
+    height: 20px;
+    margin: 0 0 0.5em;
+  }
 `;
 
 const PostCardTitle = styled.h2`
