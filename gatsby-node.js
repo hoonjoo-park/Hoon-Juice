@@ -2,10 +2,10 @@
 const path = require('path');
 const _ = require('lodash');
 const readingTime = require('reading-time');
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-
   // Sometimes, optional fields tend to get not picked up by the GraphQL
   // interpreter if not a single content uses it. Therefore, we're putting them
   // through `createNodeField` so that the fields still exist and GraphQL won't
@@ -13,20 +13,26 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // eslint-disable-next-line default-case
   switch (node.internal.type) {
     case 'MarkdownRemark': {
-      const { permalink, layout, primaryTag } = node.frontmatter;
-      const { relativePath } = getNode(node.parent);
+      const { layout, primaryTag } = node.frontmatter;
+      // const { relativePath } = getNode(node.parent);
+      const value = createFilePath({ node, getNode });
+      const [month, day, year] = new Date(node.frontmatter.date)
+        .toLocaleDateString('en-EN', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        })
+        .split('/');
 
-      let slug = permalink;
-
-      if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`;
-      }
+      const endPoint = value.slice(0, value.length - 1).lastIndexOf('/');
+      const slug = value.slice(endPoint).replace(/\/$/, '');
+      const url = `${year}/${month}/${day}${slug}`;
 
       // Used to generate URL to view this content.
       createNodeField({
         node,
         name: 'slug',
-        value: slug || '',
+        value: url,
       });
 
       // Used to determine a page layout.
@@ -53,7 +59,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-
   const result = await graphql(`
     {
       allMarkdownRemark(

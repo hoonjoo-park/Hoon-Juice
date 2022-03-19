@@ -57,7 +57,7 @@ export interface WebsiteConfig {
 const config: WebsiteConfig = {
   title: '훈주스 블로그',
   description: '조 가드너처럼 살고싶다',
-  coverImage: 'img/blog-cover.png',
+  coverImage: 'img/blog-cover.jpeg',
   // logo: '',
   lang: 'ko',
   siteUrl: 'https://hoonjoo-park.github.io',

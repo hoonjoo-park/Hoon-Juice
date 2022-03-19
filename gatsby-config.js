@@ -3,9 +3,9 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Casper',
-    description: 'A port of the casper blog built for gatsby',
-    siteUrl: 'https://gatsby-casper.netlify.com', // full path to blog - no ending slash
+    title: 'Hoon-Juice Blog',
+    description: 'Personal Dev Blog',
+    siteUrl: 'https://hoon-juice.netlify.app', // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml.name',
@@ -79,14 +79,15 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => allMarkdownRemark.edges.map(edge => ({
-              ...edge.node.frontmatter,
-              description: edge.node.excerpt,
-              date: edge.node.frontmatter.date,
-              url: `${site.siteMetadata.siteUrl}${edge.node.fields.slug}`,
-              guid: `${site.siteMetadata.siteUrl}${edge.node.fields.slug}`,
-              custom_elements: [{ 'content:encoded': edge.node.html }],
-            })),
+            serialize: ({ query: { site, allMarkdownRemark } }) =>
+              allMarkdownRemark.edges.map(edge => ({
+                ...edge.node.frontmatter,
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: `${site.siteMetadata.siteUrl}${edge.node.fields.slug}`,
+                guid: `${site.siteMetadata.siteUrl}${edge.node.fields.slug}`,
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+              })),
             query: `
               {
                 allMarkdownRemark(
@@ -108,7 +109,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'Ghost\'s Blog',
+            title: "Hoon's Blog",
             match: '^/blog/',
           },
         ],
