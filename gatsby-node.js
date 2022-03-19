@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-var-requires */
 const path = require('path');
 const _ = require('lodash');
-const readingTime = require('reading-time');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -35,18 +34,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         name: 'layout',
         value: layout || '',
       });
-
-      createNodeField({
-        node,
-        name: 'primaryTag',
-        value: primaryTag || '',
-      });
-
-      createNodeField({
-        node,
-        name: 'readingTime',
-        value: readingTime(node.rawMarkdownBody),
-      });
     }
   }
 };
@@ -65,7 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
             excerpt
             frontmatter {
               title
-              tags
+              category
               date
               draft
               excerpt
@@ -81,9 +68,6 @@ exports.createPages = async ({ graphql, actions }) => {
               }
             }
             fields {
-              readingTime {
-                text
-              }
               layout
               slug
             }
@@ -108,7 +92,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create post pages
   const posts = result.data.allMarkdownRemark.edges;
-
   // Create paginated index
   // TODO: new pagination
   const postsPerPage = 1000;
@@ -134,42 +117,56 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: slug,
-      // This will automatically resolve the template to a corresponding
-      // `layout` frontmatter in the Markdown.
-      //
-      // Feel free to set any `layout` as you'd like in the frontmatter, as
-      // long as the corresponding template file exists in src/templates.
-      // If no template is set, it will fall back to the default `post`
-      // template.
-      //
-      // Note that the template has to exist first, or else the build will fail.
       component: path.resolve(`./src/templates/${layout || 'post'}.tsx`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug,
         prev,
         next,
-        primaryTag: node.frontmatter.tags ? node.frontmatter.tags[0] : '',
+        category: node.frontmatter.category ? node.frontmatter.category : '',
       },
     });
   });
 
-  // Create tag pages
-  const tagTemplate = path.resolve('./src/templates/tags.tsx');
-  const tags = _.uniq(
-    _.flatten(
-      result.data.allMarkdownRemark.edges.map(edge =>
-        _.castArray(_.get(edge, 'node.frontmatter.tags', [])),
-      ),
-    ),
-  );
-  tags.forEach(tag => {
+  // Create posts pages
+  const postsTemplate = path.resolve('./src/templates/posts.tsx');
+  const categorySet = new Set();
+  posts.forEach(post => {
+    categorySet.add(post.node.frontmatter.category);
+  });
+  const categories = [...categorySet];
+  posts.forEach(post => {
     createPage({
-      path: `/tags/${_.kebabCase(tag)}/`,
-      component: tagTemplate,
+      path: '/posts',
+      component: postsTemplate,
       context: {
-        tag,
+        slug: post.node.fields.slug,
       },
+    });
+  });
+  const countCategories = categories.reduce((prev, curr) => {
+    prev[curr] = (prev[curr] || 0) + 1;
+    return prev;
+  }, {});
+
+  const allCategories = Object.keys(countCategories);
+  allCategories.forEach((cat, i) => {
+    const link = `/posts`;
+    Array.from({
+      length: Math.ceil(countCategories[cat] / postsPerPage),
+    }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? link : `${link}/page/${i + 1}`,
+        component: postsTemplate,
+        context: {
+          allCategories: allCategories,
+          category: cat,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          currentPage: i + 1,
+          numPages: Math.ceil(countCategories[cat] / postsPerPage),
+        },
+      });
     });
   });
 

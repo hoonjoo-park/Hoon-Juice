@@ -10,7 +10,6 @@ import styled from '@emotion/styled';
 import { colors } from '../styles/colors';
 import { PageContext } from '../templates/post';
 import { AuthorList } from './AuthorList';
-import config from '../website-config';
 
 export interface PostCardProps {
   post: PageContext;
@@ -34,21 +33,9 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
       <PostCardContent className="post-card-content">
         <div className="post-card-content-link" css={PostCardContentLink}>
           <PostCardHeader className="post-card-header">
-            {post.frontmatter.tags[0] !== '' && config.showAllTags && (
-              <PostCardPrimaryTag className="post-card-primary-tag">
-                {post.frontmatter.tags.map((tag, idx) => (
-                  <React.Fragment key={tag}>
-                    {idx > 0 && <>, &nbsp;</>}
-                    <span>{tag}</span>
-                  </React.Fragment>
-                ))}
-              </PostCardPrimaryTag>
-            )}
-            {post.frontmatter.tags[0] !== '' && !config.showAllTags && (
-              <PostCardPrimaryTag className="post-card-primary-tag">
-                <span>{post.frontmatter.tags[0]}</span>
-              </PostCardPrimaryTag>
-            )}
+            <PostCardCategory className="post-card-primary-tag">
+              <span>{post.frontmatter.category}</span>
+            </PostCardCategory>
             <PostCardTitle className="post-card-title" onClick={() => navigate(post.fields.slug)}>
               {post.frontmatter.title}
             </PostCardTitle>
@@ -189,7 +176,7 @@ const PostCardContentLink = css`
   }
 `;
 
-const PostCardPrimaryTag = styled.div`
+const PostCardCategory = styled.div`
   margin: 0 0 0.2em;
   color: #1c6dd0;
   font-size: 1.4rem;

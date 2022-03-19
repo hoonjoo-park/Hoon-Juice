@@ -69,7 +69,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
-            tags
+            category
             author {
               name
               bio
@@ -84,9 +84,6 @@ export const pageQuery = graphql`
           }
           excerpt
           fields {
-            readingTime {
-              text
-            }
             layout
             slug
           }

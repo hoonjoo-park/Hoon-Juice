@@ -41,33 +41,12 @@ interface PageTemplateProps {
       frontmatter: {
         title: string;
         date: string;
-        userDate: string;
         image: any;
         thumbnail?: string;
         excerpt: string;
-        tags: string[];
+        category: string;
         author: Author[];
       };
-      fields: {
-        readingTime: {
-          text: string;
-        };
-      };
-    };
-    relatedPosts: {
-      totalCount: number;
-      edges: Array<{
-        node: {
-          timeToRead: number;
-          frontmatter: {
-            title: string;
-            date: string;
-          };
-          fields: {
-            slug: string;
-          };
-        };
-      }>;
     };
   };
   pageContext: {
@@ -80,9 +59,6 @@ export interface PageContext {
   excerpt: string;
   fields: {
     slug: string;
-    readingTime: {
-      text: string;
-    };
   };
   frontmatter: {
     image?: any;
@@ -91,7 +67,7 @@ export interface PageContext {
     title: string;
     date: string;
     draft?: boolean;
-    tags: string[];
+    category: string;
     author: Author[];
   };
 }
@@ -130,8 +106,8 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
           <meta property="article:published_time" content={post.frontmatter.date} />
           {/* not sure if modified time possible */}
           {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
-          {post.frontmatter.tags && (
-            <meta property="article:tag" content={post.frontmatter.tags[0]} />
+          {post.frontmatter.category && (
+            <meta property="article:category" content={post.frontmatter.category} />
           )}
 
           {config.facebook && <meta property="article:publisher" content={config.facebook} />}
@@ -146,8 +122,8 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
           <meta name="twitter:label1" content="Written by" />
           <meta name="twitter:data1" content={post.frontmatter.author[0].name} />
           <meta name="twitter:label2" content="Filed under" />
-          {post.frontmatter.tags && (
-            <meta name="twitter:data2" content={post.frontmatter.tags[0]} />
+          {post.frontmatter.category && (
+            <meta name="twitter:data2" content={post.frontmatter.category} />
           )}
           {config.twitter && (
             <meta
@@ -177,24 +153,11 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
               {/* TODO: no-image css tag? */}
               <article css={[PostFull, !post.frontmatter.image && NoImage]}>
                 <PostFullHeader className="post-full-header">
-                  <PostFullTags className="post-full-tags">
-                    {post.frontmatter.tags &&
-                      post.frontmatter.tags.length > 0 &&
-                      config.showAllTags &&
-                      post.frontmatter.tags.map((tag, idx) => (
-                        <React.Fragment key={tag}>
-                          {idx > 0 && <>, &nbsp;</>}
-                          <Link to={`/tags/${_.kebabCase(tag)}/`}>{tag}</Link>
-                        </React.Fragment>
-                      ))}
-                    {post.frontmatter.tags &&
-                      post.frontmatter.tags.length > 0 &&
-                      !config.showAllTags && (
-                        <Link to={`/tags/${_.kebabCase(post.frontmatter.tags[0])}/`}>
-                          {post.frontmatter.tags[0]}
-                        </Link>
-                      )}
-                  </PostFullTags>
+                  <PostCategory className="post-full-tags">
+                    <Link to={`/posts/${_.kebabCase(post.frontmatter.category)}/`}>
+                      {post.frontmatter.category}
+                    </Link>
+                  </PostCategory>
                   <PostFullTitle className="post-full-title">
                     {post.frontmatter.title}
                   </PostFullTitle>
@@ -216,10 +179,6 @@ const PageTemplate = ({ data, location }: PageTemplateProps) => {
                           <time className="byline-meta-date" dateTime={datetime}>
                             {displayDatetime}
                           </time>
-                          <span className="byline-reading-time">
-                            <span className="bull">&bull;</span>
-                            {post.fields.readingTime.text}
-                          </span>
                         </div>
                       </section>
                     </section>
@@ -287,7 +246,7 @@ export const PostFullHeader = styled.header`
   }
 `;
 
-const PostFullTags = styled.section`
+const PostCategory = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -400,7 +359,7 @@ const PostFullImage = styled.figure`
 `;
 
 export const query = graphql`
-  query ($slug: String, $primaryTag: String) {
+  query ($slug: String) {
     logo: file(relativePath: { eq: "img/ghost-logo.png" }) {
       childImageSharp {
         gatsbyImageData(layout: FIXED)
@@ -410,16 +369,10 @@ export const query = graphql`
       html
       htmlAst
       excerpt
-      fields {
-        readingTime {
-          text
-        }
-      }
       frontmatter {
         title
-        userDate: date(formatString: "D MMMM YYYY")
+        category
         date
-        tags
         excerpt
         thumbnail
         author {
@@ -427,31 +380,8 @@ export const query = graphql`
           bio
           avatar {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, breakpoints: [40, 80, 120])
+              gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
             }
-          }
-        }
-      }
-    }
-    relatedPosts: allMarkdownRemark(
-      filter: { frontmatter: { tags: { in: [$primaryTag] }, draft: { ne: true } } }
-      limit: 5
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-            date
-          }
-          fields {
-            readingTime {
-              text
-            }
-            slug
           }
         }
       }

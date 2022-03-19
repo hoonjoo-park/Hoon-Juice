@@ -6,7 +6,7 @@ author: [Hoonjoo]
 thumbnail: 'https://user-images.githubusercontent.com/67448481/157115953-792cd47b-7047-4e15-a0e7-56d86f989997.png'
 excerpt: 프로그래머스 알고리즘
 draft: false
-tags: ['']
+category: '알고리즘'
 ---
 
 ---
