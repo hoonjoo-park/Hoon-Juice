@@ -110,7 +110,7 @@ export const postLists = () => css`
       margin-bottom: 1rem;
       color: #738a94;
     }
-    .post-card-image-link {
+    .post-card-large .post-card-image-link {
       transition: all 0.2s ease-in-out;
       & > div {
         height: 100%;

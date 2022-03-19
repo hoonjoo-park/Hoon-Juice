@@ -28,20 +28,36 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
         large ? 'post-card-large' : ''
       }`}
       css={[PostCardStyles, large && PostCardLarge]}
-      onClick={() => navigate(post.fields.slug)}
+      onClick={() => {
+        large && navigate(post.fields.slug);
+      }}
     >
       <PostCardContent className="post-card-content">
+        {!large && (
+          <Link
+            className="post-card-image-link"
+            css={PostCardImageLink}
+            to={'/' + post.fields.slug}
+          >
+            <PostCardImage className="post-card-image">
+              {post.frontmatter?.thumbnail && (
+                <img src={post.frontmatter.thumbnail} alt="thumbnail" />
+              )}
+            </PostCardImage>
+          </Link>
+        )}
         <div className="post-card-content-link" css={PostCardContentLink}>
-          <PostCardHeader className="post-card-header">
+          <PostCardHeader
+            className="post-card-header"
+            onClick={() => navigate('/' + post.fields.slug)}
+          >
             <PostCardCategory className="post-card-primary-tag">
               <span>{post.frontmatter.category}</span>
             </PostCardCategory>
-            <PostCardTitle className="post-card-title" onClick={() => navigate(post.fields.slug)}>
-              {post.frontmatter.title}
-            </PostCardTitle>
+            <PostCardTitle className="post-card-title">{post.frontmatter.title}</PostCardTitle>
           </PostCardHeader>
           <PostCardExcerpt className="post-card-excerpt">
-            <p>{post.frontmatter.excerpt || post.excerpt}</p>
+            {/* <p>{post.frontmatter.excerpt || post.excerpt}</p> */}
           </PostCardExcerpt>
         </div>
         <PostCardMeta className="post-card-meta">
@@ -61,7 +77,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, large = false }) => {
           </PostCardBylineContent>
         </PostCardMeta>
       </PostCardContent>
-      {post.frontmatter.thumbnail && (
+      {large && (
         <Link className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}>
           <PostCardImage className="post-card-image">
             {post.frontmatter?.thumbnail && (
@@ -81,7 +97,7 @@ const PostCardStyles = css`
   flex-direction: row;
   overflow: hidden;
   margin: 0 0 40px;
-  padding: 0 40px 40px;
+  padding: 0 30px 40px;
   min-height: 220px;
   background-size: cover;
 `;
@@ -145,6 +161,9 @@ const PostCardImageLink = css`
   display: block;
   overflow: hidden;
   border-radius: 10px;
+  &:hover + div > header > h2 {
+    color: #1c6dd0;
+  }
 `;
 
 const PostCardImage = styled.div`
@@ -156,6 +175,7 @@ const PostCardImage = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    object-fit: cover;
   }
 `;
 
@@ -168,11 +188,12 @@ const PostCardContent = styled.div`
 const PostCardContentLink = css`
   position: relative;
   display: block;
-  /* color: var(--darkgrey); */
-  /* color: ${colors.darkgrey}; */
-
+  cursor: pointer;
   :hover {
     text-decoration: none;
+  }
+  :hover h2 {
+    color: #1c6dd0;
   }
 `;
 
@@ -193,7 +214,10 @@ const PostCardCategory = styled.div`
 const PostCardTitle = styled.h2`
   margin: 0 0 0.4em;
   line-height: 1.15em;
+  font-size: 2rem;
+  font-weight: 600;
   transition: color 0.2s ease-in-out;
+  cursor: pointer;
 `;
 
 const PostCardExcerpt = styled.section``;
@@ -216,14 +240,10 @@ const PostCardBylineContent = styled.div`
   font-weight: 400;
   letter-spacing: 0.2px;
   text-transform: uppercase;
-
   span {
     margin: 0;
   }
-
   a {
-    /* color: color(var(--darkgrey) l(+20%)); */
-    /* color: ${lighten('0.2', colors.darkgrey)} !important; */
     font-weight: 600;
   }
 `;

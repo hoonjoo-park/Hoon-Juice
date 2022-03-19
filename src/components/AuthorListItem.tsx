@@ -62,18 +62,13 @@ export const AuthorListItem = (props: AuthorListItemProps) => {
               <h2>{props.author.name}</h2>
               <p>{props.author.bio}</p>
               <p>
-                <Link to={`/author/${_.kebabCase(props.author.name)}/`}>More posts</Link> by{' '}
-                {props.author.name}.
+                <Link to={`/about`}>More posts</Link> by {props.author.name}.
               </p>
             </div>
           </div>
         </div>
       )}
-      <Link
-        css={AuthorAvatar}
-        className="author-avatar"
-        to={`/author/${_.kebabCase(props.author.name)}/`}
-      >
+      <Link css={AuthorAvatar} className="author-avatar" to={`/about`}>
         <GatsbyImage
           image={getImage(props.author.avatar)!}
           css={AuthorProfileImage}

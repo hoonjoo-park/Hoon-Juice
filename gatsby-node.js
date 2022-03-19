@@ -94,7 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allMarkdownRemark.edges;
   // Create paginated index
   // TODO: new pagination
-  const postsPerPage = 1000;
+  const postsPerPage = 12;
   const numPages = Math.ceil(posts.length / postsPerPage);
 
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -130,12 +130,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create posts pages
   const postsTemplate = path.resolve('./src/templates/posts.tsx');
-  const categorySet = new Set();
+  const categories = [];
   posts.forEach(post => {
-    categorySet.add(post.node.frontmatter.category);
-  });
-  const categories = [...categorySet];
-  posts.forEach(post => {
+    categories.push(post.node.frontmatter.category);
     createPage({
       path: '/posts',
       component: postsTemplate,

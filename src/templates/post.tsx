@@ -250,12 +250,15 @@ const PostCategory = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  /* color: var(--midgrey); */
-  color: ${colors.midgrey};
   font-size: 1.3rem;
   line-height: 1.4em;
   font-weight: 600;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
+  & > a {
+    color: #1c6dd0;
+    font-size: 1.6rem;
+  }
 `;
 
 const PostFullCustomExcerpt = styled.p`

@@ -20,6 +20,7 @@ import config from '../website-config';
 import { RecoilRoot } from 'recoil';
 import { css } from '@emotion/react';
 import { postLists } from '../styles/postLists';
+import Pagination from '../components/Pagination';
 
 const PageTemplate = css`
   .site-main {
@@ -34,6 +35,7 @@ interface TagTemplateProps {
     allCategories: string[];
     category: string;
     currentPage: number;
+    excerpt: string;
     limit: number;
     numPages: number;
     skip: number;
@@ -50,7 +52,7 @@ interface TagTemplateProps {
 const Posts = ({ pageContext, data, location }: TagTemplateProps) => {
   const category = pageContext.category ? pageContext.category : '';
   const { edges } = data.allMarkdownRemark;
-  console.log(data);
+  console.log(pageContext);
   return (
     <RecoilRoot>
       <IndexLayout css={postLists}>
@@ -59,7 +61,7 @@ const Posts = ({ pageContext, data, location }: TagTemplateProps) => {
           <title>
             {category} - {config.title}
           </title>
-          {/* <meta name="description" content={tagData?.node ? tagData.node.description : ''} /> */}
+          <meta name="description" content={config.description} />
           <meta property="og:site_name" content={config.title} />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={`${category} - ${config.title}`} />
@@ -76,12 +78,13 @@ const Posts = ({ pageContext, data, location }: TagTemplateProps) => {
           <main id="site-main" className="site-main" css={[SiteMain, outer]}>
             <div css={inner}>
               <h2>Categories</h2>
-              <div css={[PostFeed]}>
+              <div className="wrap" css={[PostFeed]}>
                 {edges.map(({ node }) => (
-                  <PostCard key={node.fields.slug} post={node} large={true} />
+                  <PostCard key={node.fields.slug} post={node} />
                 ))}
               </div>
             </div>
+            <Pagination currentPage={pageContext.currentPage} numPages={pageContext.numPages} />
           </main>
           <Footer />
         </Wrapper>
@@ -105,10 +108,12 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+          excerpt
           frontmatter {
             title
             date
             category
+            excerpt
             thumbnail
             author {
               name

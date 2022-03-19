@@ -4,7 +4,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Footer } from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
-import Pagination from '../components/Pagination';
 import { PostCard } from '../components/PostCard';
 import { Wrapper } from '../components/Wrapper';
 import IndexLayout from '../layouts';
@@ -119,12 +118,6 @@ const IndexPage: React.FC<IndexProps> = props => {
             </div>
           </main>
           {props.children}
-          {props.pageContext.numPages > 1 && (
-            <Pagination
-              currentPage={props.pageContext.currentPage}
-              numPages={props.pageContext.numPages}
-            />
-          )}
           <Footer />
         </Wrapper>
       </IndexLayout>

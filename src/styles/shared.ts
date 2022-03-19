@@ -66,6 +66,10 @@ export const Posts = css`
 `;
 
 export const PostFeed = css`
+  &.wrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
   position: relative;
   display: flex;
   flex-wrap: nowrap;
