@@ -10,7 +10,7 @@ import config from '../website-config';
 
 export const Footer: React.FC = () => (
   <footer className="mainFooter" css={[outer, SiteFooter]}>
-    <div css={[inner, SiteFooterContent]}>
+    <div className="homeInner" css={[inner, SiteFooterContent]}>
       <section className="copyright">
         <Link to="/">{config.title}</Link> &copy; {new Date().getFullYear()}{' '}
         {config.footer && (

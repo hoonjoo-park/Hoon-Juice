@@ -18,6 +18,9 @@ export const inner = css`
   margin: 0 auto;
   max-width: 1040px;
   width: 100%;
+  &.homeInner {
+    max-width: 820px;
+  }
 `;
 
 export const SiteNavMain = css`
@@ -74,7 +77,6 @@ export const PostFeed = css`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  margin: 0 -20px;
   padding: 80px 0 5vw;
   @media (max-width: 600px) {
     padding: 60px 0 5vw;

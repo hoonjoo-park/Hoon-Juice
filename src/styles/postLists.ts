@@ -9,9 +9,9 @@ export const postLists = () => css`
       flex-wrap: nowrap;
       flex-direction: row;
       justify-content: space-between;
-      padding-bottom: 40px;
+      align-items: center;
       min-height: 180px;
-      border-top: 0;
+      border-top: 1px solid #3b4049;
       cursor: pointer;
       overflow: visible;
       &:hover h2 {
@@ -37,8 +37,8 @@ export const postLists = () => css`
       position: relative;
       flex: 0 1 auto;
       margin-bottom: 0;
-      min-width: 270px;
-      min-height: 180px;
+      min-width: 220px;
+      max-height: 130px;
       transition: all 0.2s ease-in-out;
       img {
         border-radius: 10px;
@@ -55,7 +55,8 @@ export const postLists = () => css`
     .post-card-large .post-card-content {
       flex: 0 1 420px;
       /* margin-right: 10rem; */
-      justify-content: center;
+      justify-content: space-around;
+      min-height: 140px;
     }
 
     .post-card-large .post-card-title {
@@ -64,11 +65,9 @@ export const postLists = () => css`
     }
 
     .post-card-large .post-card-content-link {
-      padding: 0 0 0 40px;
     }
 
     .post-card-large .post-card-meta {
-      padding: 0 0 0 40px;
     }
 
     .post-card-large .post-card-excerpt p {
@@ -85,7 +84,6 @@ export const postLists = () => css`
       overflow: visible;
       max-height: 150px;
       min-height: 150px;
-      padding: 0 40px;
       &:hover h2 {
         color: #1c6dd0;
         transition: all 0.2s ease-in-out;
@@ -97,7 +95,7 @@ export const postLists = () => css`
     }
     .post-card-content {
       flex-basis: 100%;
-      justify-content: space-between;
+      justify-content: space-around;
       transition: all 0.2s ease-in-out;
       /* order: 2; */
     }

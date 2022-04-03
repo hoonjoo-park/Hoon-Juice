@@ -84,7 +84,7 @@ const IndexPage: React.FC<IndexProps> = props => {
               backgroundImage: `url('${getSrc(props.data.header)}')`,
             }}
           >
-            <div css={inner}>
+            <div className="homeInner" css={inner}>
               <SiteNav isHome />
               <SiteHeaderContent className="site-header-content">
                 <SiteTitle className="site-title">
@@ -103,7 +103,7 @@ const IndexPage: React.FC<IndexProps> = props => {
             </div>
           </div>
           <main id="site-main" css={[SiteMain, outer]}>
-            <div css={[inner, Posts]}>
+            <div className="homeInner" css={[inner, Posts]}>
               <LatestPostTitle>최신 포스트</LatestPostTitle>
               <div css={[PostFeed]}>
                 {latestPosts.map(
@@ -171,7 +171,6 @@ const LatestPostTitle = styled.h3`
   margin: 80px 0 0 0;
   font-size: 2.8rem;
   font-weight: 700;
-  padding: 0 60px;
   @media (max-width: 795px) {
     padding: 0 20px;
   }
