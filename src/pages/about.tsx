@@ -49,45 +49,21 @@ const About: React.FC = () => (
 
               <PostFullContent className="post-full-content">
                 <div className="post-content">
-                  <h5>
-                    A starter template for Gatsby <br /> GitHub:{' '}
-                    <a href="https://github.com/scttcper/gatsby-casper">scttcper/gatsby-casper</a>
-                  </h5>
+                  <h4>“비즈니스 밸류를 명확하게 이해하고 개발할 수 있는”</h4>
+                  <h4>React & Javascript 프론트엔드 엔지니어 박훈주 입니다.</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo finibus
-                    leo, non tempus magna vehicula ac. Maecenas mollis ante finibus pharetra
-                    imperdiet. Maecenas in aliquam purus. Nam et massa a nulla fermentum dapibus sit
-                    amet in neque. Ut ipsum ipsum, rhoncus a sodales pellentesque, interdum a elit.
-                    Nullam aliquam tellus nibh, eget laoreet dui aliquet non. Vestibulum malesuada
-                    ante at diam tempus, ac interdum risus scelerisque. Sed ipsum neque, vulputate
-                    porta diam eget, consequat blandit nulla. Integer volutpat velit vitae purus
-                    lacinia aliquam. Integer bibendum ipsum vitae magna pulvinar, nec vehicula dolor
-                    vulputate. Nulla eu massa id orci placerat finibus vel sit amet eros. Vestibulum
-                    quis consequat massa. Sed sagittis sollicitudin massa at commodo. Praesent diam
-                    nisi, imperdiet posuere eleifend nec, blandit ac massa.
+                    경영학과 프로그래밍의 조화를 통해, 비즈니스 밸류 전달의 길라잡이가 되고싶은
+                    React 프론트엔드 개발자입니다. 특히, 꾸준히 성장하고 배우며 사회에 유의미한
+                    가치를 창출하는데 일조하고 싶습니다.
                   </p>
                   <p>
-                    Vestibulum semper pretium ipsum nec congue. Ut ac eros nisi. Donec leo sem,
-                    aliquam mollis sapien ultrices, dapibus congue diam. Proin viverra dapibus
-                    blandit. Ut mauris tellus, tristique id felis vel, venenatis vestibulum nunc.
-                    Nam molestie pulvinar nibh, eget egestas augue. Maecenas tellus arcu, mattis ut
-                    ipsum non, sollicitudin convallis nunc. Donec nec neque tristique, aliquet lacus
-                    id, laoreet nunc. Cras dapibus nisi nulla, ullamcorper faucibus neque suscipit
-                    ac. Donec eget orci venenatis justo lobortis volutpat. Proin vel placerat nisl.
-                    Integer arcu nunc, sodales eu fringilla non, aliquam non diam. Cras placerat,
-                    massa et faucibus pretium, ante elit tincidunt tellus, tristique ultricies velit
-                    quam et massa.
+                    또한, "끈기가 내 가능성과 한계의 외연을 결정한다."라는 가치관을 갖고 살아가고
+                    있습니다. 끈기로운 성장을 위해 1일 1커밋과 일주일에 최소 한 개의 블로그 포스팅을
+                    실천하고 있습니다.
                   </p>
                   <p>
-                    In nunc lacus, dapibus vitae lacus sit amet, efficitur iaculis neque.
-                    Suspendisse ut tellus quis leo vestibulum tincidunt. Aenean nec enim ac dolor
-                    lacinia semper. Ut sed laoreet libero. Nunc elementum sollicitudin accumsan.
-                    Nunc eu augue neque. Proin a tortor nibh. Cras eu nisl ornare sapien feugiat
-                    pellentesque. Mauris dignissim vel quam eu pellentesque. Integer sit amet
-                    posuere quam, eu ullamcorper odio. Nullam a lacus tempus sapien dignissim
-                    ullamcorper. In hac habitasse platea dictumst. Proin quis massa aliquam, feugiat
-                    tortor sit amet, tincidunt urna. Donec posuere pulvinar lectus, ac semper ipsum
-                    vulputate quis.
+                    미약할지라도 사회의 불편 사항들을 해소하고, 선한 영향력을 행사할 수 있는
+                    개발자가 되고 싶습니다.
                   </p>
                 </div>
               </PostFullContent>

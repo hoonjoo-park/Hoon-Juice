@@ -18,7 +18,6 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({ currentPage, num
       <div>
         {!isFirst && (
           <Link to={prevPage} rel="prev">
-            {/* << symbol */}
             {String.fromCharCode(171)}
           </Link>
         )}
@@ -70,7 +69,7 @@ const navCss = css`
     }
 
     &:hover:not(.active) {
-      background-color: #bbb;
+      background-color: #bbbbbb;
     }
 
     &:hover {
