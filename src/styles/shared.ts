@@ -151,7 +151,6 @@ export const SiteHeaderStyles = css`
     left: 0;
     z-index: 10;
     display: block;
-    height: 140px;
     background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
   }
 `;

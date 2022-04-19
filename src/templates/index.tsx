@@ -12,12 +12,11 @@ import {
   outer,
   PostFeed,
   Posts,
-  SiteDescription,
   SiteHeader,
-  SiteHeaderContent,
   SiteMain,
-  SiteTitle,
   SiteHeaderStyles,
+  SiteNavMain,
+  SiteArchiveHeader,
 } from '../styles/shared';
 import config from '../website-config';
 import { PageContext } from './post';
@@ -85,21 +84,13 @@ const IndexPage: React.FC<IndexProps> = props => {
             }}
           >
             <div className="homeInner" css={inner}>
-              <SiteNav isHome />
-              <SiteHeaderContent className="site-header-content">
-                <SiteTitle className="site-title">
-                  {props.data.logo ? (
-                    <img
-                      style={{ maxHeight: '55px' }}
-                      src={getSrc(props.data.logo)}
-                      alt={config.title}
-                    />
-                  ) : (
-                    config.title
-                  )}
-                </SiteTitle>
-                <SiteDescription>{config.description}</SiteDescription>
-              </SiteHeaderContent>
+              <header className="site-archive-header" css={[SiteHeader, SiteArchiveHeader]}>
+                <div css={[outer, SiteNavMain]}>
+                  <div css={inner}>
+                    <SiteNav isHome={false} />
+                  </div>
+                </div>
+              </header>
             </div>
           </div>
           <main id="site-main" css={[SiteMain, outer]}>
@@ -168,7 +159,7 @@ export const pageQuery = graphql`
 `;
 
 const LatestPostTitle = styled.h3`
-  margin: 80px 0 0 0;
+  margin: 144px 0 0 0;
   font-size: 2.8rem;
   font-weight: 700;
   @media (max-width: 795px) {
