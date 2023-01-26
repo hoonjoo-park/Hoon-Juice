@@ -7,7 +7,7 @@
 @layer base {
   @font-face {
     font-family: 'Pretendard';
-    src: url('/fonts/pretendard-regular.subset.woff2') format('woff2');
+    src: url('/public//fonts//pretendard-regular.subset.woff2') format('woff2');
     font-display: swap;
   }
 
@@ -23,5 +23,39 @@
   body {
     background-color: #1a1c1e;
     color: #fff;
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 600;
+
+    margin: 1.4em 0 0.6em 0;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+
+    margin: 1.2em 0 0.4em 0;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 500;
+
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+    line-height: 1.8;
+
+    overflow-wrap: break-word;
   }
 }

@@ -9,7 +9,10 @@ const Header = () => {
       }
     >
       <nav className={'max-w-6xl w-11/12 flex items-center justify-between'}>
-        <h2 className={'font-bold text-xl'}>훈주스 블로그</h2>
+        <Link className={'font-bold text-xl p-2'} href={'/'}>
+          훈주스 블로그
+        </Link>
+        <h4 className={''}></h4>
         <div>
           <ul className={'flex items-center'}>
             <li className={'font-semibold text-base'}>
