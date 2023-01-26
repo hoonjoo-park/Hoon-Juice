@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header
       className={
-        'h-16 flex items-center justify-center border-b border-gray-600 '
+        'h-16 fixed bg-black w-full z-20 top-0 left-0 flex items-center justify-center border-b border-gray-600'
       }
     >
       <nav className={'max-w-6xl w-11/12 flex items-center justify-between'}>
