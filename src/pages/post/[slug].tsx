@@ -4,7 +4,7 @@ import { marked } from 'marked'
 import Image from 'next/image'
 import path from 'path'
 
-interface Frontmatter {
+export interface Frontmatter {
   title: string
   date: string
   thumbnail: string
