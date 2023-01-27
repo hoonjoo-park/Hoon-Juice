@@ -29,16 +29,17 @@ interface GetStaticPropsContext {
   params: PathParams
 }
 
-const Post = ({ frontmatter, slug, content }: PostProps) => {
+const Post = ({ frontmatter, content }: PostProps) => {
   const { title, date, thumbnail } = frontmatter
 
-  console.log(thumbnail)
   return (
     <div className={'w-full flex justify-center my-9'}>
       <div className={'w-[700px]'}>
-        <img
+        <Image
           className={'w-full rounded-xl mb-8'}
           src={thumbnail}
+          width={900}
+          height={0}
           alt="thumbnail-image"
         />
         <h1 className={'mb-3 text-4xl font-bold'}>{title}</h1>
