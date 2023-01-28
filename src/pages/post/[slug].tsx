@@ -33,7 +33,7 @@ const Post = ({ frontmatter, content }: PostProps) => {
   const { title, date, thumbnail } = frontmatter
 
   return (
-    <div className={'w-full flex justify-center my-9'}>
+    <div className={'post w-full flex justify-center my-9'}>
       <div className={'w-[700px]'}>
         <Image
           className={'w-full rounded-xl mb-8'}
