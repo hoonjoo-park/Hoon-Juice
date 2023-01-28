@@ -7,7 +7,11 @@ import PostList from '@/components/PostList'
 
 const Home = ({ posts }: any) => {
   return (
-    <div className={'flex mobile:w-screen mobile:px-6 mb-16'}>
+    <div
+      className={
+        'flex justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 mb-16 desktop:m-auto'
+      }
+    >
       <ul className={'flex flex-col gap-14 mt-6'}>
         {posts.map((post: any) => (
           <PostList key={post.slug} post={post} />

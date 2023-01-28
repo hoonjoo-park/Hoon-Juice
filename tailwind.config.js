@@ -10,6 +10,7 @@ module.exports = {
         lightBlack: '#1a1c1e',
         gray: '#bdc5d2',
         lightGray: '#8b95a1',
+        blue: '#3182F6',
       },
       screens: {
         mobile: '320px',

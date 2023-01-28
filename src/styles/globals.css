@@ -17,7 +17,6 @@
       BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
       'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
       'Segoe UI Symbol', 'Noto Color Emoji';
-    padding-top: 4rem;
   }
 
   body {
@@ -102,5 +101,13 @@
   .accordion.opened {
     max-height: 500px;
     transition: max-height 0.3s ease-in-out;
+  }
+
+  .postList h5 {
+    transition: color 0.3s ease;
+  }
+
+  .postList:hover h5 {
+    color: #3182f6;
   }
 }

@@ -6,10 +6,12 @@ const PostList = ({ post }: any) => {
   const { slug, frontmatter } = post
 
   return (
-    <Link href={`/post/${slug}`}>
-      <div>
+    <Link className={'postList'} href={`/post/${slug}`}>
+      <div className={'flex items-center desktop:flex-row mobile:flex-col'}>
         <Image
-          className={'w-full rounded-xl mb-5'}
+          className={
+            'desktop:w-48 desktop:h-48 desktop:mb-0 desktop:mr-12 mobile:w-full mobile:mb-5 object-cover rounded-xl'
+          }
           src={frontmatter.thumbnail}
           width={300}
           height={200}
@@ -18,7 +20,7 @@ const PostList = ({ post }: any) => {
         <div>
           <h5
             className={
-              'max-h-16 mb-[10px] text-2xl font-bold text-ellipsis break-keep transition-colors'
+              'max-h-16 mobile:mb-[10px] desktop:mb-4 desktop:text-3xl mobile:text-2xl font-bold text-ellipsis break-keep'
             }
           >
             {frontmatter.title}
