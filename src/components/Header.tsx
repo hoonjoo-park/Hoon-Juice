@@ -30,7 +30,7 @@ const Header = () => {
           className={
             'flex items-center font-bold text-xl p-2 mobile:w-full flex-grow min-h-[64px]'
           }
-          href={'/'}
+          href={'/dev'}
         >
           훈주스 블로그
         </Link>
@@ -63,9 +63,9 @@ const Header = () => {
                 className={
                   'desktop:px-2 hover:text-blue desktop:w-20 transition mobile:px-3 mobile:py-4 text-center'
                 }
-                href={'/posts/web'}
+                href={'/dev'}
               >
-                웹 개발
+                Dev
               </Link>
             </li>
             <li className={'font-semibold text-base mobile:w-full flex'}>
@@ -73,9 +73,9 @@ const Header = () => {
                 className={
                   'desktop:px-2 hover:text-blue desktop:w-20 transition mobile:px-3 mobile:py-4 text-center'
                 }
-                href={'/posts/app'}
+                href={'/cs'}
               >
-                앱 개발
+                CS
               </Link>
             </li>
             <li className={'font-semibold text-base mobile:w-full flex'}>
