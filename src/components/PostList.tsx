@@ -10,7 +10,7 @@ const PostList = ({ post }: any) => {
       <div className={'flex items-center desktop:flex-row mobile:flex-col'}>
         <Image
           className={
-            'desktop:w-48 desktop:h-48 desktop:mb-0 desktop:mr-12 mobile:w-full mobile:mb-5 object-cover rounded-xl'
+            'desktop:w-48 desktop:h-48 desktop:mb-0 desktop:mr-12 mobile:w-full mobile:mb-5 object-cover rounded-xl drop-shadow-md'
           }
           src={frontmatter.thumbnail}
           width={300}

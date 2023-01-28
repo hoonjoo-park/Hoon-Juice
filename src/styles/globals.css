@@ -89,7 +89,8 @@
   .post li > strong {
     font-size: 20px;
     line-height: 2;
-    color: #48996b;
+    color: #fff;
+    background-color: transparent;
   }
 
   .accordion {
@@ -109,5 +110,12 @@
 
   .postList:hover h5 {
     color: #3182f6;
+  }
+
+  strong {
+    padding: 2px 3px;
+    border-radius: 4px;
+    background-color: #ffc93c;
+    color: #000;
   }
 }

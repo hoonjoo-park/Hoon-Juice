@@ -23,7 +23,7 @@ const Header = () => {
     >
       <nav
         className={
-          'max-w-6xl min-h-[64px] flex desktop:flex-row items-center mobile:flex-col tablet:flex-col justify-between desktop:w-[70%] mobile:w-[90%]'
+          'max-w-6xl min-h-[64px] flex desktop:flex-row items-center mobile:flex-col tablet:flex-col justify-between desktop:w-[980px] mobile:w-[90%]'
         }
       >
         <Link
