@@ -10,7 +10,7 @@ export interface Frontmatter {
   thumbnail: string
 }
 
-interface PostProps {
+export interface PostProps {
   frontmatter: Frontmatter
   slug: string
   content: string
