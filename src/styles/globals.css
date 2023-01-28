@@ -92,4 +92,15 @@
     line-height: 2;
     color: #48996b;
   }
+
+  .accordion {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+  }
+
+  .accordion.opened {
+    max-height: 500px;
+    transition: max-height 0.3s ease-in-out;
+  }
 }
