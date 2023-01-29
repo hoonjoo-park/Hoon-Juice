@@ -1,4 +1,4 @@
-import Badge from '@/components/Badger'
+import Badge from '@/components/Badge'
 import Image from 'next/image'
 import React, { useLayoutEffect } from 'react'
 
