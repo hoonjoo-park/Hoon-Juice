@@ -23,12 +23,12 @@ const Header = () => {
     >
       <nav
         className={
-          'max-w-6xl min-h-[64px] flex desktop:flex-row items-center mobile:flex-col tablet:flex-col justify-between desktop:w-[980px] mobile:w-[90%]'
+          'max-w-6xl min-h-[64px] flex desktop:flex-row items-center mobile:flex-col tablet:flex-col justify-between desktop:w-[932px] mobile:w-[90%]'
         }
       >
         <Link
           className={
-            'flex items-center font-bold text-xl p-2 mobile:w-full flex-grow min-h-[64px]'
+            'flex items-center font-bold text-xl mobile:w-full flex-grow min-h-[64px]'
           }
           href={'/dev'}
         >
@@ -73,9 +73,9 @@ const Header = () => {
                 className={
                   'desktop:px-2 hover:text-blue desktop:w-20 transition mobile:px-3 mobile:py-4 text-center'
                 }
-                href={'/cs'}
+                href={'/others'}
               >
-                CS
+                Others
               </Link>
             </li>
             <li className={'font-semibold text-base mobile:w-full flex'}>

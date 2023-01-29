@@ -6,18 +6,18 @@ import { sortByDate } from 'utils'
 import { PostsType } from '..'
 import Posts from '@/components/Posts'
 
-const CSPage = ({ posts }: PostsType) => {
-  return <Posts title={'CS'} posts={posts} />
+const OthersPage = ({ posts }: PostsType) => {
+  return <Posts title={'Others'} posts={posts} />
 }
 
 export const getStaticProps = async () => {
-  const files = fs.readdirSync(path.join('posts', 'cs'))
+  const files = fs.readdirSync(path.join('posts', 'others'))
 
   const posts = files.map(filename => {
     const slug = filename.replace('.md', '')
 
     const markdownWithMeta = fs.readFileSync(
-      path.join('posts', 'cs', filename),
+      path.join('posts', 'others', filename),
       'utf-8',
     )
 
@@ -36,4 +36,4 @@ export const getStaticProps = async () => {
   }
 }
 
-export default CSPage
+export default OthersPage
