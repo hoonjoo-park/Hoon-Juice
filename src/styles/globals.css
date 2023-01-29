@@ -116,6 +116,23 @@
     color: #3182f6;
   }
 
+  .postList .thumbnail {
+    transition: transform 0.3s ease;
+  }
+
+  .postList:hover .thumbnail {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+
+  .postList .overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .postList:hover .overlay {
+    opacity: 0.1;
+  }
+
   .post strong {
     color: #000;
     font-weight: 600;

@@ -13,16 +13,27 @@ const PostList = ({ post, title }: PostListProps) => {
 
   return (
     <Link className={'postList'} href={`/post/${title.toLowerCase()}/${slug}`}>
-      <div className={'flex items-center desktop:flex-row mobile:flex-col'}>
-        <Image
+      <div
+        className={'flex desktop:items-center desktop:flex-row mobile:flex-col'}
+      >
+        <div
           className={
-            'desktop:w-48 desktop:h-48 desktop:mb-0 desktop:mr-12 mobile:w-full mobile:mb-5 object-cover rounded-xl drop-shadow-md'
+            'relative desktop:w-48 desktop:h-48 mobile:w-full desktop:mb-0 desktop:mr-12 mobile:mb-5 shrink-0 overflow-hidden drop-shadow-md rounded-xl'
           }
-          src={frontmatter.thumbnail}
-          width={300}
-          height={200}
-          alt="thumbnail"
-        />
+        >
+          <Image
+            className={
+              'desktop:w-48 desktop:h-48 mobile:w-full object-cover thumbnail'
+            }
+            src={frontmatter.thumbnail}
+            width={300}
+            height={200}
+            alt="thumbnail"
+          />
+          <div
+            className={'absolute top-0 left-0 bg-black w-full h-full overlay'}
+          />
+        </div>
         <div>
           <h5
             className={
