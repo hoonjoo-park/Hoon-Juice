@@ -18,19 +18,19 @@ const About = () => {
   return (
     <div
       className={
-        'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 mb-16 desktop:m-auto'
+        'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 mb-16 desktop:m-auto desktop:pb-14 mobile:pb-0'
       }
     >
       <h1 className={'mt-12 py-5 text-black text-3xl font-bold'}> About Me</h1>
 
       <div
         className={
-          'flex justify-between p-6 rounded-3xl bg-white shadow-lg my-6'
+          'flex desktop:flex-row mobile:flex-col justify-between p-6 rounded-3xl bg-white shadow-lg my-6'
         }
       >
         <Image
           className={
-            'w-52 h-52 rounded-xl shadow-md aspect-square object-cover mr-7'
+            'desktop:w-52 mobile:w-full h-52 rounded-xl shadow-md aspect-square object-cover mr-7 desktop:mb-0 mobile:mb-6'
           }
           src={'/images/profile-vietnam.jpg'}
           alt="profile-image"
@@ -43,7 +43,7 @@ const About = () => {
           <h3 className={'text-navy text-2xl font-bold mb-3'}>
             Frontend, iOS Engineer
           </h3>
-          <p className={'text-navy'}>
+          <p className={'text-navy mobile:text-justify'}>
             경영학과 프로그래밍의 조화를 통해, 비즈니스 밸류 전달의 길라잡이가
             되고싶은 프론트엔드 & iOS 개발자입니다. 꾸준히 성장하고 배우며
             사회에 유의미한 가치를 창출하는데 일조하고 싶습니다.
@@ -53,10 +53,12 @@ const About = () => {
 
       <div
         className={
-          'h-48 flex items-center p-12 rounded-3xl bg-white shadow-lg my-7'
+          'flex desktop:flex-row mobile:p-6 mobile:flex-col desktop:items-center desktop:p-12 rounded-3xl bg-white shadow-lg my-7'
         }
       >
-        <h3 className={'w-44 text-black text-2xl font-extrabold'}>Profile</h3>
+        <h3 className={'w-44 mobile:mb-5 text-black text-2xl font-extrabold'}>
+          Profile
+        </h3>
 
         <div>
           <p className={'text-navy text-base font-medium mb-3'}>
@@ -73,10 +75,12 @@ const About = () => {
 
       <div
         className={
-          'h-48 flex items-center p-12 rounded-3xl bg-white shadow-lg my-7'
+          'flex desktop:flex-row mobile:p-6 mobile:flex-col desktop:items-center desktop:p-12 rounded-3xl bg-white shadow-lg my-7'
         }
       >
-        <h3 className={'w-44 text-black text-2xl font-extrabold'}>Skills</h3>
+        <h3 className={'w-44 mobile:mb-5 text-black text-2xl font-extrabold'}>
+          Skills
+        </h3>
 
         <div className={'flex flex-wrap gap-3'}>
           <Badge title="NextJS" image="/images/nextjs.svg" />
@@ -90,13 +94,13 @@ const About = () => {
 
       <div
         className={
-          'h-48 relative flex items-center justify-between p-12 rounded-3xl shadow-lg my-7 bg-no-repeat bg-cover'
+          'relative flex desktop:flex-row mobile:flex-col items-center justify-between p-12 rounded-3xl shadow-lg my-7 bg-no-repeat bg-cover'
         }
         style={{ backgroundImage: 'url(/images/green.png)' }}
       >
         <div
           className={
-            'absolute w-full h-full bg-black left-0 rounded-3xl opacity-25'
+            'absolute w-full h-full bg-black top-0 left-0 rounded-3xl opacity-25'
           }
         />
 
@@ -104,7 +108,9 @@ const About = () => {
           <h3 className={'text-white text-4xl font-extrabold mb-2'}>
             Need more information?
           </h3>
-          <p className={'text-lg font-medium'}>Feel free to visit my Github!</p>
+          <p className={'text-lg font-medium mobile:mb-7 desktop:mb-0'}>
+            Feel free to visit my Github!
+          </p>
         </div>
 
         <div className={'flex basis-1/4 justify-center z-10'}>
