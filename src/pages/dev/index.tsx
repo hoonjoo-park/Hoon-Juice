@@ -1,4 +1,3 @@
-import PostList from '@/components/PostList'
 import Posts from '@/components/Posts'
 import fs from 'fs'
 import matter from 'gray-matter'

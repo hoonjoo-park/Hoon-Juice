@@ -1,7 +1,18 @@
-import { PostsType } from '@/pages'
-import { PostProps } from '@/pages/post/[slug]'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import PostList from './PostList'
+
+export interface Frontmatter {
+  title: string
+  date: string
+  excerpt: string
+  thumbnail: string
+}
+
+export interface PostProps {
+  frontmatter: Frontmatter
+  slug: string
+  content: string
+}
 
 interface PostsProps {
   title: string
@@ -18,7 +29,7 @@ const Posts = ({ title, posts }: PostsProps) => {
       <h1 className={'mt-12 mb-9 py-5 text-3xl font-bold'}>{title}</h1>
       <ul className={'flex flex-col gap-14 mt-2'}>
         {posts.map(post => (
-          <PostList key={post.slug} post={post} />
+          <PostList key={post.slug} post={post} title={title} />
         ))}
       </ul>
     </div>

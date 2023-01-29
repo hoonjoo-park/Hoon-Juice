@@ -1,12 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { PostProps } from './Posts'
 
-const PostList = ({ post }: any) => {
+interface PostListProps {
+  post: PostProps
+  title: string
+}
+
+const PostList = ({ post, title }: PostListProps) => {
   const { slug, frontmatter } = post
 
   return (
-    <Link className={'postList'} href={`/post/${slug}`}>
+    <Link className={'postList'} href={`/post/${title.toLowerCase()}/${slug}`}>
       <div className={'flex items-center desktop:flex-row mobile:flex-col'}>
         <Image
           className={

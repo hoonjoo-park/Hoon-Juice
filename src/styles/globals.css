@@ -112,10 +112,22 @@
     color: #3182f6;
   }
 
-  strong {
+  .post strong {
+    color: #000;
+    font-weight: 600;
     padding: 2px 3px;
     border-radius: 4px;
     background-color: #ffc93c;
-    color: #000;
+  }
+
+  .post a {
+    color: #4f93f1;
+    text-decoration: underline;
+
+    transition: color 0.2s ease;
+  }
+
+  .post a:hover {
+    color: #237bf6;
   }
 }
