@@ -26,7 +26,14 @@ const Posts = ({ title, posts }: PostsProps) => {
         'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 mb-16 desktop:m-auto'
       }
     >
-      <h1 className={'mt-12 mb-9 py-5 text-3xl font-bold'}>{title}</h1>
+      <h1
+        className={
+          'desktop:mt-12 desktop:mb-9 mobile:mt-7 mobile:mb-4 py-5 text-3xl font-bold'
+        }
+      >
+        {title}
+      </h1>
+
       <ul className={'flex flex-col gap-14 mt-2'}>
         {posts.map(post => (
           <PostList key={post.slug} post={post} title={title} />
