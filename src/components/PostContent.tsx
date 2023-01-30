@@ -16,8 +16,8 @@ const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
   }, [])
 
   return (
-    <div className={'post w-full flex justify-center my-9'}>
-      <div className={'w-[700px]'}>
+    <div className={'post w-full flex justify-center my-9 mobile:px-4'}>
+      <div className={'desktop:w-[700px] mobile:w-full'}>
         <Image
           className={'w-full rounded-xl mb-8'}
           src={thumbnail}
@@ -25,8 +25,10 @@ const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
           height={0}
           alt="thumbnail-image"
         />
-        <h1 className={'mb-3 text-4xl font-bold'}>{title}</h1>
-        <div className={'mb-8 '}>{date}</div>
+        <h1 className={'mb-3 desktop:text-4xl mobile:text-3xl font-bold'}>
+          {title}
+        </h1>
+        <div className={'mb-8'}>{date}</div>
 
         <div>
           <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
