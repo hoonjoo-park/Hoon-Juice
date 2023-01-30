@@ -1,6 +1,7 @@
 import { marked } from 'marked'
 import Image from 'next/image'
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
+import Prism from '../../utils/prism'
 
 interface PostContentProps {
   title: string
@@ -10,6 +11,10 @@ interface PostContentProps {
 }
 
 const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
+  useLayoutEffect(() => {
+    Prism.highlightAll()
+  }, [])
+
   return (
     <div className={'post w-full flex justify-center my-9'}>
       <div className={'w-[700px]'}>
@@ -24,7 +29,7 @@ const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
         <div className={'mb-8 '}>{date}</div>
 
         <div>
-          <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+          <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
         </div>
       </div>
     </div>
