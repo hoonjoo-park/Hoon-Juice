@@ -1,29 +1,12 @@
 import { memo } from 'react'
+import { PostsType } from 'utils/types'
 import PostList from './PostList'
 
-export interface Frontmatter {
-  title: string
-  date: string
-  excerpt: string
-  thumbnail: string
-}
-
-export interface PostProps {
-  frontmatter: Frontmatter
-  slug: string
-  content: string
-}
-
-interface PostsProps {
-  title: string
-  posts: PostProps[]
-}
-
-const Posts = ({ title, posts }: PostsProps) => {
+const Posts = ({ title, posts }: PostsType) => {
   return (
     <div
       className={
-        'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 mb-16 desktop:m-auto'
+        'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 desktop:mb-24 mobile:mb-16 desktop:m-auto'
       }
     >
       <h1

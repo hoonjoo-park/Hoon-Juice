@@ -1,8 +1,8 @@
 import PostContent from '@/components/PostContent'
-import { PostProps } from '@/components/Posts'
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
+import { PostProps } from 'utils/types'
 
 interface PathParams {
   slug: string

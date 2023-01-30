@@ -3,7 +3,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 import { sortByDate } from 'utils'
-import { PostsType } from '..'
+import { PostsType } from 'utils/types'
 
 const DevPage = ({ posts }: PostsType) => {
   return <Posts title={'Dev'} posts={posts} />
