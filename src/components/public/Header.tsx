@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header
       className={
-        'min-h-16 min-h-[64px] w-screen flex items-center justify-center bg-black sticky top-0 z-20'
+        'min-h-16 min-h-[64px] w-screen flex items-center justify-center sticky top-0 z-20 bg-black90 backdrop-blur-sm'
       }
     >
       <nav
