@@ -1,7 +1,7 @@
 import { marked } from 'marked'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
-import React, { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 import Prism from '../../utils/prism'
 
 interface PostContentProps {
@@ -12,7 +12,7 @@ interface PostContentProps {
 }
 
 const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     Prism.highlightAll()
   }, [])
 

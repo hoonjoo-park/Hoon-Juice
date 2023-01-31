@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { PostProps } from './Posts'
+import { PostProps } from 'utils/types'
 
 interface PostListProps {
   post: PostProps

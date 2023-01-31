@@ -1,4 +1,4 @@
-import Badge from '@/components/Badge'
+import Badge from '@/components/public/Badge'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import React, { useLayoutEffect } from 'react'

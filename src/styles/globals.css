@@ -151,4 +151,16 @@
   .post a:hover {
     color: #237bf6;
   }
+
+  .currentPage {
+    background-color: #9ca3af;
+  }
+
+  .selectablePage {
+    /* transition: border 0.2s ease; */
+  }
+
+  .pageButton:hover .selectablePage {
+    border: 1px solid #9ca3af;
+  }
 }
