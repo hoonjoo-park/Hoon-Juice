@@ -1,3 +1,4 @@
+import useLazyLoad from 'hooks/useLazyLoad'
 import { marked } from 'marked'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -11,10 +12,21 @@ interface PostContentProps {
   content: string
 }
 
+const renderer = {
+  image(href: string, title: string, text: string) {
+    return `
+      <img class="lazyImage" src="/images/lazy-loading.png" alt=${title} data-src=${href} />
+    `
+  },
+}
+
 const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
   useEffect(() => {
     Prism.highlightAll()
   }, [])
+
+  marked.use({ renderer })
+  useLazyLoad()
 
   return (
     <>
