@@ -2,7 +2,7 @@ import useLazyLoad from 'hooks/useLazyLoad'
 import { marked } from 'marked'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Prism from '../../utils/prism'
 
 interface PostContentProps {
@@ -21,12 +21,16 @@ const renderer = {
 }
 
 const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
+  const [lazyImages, setLazyImages] =
+    useState<NodeListOf<HTMLImageElement> | null>(null)
+
   useEffect(() => {
     Prism.highlightAll()
+    setLazyImages(document.querySelectorAll('.lazyImage'))
   }, [])
 
   marked.use({ renderer })
-  useLazyLoad()
+  useLazyLoad(lazyImages)
 
   return (
     <>
@@ -36,8 +40,8 @@ const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
           <Image
             className={'w-full rounded-xl mb-8'}
             src={thumbnail}
-            width={900}
-            height={0}
+            width={700}
+            height={453}
             alt="thumbnail-image"
           />
           <h1 className={'mb-3 desktop:text-4xl mobile:text-3xl font-bold'}>
