@@ -32,7 +32,7 @@ const Header = () => {
           }
           href={'/dev'}
         >
-          훈주스 블로그
+          훈쥬스 블로그
         </Link>
 
         <div className="desktop:hidden absolute right-[5%] top-[32px] -translate-y-1/2">

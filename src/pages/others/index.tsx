@@ -3,11 +3,20 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { sortByDate } from 'utils'
-import { PostsType } from '..'
 import Posts from '@/components/Posts'
+import { PostsType } from 'utils/types'
+import { NextSeo } from 'next-seo'
 
 const OthersPage = ({ posts }: PostsType) => {
-  return <Posts title={'Others'} posts={posts} />
+  return (
+    <>
+      <NextSeo
+        title="Others - 훈쥬스 블로그"
+        description="HoonJuice Personal Blog."
+      />
+      <Posts title={'Others'} posts={posts} />
+    </>
+  )
 }
 
 export const getStaticProps = async () => {
