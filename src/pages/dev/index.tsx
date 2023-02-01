@@ -4,9 +4,9 @@ import matter from 'gray-matter'
 import { NextSeo } from 'next-seo'
 import path from 'path'
 import { sortByDate } from 'utils'
-import { PostsType } from 'utils/types'
+import { PostListType } from 'utils/types'
 
-const DevPage = ({ posts }: PostsType) => {
+const DevPage = ({ posts }: PostListType) => {
   return (
     <>
       <NextSeo title="훈쥬스 블로그" description="HoonJuice Personal Blog." />

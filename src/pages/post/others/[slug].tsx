@@ -2,7 +2,7 @@ import PostContent from '@/components/PostContent'
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
-import { PostProps } from 'utils/types'
+import { PostDetailType } from 'utils/types'
 
 interface PathParams {
   slug: string
@@ -17,17 +17,8 @@ interface GetStaticPropsContext {
   params: PathParams
 }
 
-const Post = ({ frontmatter, content }: PostProps) => {
-  const { title, date, thumbnail } = frontmatter
-
-  return (
-    <PostContent
-      title={title}
-      date={date}
-      thumbnail={thumbnail}
-      content={content}
-    />
-  )
+const Post = ({ frontmatter, content }: PostDetailType) => {
+  return <PostContent frontmatter={frontmatter} content={content} />
 }
 
 export const getStaticPaths = async (): Promise<GetStaticPathsReturn> => {

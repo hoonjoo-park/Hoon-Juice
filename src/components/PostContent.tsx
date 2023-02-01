@@ -3,14 +3,8 @@ import { marked } from 'marked'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { PostDetailType } from 'utils/types'
 import Prism from '../../utils/prism'
-
-interface PostContentProps {
-  title: string
-  date: string
-  thumbnail: string
-  content: string
-}
 
 const renderer = {
   image(href: string, title: string, text: string) {
@@ -20,7 +14,9 @@ const renderer = {
   },
 }
 
-const PostContent = ({ title, date, thumbnail, content }: PostContentProps) => {
+const PostContent = ({ frontmatter, content }: PostDetailType) => {
+  const { title, date, thumbnail } = frontmatter
+
   const [lazyImages, setLazyImages] =
     useState<NodeListOf<HTMLImageElement> | null>(null)
 

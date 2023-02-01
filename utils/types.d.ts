@@ -1,17 +1,18 @@
-export interface Frontmatter {
+export interface FrontmatterType {
   title: string
   date: string
+  category: string
   excerpt: string
   thumbnail: string
 }
 
-export interface PostProps {
+export interface PostDetailType {
   frontmatter: Frontmatter
-  slug: string
+  slug?: string
   content: string
 }
 
-export interface PostsType {
+export interface PostListType {
   title: string
   posts: PostProps[]
 }

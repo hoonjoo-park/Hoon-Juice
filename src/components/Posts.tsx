@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { memo, useState } from 'react'
-import { PostsType } from 'utils/types'
+import { PostListType } from 'utils/types'
 import PostList from './PostList'
 
 const POSTS_PER_PAGE = 5
 
-const Posts = ({ title, posts }: PostsType) => {
+const Posts = ({ title, posts }: PostListType) => {
   const [currentPage, setCurrentPage] = useState<number>(1)
 
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)

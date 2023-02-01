@@ -1,6 +1,7 @@
 ---
 title: 'Next.js에 PrismJS 적용하기'
 date: '2023.01.30'
+category: 'Web'
 excerpt: '이번에 블로그를 제작하며 코드블록에 대한 UI 작업을 해야 했었다. 이에 따라, PrismJS 라이브러리를 사용하여 코드 하이라이팅을 구현하는 방법에 대해 정리해 봤다.'
 thumbnail: '/images/prism.png'
 ---

@@ -4,10 +4,10 @@ import path from 'path'
 import matter from 'gray-matter'
 import { sortByDate } from 'utils'
 import Posts from '@/components/Posts'
-import { PostsType } from 'utils/types'
 import { NextSeo } from 'next-seo'
+import { PostListType } from 'utils/types'
 
-const OthersPage = ({ posts }: PostsType) => {
+const OthersPage = ({ posts }: PostListType) => {
   return (
     <>
       <NextSeo
