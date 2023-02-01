@@ -10,9 +10,11 @@ const PageButton = ({ pageNumber, isSelected, paginate }: PageButtonProps) => {
   return (
     <li key={pageNumber} className={`flex justify-center items-center`}>
       <button
-        className={`px-3 py-2 ml-0 leading-tight  bg-darkNavy border border-lightNavy hover:bg-lightNavy hover:text-white ${
-          isSelected && 'bg-lightNavy'
-        } ${isSelected ? 'text-white' : 'text-gray'}`}
+        className={`w-10 h-10 rounded-full transition-all duration-200  ${
+          isSelected
+            ? 'text-white bg-lightNavy'
+            : 'text-gray hover:bg-lightNavy hover:text-white'
+        }`}
         onClick={() => paginate(pageNumber)}
         disabled={isSelected}
       >

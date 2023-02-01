@@ -17,10 +17,10 @@ const Pagination = ({
 }: PaginationProps) => {
   return (
     <nav className="flex justify-center w-full desktop:mt-28 mobile:mt-16">
-      <ul className="inline-flex items-center -space-x-px">
+      <ul className="inline-flex items-center -space-x-px gap-2">
         <li>
           <button
-            className={`px-3 py-2 ml-0 leading-tight rounded-l-lg bg-darkNavy border border-lightNavy text-lightGray  ${
+            className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200 ${
               currentPage !== 1 && 'hover:bg-lightNavy'
             }`}
             disabled={currentPage === 1}
@@ -44,9 +44,9 @@ const Pagination = ({
           />
         ))}
 
-        <li>
+        <li className={'flex items-center justify-center'}>
           <button
-            className={`px-3 py-2 ml-0 leading-tight rounded-r-lg bg-darkNavy border border-lightNavy text-gray ${
+            className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200 ${
               currentPage !== lastPageNumber && 'hover:bg-lightNavy'
             }`}
             disabled={currentPage === lastPageNumber}
