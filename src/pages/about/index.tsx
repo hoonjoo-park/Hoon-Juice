@@ -27,12 +27,15 @@ const About = () => {
           'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 mb-16 desktop:m-auto desktop:pb-14 mobile:pb-0'
         }
       >
-        <h1 className={'mt-12 py-5 text-black text-3xl font-bold'}>
-          {' '}
+        <h2
+          className={
+            'desktop:my-16 mobile:mt-12 mobile:mb-10 text-navy text-3xl font-bold'
+          }
+        >
           About Me
-        </h1>
+        </h2>
 
-        <div
+        <section
           className={
             'flex desktop:flex-row mobile:flex-col justify-between p-6 rounded-3xl bg-white shadow-lg my-6'
           }
@@ -47,20 +50,20 @@ const About = () => {
             height={300}
           />
 
-          <div className={'flex flex-col justify-center basis-full'}>
-            <h2 className={'text-navy text-base font-medium mb-3'}>박훈주</h2>
-            <h3 className={'text-navy text-2xl font-bold mb-3'}>
+          <article className={'flex flex-col justify-center basis-full'}>
+            <h4 className={'text-navy text-base font-medium mb-3'}>박훈주</h4>
+            <h4 className={'text-navy text-2xl font-bold mb-3'}>
               Frontend, iOS Engineer
-            </h3>
+            </h4>
             <p className={'text-navy mobile:text-justify'}>
               경영학과 프로그래밍의 조화를 통해, 비즈니스 밸류 전달의 길라잡이가
               되고싶은 프론트엔드 & iOS 개발자입니다. 꾸준히 성장하고 배우며
               사회에 유의미한 가치를 창출하는데 일조하고 싶습니다.
             </p>
-          </div>
-        </div>
+          </article>
+        </section>
 
-        <div
+        <section
           className={
             'flex desktop:flex-row mobile:p-6 mobile:flex-col desktop:items-center desktop:p-12 rounded-3xl bg-white shadow-lg my-7'
           }
@@ -69,7 +72,7 @@ const About = () => {
             Profile
           </h3>
 
-          <div>
+          <article>
             <p className={'text-navy text-base font-medium mb-3'}>
               - 서울시립대학교 경영학부 졸업
             </p>
@@ -79,10 +82,10 @@ const About = () => {
             <p className={'text-navy text-base font-medium'}>
               - (주)더블엔씨 니콘내콘 서비스 프론트엔드 개발 (2022.05 ~)
             </p>
-          </div>
-        </div>
+          </article>
+        </section>
 
-        <div
+        <section
           className={
             'flex desktop:flex-row mobile:p-6 mobile:flex-col desktop:items-center desktop:p-12 rounded-3xl bg-white shadow-lg my-7'
           }
@@ -91,17 +94,17 @@ const About = () => {
             Skills
           </h3>
 
-          <div className={'flex flex-wrap gap-3'}>
+          <article className={'flex flex-wrap gap-3'}>
             <Badge title="NextJS" image="/images/nextjs.svg" />
             <Badge title="React Native" image="/images/react-native.svg" />
             <Badge title="Swift" image="/images/swift.svg" />
             <Badge title="React-Query" image="/images/react-query.svg" />
             <Badge title="Redux" image="/images/redux.svg" />
             <Badge title="SCSS" image="/images/scss.svg" />
-          </div>
-        </div>
+          </article>
+        </section>
 
-        <div
+        <section
           className={
             'relative flex desktop:flex-row mobile:flex-col items-center justify-between p-12 rounded-3xl shadow-lg my-7 bg-no-repeat bg-cover'
           }
@@ -139,7 +142,7 @@ const About = () => {
               Github
             </a>
           </div>
-        </div>
+        </section>
       </div>
     </>
   )
