@@ -26,14 +26,16 @@ const Header = () => {
           'max-w-6xl min-h-[64px] flex desktop:flex-row items-center mobile:flex-col tablet:flex-col justify-between desktop:w-[932px] mobile:w-[90%]'
         }
       >
-        <Link
-          className={
-            'flex items-center font-bold text-xl mobile:w-full flex-grow min-h-[64px]'
-          }
-          href={'/dev'}
-        >
-          훈쥬스 블로그
-        </Link>
+        <h1>
+          <Link
+            className={
+              'flex items-center font-bold text-xl mobile:w-full flex-grow min-h-[64px]'
+            }
+            href={'/dev'}
+          >
+            훈쥬스 블로그
+          </Link>
+        </h1>
 
         <div className="desktop:hidden absolute right-[5%] top-[32px] -translate-y-1/2">
           <button

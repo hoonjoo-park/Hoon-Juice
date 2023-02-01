@@ -16,6 +16,7 @@ module.exports = {
         blueGray: '#6C81A4',
         darkNavy: '#1F2937',
         lightNavy: '#374151',
+        yellow: '#F6B352',
       },
       screens: {
         mobile: '320px',

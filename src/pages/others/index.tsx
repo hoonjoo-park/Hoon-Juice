@@ -7,14 +7,14 @@ import Posts from '@/components/Posts'
 import { NextSeo } from 'next-seo'
 import { PostListType } from 'utils/types'
 
-const OthersPage = ({ posts }: PostListType) => {
+const OthersPage = ({ posts, categories }: PostListType) => {
   return (
     <>
       <NextSeo
         title="Others - 훈쥬스 블로그"
         description="HoonJuice Personal Blog."
       />
-      <Posts title={'Others'} posts={posts} />
+      <Posts title={'Others'} posts={posts} categories={categories} />
     </>
   )
 }
@@ -38,9 +38,14 @@ export const getStaticProps = async () => {
     }
   })
 
+  const categorySet = new Set(['All'])
+
+  posts.forEach(post => categorySet.add(post.frontmatter.category))
+
   return {
     props: {
       posts: posts.sort(sortByDate),
+      categories: Array.from(categorySet),
     },
   }
 }

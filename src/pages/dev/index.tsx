@@ -6,11 +6,11 @@ import path from 'path'
 import { sortByDate } from 'utils'
 import { PostListType } from 'utils/types'
 
-const DevPage = ({ posts }: PostListType) => {
+const DevPage = ({ posts, categories }: PostListType) => {
   return (
     <>
       <NextSeo title="훈쥬스 블로그" description="HoonJuice Personal Blog." />
-      <Posts title={'Dev'} posts={posts} />
+      <Posts title={'Dev'} posts={posts} categories={categories} />
     </>
   )
 }
@@ -34,9 +34,14 @@ export const getStaticProps = async () => {
     }
   })
 
+  const categorySet = new Set(['All'])
+
+  posts.forEach(post => categorySet.add(post.frontmatter.category))
+
   return {
     props: {
       posts: posts.sort(sortByDate),
+      categories: Array.from(categorySet),
     },
   }
 }

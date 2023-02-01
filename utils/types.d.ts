@@ -7,12 +7,13 @@ export interface FrontmatterType {
 }
 
 export interface PostDetailType {
-  frontmatter: Frontmatter
+  frontmatter: FrontmatterType
   slug?: string
   content: string
 }
 
 export interface PostListType {
   title: string
-  posts: PostProps[]
+  posts: PostDetailType[]
+  categories: string[]
 }
