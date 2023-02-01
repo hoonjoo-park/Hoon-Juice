@@ -13,10 +13,10 @@ const CategoryButton = ({
 }: CategoryButtonProps) => {
   return (
     <button
-      className={`p-2 mr-9 text-base font-semibold hover:text-white ${
+      className={`p-2 mr-9 text-base font-semibold hover:text-white transition-all duration-200 ${
         isSelected
           ? 'text-white border-b-[3px] border-b-yellow'
-          : 'text-lightGray'
+          : 'text-lightGray border-none'
       }`}
       disabled={isSelected}
       onClick={() => onClick(title)}
