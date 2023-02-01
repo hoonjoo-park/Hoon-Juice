@@ -1,4 +1,4 @@
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { PostListType } from 'utils/types'
 import CategoryButton from './CategoryButton'
 import Pagination from './pagination'
@@ -10,16 +10,15 @@ const Posts = ({ title, posts, categories }: PostListType) => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
 
-  const lastPageNumber = Math.ceil(posts.length / POSTS_PER_PAGE)
-  const indexOfLastPost = currentPage * POSTS_PER_PAGE
-  const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE
-
   const filteredPosts =
     selectedCategory === 'All'
       ? posts
-      : posts.filter(post => {
-          return post.frontmatter.category === selectedCategory
-        })
+      : posts.filter(post => post.frontmatter.category === selectedCategory)
+
+  const lastPageNumber = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
+  const indexOfLastPost = currentPage * POSTS_PER_PAGE
+  const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE
+
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost)
 
   const remainder = currentPage % POSTS_PER_PAGE
@@ -27,11 +26,6 @@ const Posts = ({ title, posts, categories }: PostListType) => {
   let rightEdge = !remainder
     ? currentPage
     : currentPage - remainder + POSTS_PER_PAGE
-
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber)
-    window.scrollTo(0, 0)
-  }
 
   const pageNumbers = []
 
@@ -42,6 +36,15 @@ const Posts = ({ title, posts, categories }: PostListType) => {
   const currentPageNumbers = pageNumbers.filter(
     number => number >= leftEdge && number <= rightEdge,
   )
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [selectedCategory])
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber)
+    window.scrollTo(0, 0)
+  }
 
   const handleClickCategory = (category: string) => {
     setSelectedCategory(category)
