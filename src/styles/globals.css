@@ -109,11 +109,11 @@
     transition: max-height 0.3s ease-in-out;
   }
 
-  .postList h5 {
+  .postList h3 {
     transition: color 0.3s ease;
   }
 
-  .postList:hover h5 {
+  .postList:hover h3 {
     color: #3182f6;
   }
 

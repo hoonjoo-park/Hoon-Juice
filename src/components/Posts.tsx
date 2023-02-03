@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react'
 import { PostListType } from 'utils/types'
 import CategoryButton from './CategoryButton'
-import Pagination from './pagination'
+import Pagination from './Pagination'
 import PostList from './PostList'
 
 const POSTS_PER_PAGE = 5
