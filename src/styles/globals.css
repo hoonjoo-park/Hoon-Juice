@@ -81,6 +81,12 @@
     overflow-wrap: break-word;
   }
 
+  @media (min-width: 1024px) {
+    .post p {
+      font-size: 17px;
+    }
+  }
+
   .post hr {
     height: 1px;
     margin-top: 35px;
@@ -98,7 +104,7 @@
   }
 
   .post blockquote > p {
-    font-style: italic;
+    font-weight: 400;
     color: #fff;
   }
 
@@ -174,10 +180,6 @@
 
   .currentPage {
     background-color: #9ca3af;
-  }
-
-  .selectablePage {
-    /* transition: border 0.2s ease; */
   }
 
   .pageButton:hover .selectablePage {

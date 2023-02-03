@@ -31,7 +31,11 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
   return (
     <>
       <NextSeo title={title} description="HoonJuice Personal Blog." />
-      <div className={'post w-full flex justify-center my-9 mobile:px-4'}>
+      <div
+        className={
+          'post w-full flex justify-center desktop:my-9 mobile:mt-3 mobile:mb-12 mobile:px-4'
+        }
+      >
         <div className={'desktop:w-[700px] mobile:w-full'}>
           <Image
             className={'w-full rounded-xl mb-8'}
@@ -43,7 +47,7 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
           <h1 className={'mb-3 desktop:text-4xl mobile:text-3xl font-bold'}>
             {title}
           </h1>
-          <div className={'mb-8'}>{date}</div>
+          <div className={'mb-8 text-gray'}>{date}</div>
 
           <div>
             <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
