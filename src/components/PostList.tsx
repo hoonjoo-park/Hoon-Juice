@@ -29,7 +29,7 @@ const PostList = ({ post, title }: PostListProps) => {
           >
             <img
               className={
-                'desktop:w-48 desktop:h-48 mobile:w-full object-cover thumbnail'
+                'desktop:w-48 desktop:h-48 desktop:aspect-square aspect-[700:400] mobile:w-full mobile:h-[205px] tablet:h-auto object-cover thumbnail'
               }
               src={frontmatter.thumbnail}
               alt="thumbnail"
