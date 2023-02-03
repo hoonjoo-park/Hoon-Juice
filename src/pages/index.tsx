@@ -1,8 +1,11 @@
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 const Home = () => {
-  const router = useRouter()
-  router.replace('/dev')
+  useEffect(() => {
+    Router.push('/dev')
+  }, [])
+
   return <></>
 }
 
