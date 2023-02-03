@@ -10,9 +10,10 @@ const nextConfig = {
       },
     ]
   },
+
   images: {
     loader: 'imgix',
-    path: '/',
+    path: '',
   },
 }
 
