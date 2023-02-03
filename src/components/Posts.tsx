@@ -54,7 +54,7 @@ const Posts = ({ title, posts, categories }: PostListType) => {
   if (!posts.length) return <PostsNotFound />
 
   return (
-    <section
+    <div
       className={
         'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 desktop:mb-24 mobile:mb-16 desktop:m-auto'
       }
@@ -78,11 +78,11 @@ const Posts = ({ title, posts, categories }: PostListType) => {
         </nav>
       </section>
 
-      <ul className={'flex flex-col gap-14 mt-2'}>
+      <section className={'flex flex-col gap-14 mt-2'}>
         {currentPosts.map(post => (
           <PostList key={post.slug} post={post} title={title} />
         ))}
-      </ul>
+      </section>
 
       <Pagination
         currentPage={currentPage}
@@ -90,7 +90,7 @@ const Posts = ({ title, posts, categories }: PostListType) => {
         lastPageNumber={lastPageNumber}
         currentPageNumbers={currentPageNumbers}
       />
-    </section>
+    </div>
   )
 }
 
