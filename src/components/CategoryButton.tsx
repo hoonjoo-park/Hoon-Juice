@@ -13,7 +13,7 @@ const CategoryButton = ({
 }: CategoryButtonProps) => {
   return (
     <button
-      className={`p-2 mr-9 text-base font-semibold hover:text-white transition-all duration-200 ${
+      className={`p-2 desktop:mr-9 mobile:mr-6 text-base font-semibold hover:text-white transition-all duration-200 ${
         isSelected
           ? 'text-white border-b-[3px] border-b-yellow'
           : 'text-lightGray border-none'

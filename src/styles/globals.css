@@ -132,16 +132,8 @@
     transition: color 0.3s ease;
   }
 
-  .postList:hover h3 {
-    color: #3182f6;
-  }
-
   .postList .thumbnail {
     transition: transform 0.3s ease;
-  }
-
-  .postList:hover .thumbnail {
-    transform: scale3d(1.1, 1.1, 1);
   }
 
   .postList .overlay {
@@ -149,8 +141,16 @@
     transition: opacity 0.3s ease;
   }
 
-  .postList:hover .overlay {
-    opacity: 0.1;
+  @media (min-width: 1024px) {
+    .postList:hover h3 {
+      color: #3182f6;
+    }
+    .postList:hover .thumbnail {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+    .postList:hover .overlay {
+      opacity: 0.1;
+    }
   }
 
   .post strong {

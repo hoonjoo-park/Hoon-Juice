@@ -14,7 +14,7 @@ const PostList = ({ post, title }: PostListProps) => {
   return (
     <article>
       <Link
-        className={'postList'}
+        className={'desktop:postList'}
         href={`/post/${title.toLowerCase()}/${slug}`}
       >
         <div
@@ -36,9 +36,7 @@ const PostList = ({ post, title }: PostListProps) => {
               height={200}
               alt="thumbnail"
             />
-            <div
-              className={'absolute top-0 left-0 bg-black w-full h-full overlay'}
-            />
+            <div className={'absolute top-0 left-0 w-full h-full overlay'} />
           </div>
 
           <div>

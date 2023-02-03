@@ -60,7 +60,7 @@ const Posts = ({ title, posts, categories }: PostListType) => {
       }
     >
       <section
-        className={'flex flex-col desktop:my-16 mobile:mt-12 mobile:mb-10'}
+        className={'flex flex-col desktop:my-16 mobile:mt-10 mobile:mb-8'}
       >
         <h2 className={'desktop:mb-12 mobile:mb-6 text-3xl font-bold'}>
           {title}
