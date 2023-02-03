@@ -1,16 +1,9 @@
-const Home = () => {
-  return <></>
-}
+import { useRouter } from 'next/router'
 
-export const getStaticProps = async () => {
-  if (true) {
-    return {
-      redirect: {
-        permanent: true,
-        destination: '/dev',
-      },
-    }
-  }
+const Home = () => {
+  const router = useRouter()
+  router.replace('/dev')
+  return <></>
 }
 
 export default Home
