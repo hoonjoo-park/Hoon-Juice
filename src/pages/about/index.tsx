@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import Badge from '@/components/public/Badge'
 import { NextSeo } from 'next-seo'
-import Image from 'next/image'
 import React, { useLayoutEffect } from 'react'
 
 const About = () => {
@@ -40,14 +40,12 @@ const About = () => {
             'flex desktop:flex-row mobile:flex-col justify-between p-6 rounded-3xl bg-white shadow-lg my-6'
           }
         >
-          <Image
+          <img
             className={
               'desktop:w-52 mobile:w-full h-52 rounded-xl shadow-md aspect-square object-cover mr-7 desktop:mb-0 mobile:mb-6'
             }
             src={'/images/profile-vietnam.png'}
             alt="profile-image"
-            width={300}
-            height={300}
           />
 
           <article className={'flex flex-col justify-center basis-full'}>
@@ -132,7 +130,7 @@ const About = () => {
                 'w-40 shadow-md flex items-center py-3 px-5 bg-white text-xl font-semibold rounded-full text-center text-navy hover:scale-105 transition-transform'
               }
             >
-              <Image
+              <img
                 className={'mr-2'}
                 src={'/images/github.svg'}
                 alt="github"

@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import PageButton from './PageButton'
 
@@ -26,11 +26,11 @@ const Pagination = ({
             disabled={currentPage === 1}
             onClick={() => paginate(currentPage - 1)}
           >
-            <Image
+            <img
               src={'/images/arrow-left.svg'}
+              alt="arrow-left"
               width={20}
               height={20}
-              alt="arrow-left"
             />
           </button>
         </li>
@@ -52,7 +52,7 @@ const Pagination = ({
             disabled={currentPage === lastPageNumber}
             onClick={() => paginate(currentPage + 1)}
           >
-            <Image
+            <img
               src={'/images/arrow-right.svg'}
               width={20}
               height={20}

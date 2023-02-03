@@ -1,4 +1,5 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/jsx-no-undef */
 import React from 'react'
 
 interface BadgeProps {
@@ -13,7 +14,7 @@ const Badge = ({ image, title }: BadgeProps) => {
         'border border-gray rounded-lg px-3 py-1.5 inline-flex items-center justify-center cursor-default'
       }
     >
-      <Image
+      <img
         className={'w-6 h-5 mr-2 -ml-1'}
         src={`${image}`}
         alt="skill-icon"

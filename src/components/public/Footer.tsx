@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 
 const Footer = () => {
@@ -15,19 +15,19 @@ const Footer = () => {
 
         <div className={'flex gap-4'}>
           <a href="https://github.com/hoonjoo-park">
-            <Image
+            <img
               src={'/images/github-circle.svg'}
+              alt="github"
               width={30}
               height={30}
-              alt="github"
             />
           </a>
           <a href="https://www.linkedin.com/in/hoonjoo-park">
-            <Image
+            <img
               src={'/images/linked-in.svg'}
+              alt="linked-in"
               width={30}
               height={30}
-              alt="linked-in"
             />
           </a>
         </div>

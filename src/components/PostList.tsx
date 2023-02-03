@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import React from 'react'
 import { PostDetailType } from 'utils/types'
@@ -27,13 +27,11 @@ const PostList = ({ post, title }: PostListProps) => {
               'relative desktop:w-48 desktop:h-48 mobile:w-full desktop:mb-0 desktop:mr-12 mobile:mb-5 shrink-0 overflow-hidden drop-shadow-md rounded-xl'
             }
           >
-            <Image
+            <img
               className={
                 'desktop:w-48 desktop:h-48 mobile:w-full object-cover thumbnail'
               }
               src={frontmatter.thumbnail}
-              width={300}
-              height={200}
               alt="thumbnail"
             />
             <div className={'absolute top-0 left-0 w-full h-full overlay'} />

@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import useLazyLoad from 'hooks/useLazyLoad'
 import { marked } from 'marked'
 import { NextSeo } from 'next-seo'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { PostDetailType } from 'utils/types'
 import Prism from '../../utils/prism'
@@ -37,11 +37,9 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
         }
       >
         <div className={'desktop:w-[700px] mobile:w-full'}>
-          <Image
+          <img
             className={'w-full rounded-xl mb-8'}
             src={thumbnail}
-            width={700}
-            height={453}
             alt="thumbnail-image"
           />
           <h1 className={'mb-3 desktop:text-4xl mobile:text-3xl font-bold'}>

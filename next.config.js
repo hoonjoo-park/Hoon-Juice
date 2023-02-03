@@ -1,19 +1,12 @@
 /** @type {import('next').NextConfig} */
+
+const withOptimizedImages = require('next-optimized-images')
+
 const nextConfig = {
   reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/dev',
-        permanent: true,
-      },
-    ]
-  },
-
-  images: {
-    unoptimized: true,
-  },
 }
 
-module.exports = nextConfig
+module.exports = {
+  ...nextConfig,
+  ...withOptimizedImages({ handleImages: ['jpeg', 'png', 'svg'] }),
+}
