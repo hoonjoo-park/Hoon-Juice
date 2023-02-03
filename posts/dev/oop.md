@@ -3,7 +3,7 @@ title: 'OOP란 무엇인가?'
 date: '2023.01.26'
 category: 'Swift'
 excerpt: 'OOP(Object Oriented Programming)는 개발을 하다보면 한번쯤 들어봤을 개념이다. 이는 "객체 지향 프로그래밍"의 약자로, 말 그대로 객체를 지향하는 프로그래밍 방식 또는 패러다임을 뜻한다.'
-thumbnail: '/images/oop.png'
+thumbnail: '/images/oop.avif'
 ---
 
 ## OOP의 개념

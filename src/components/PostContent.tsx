@@ -9,7 +9,7 @@ import Prism from '../../utils/prism'
 const renderer = {
   image(href: string, title: string, text: string) {
     return `
-      <img class="lazyImage" src="/images/lazy-loading.png" alt=${title} data-src=${href} />
+      <img class="lazyImage" src="/images/lazy-loading.png" alt=${title} data-src=${href} width={700} />
     `
   },
 }
@@ -38,9 +38,11 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
       >
         <div className={'desktop:w-[700px] mobile:w-full'}>
           <img
-            className={'w-full rounded-xl mb-8'}
+            className={'w-full desktop:h-[400px] object-cover rounded-xl mb-8'}
             src={thumbnail}
             alt="thumbnail-image"
+            width={700}
+            height={400}
           />
           <h1 className={'mb-3 desktop:text-4xl mobile:text-3xl font-bold'}>
             {title}

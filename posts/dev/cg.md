@@ -3,7 +3,7 @@ title: 'CGPoint, CGSize, 그리고 CGRect란?'
 date: '2023.01.28'
 category: 'Swift'
 excerpt: 'iOS에서 UI의 레이아웃을 잡을 때 자주 사용되는 CGPoint, CGSize, CGRect가 뭘까...??'
-thumbnail: '/images/cg.png'
+thumbnail: '/images/cg.avif'
 ---
 
 ## CGPoint
