@@ -44,7 +44,7 @@ const About = () => {
             className={
               'desktop:w-52 mobile:w-full h-52 rounded-xl shadow-md aspect-square object-cover mr-7 desktop:mb-0 mobile:mb-6'
             }
-            src={'/images/profile-vietnam.jpg'}
+            src={'/images/profile-vietnam.png'}
             alt="profile-image"
             width={300}
             height={300}
