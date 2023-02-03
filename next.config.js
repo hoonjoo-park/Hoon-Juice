@@ -10,6 +10,10 @@ const nextConfig = {
       },
     ]
   },
+  images: {
+    loader: 'imgix',
+    path: '/',
+  },
 }
 
 module.exports = nextConfig
