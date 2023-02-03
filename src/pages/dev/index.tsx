@@ -34,9 +34,10 @@ export const getStaticProps = async () => {
     }
   })
 
-  const categorySet = new Set(['All'])
+  const defaultCategory = posts.length ? ['All'] : null
+  const categorySet = new Set(defaultCategory)
 
-  posts.forEach(post => categorySet.add(post.frontmatter.category))
+  posts.forEach(post => categorySet.add(post.frontmatter.category ?? null))
 
   return {
     props: {

@@ -3,6 +3,7 @@ import { PostListType } from 'utils/types'
 import CategoryButton from './CategoryButton'
 import Pagination from './Pagination'
 import PostList from './PostList'
+import PostsNotFound from './PostsNotFound'
 
 const POSTS_PER_PAGE = 5
 
@@ -49,6 +50,8 @@ const Posts = ({ title, posts, categories }: PostListType) => {
   const handleClickCategory = (category: string) => {
     setSelectedCategory(category)
   }
+
+  if (!posts.length) return <PostsNotFound />
 
   return (
     <section

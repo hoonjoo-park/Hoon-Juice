@@ -7,7 +7,8 @@ import Posts from '@/components/Posts'
 import { NextSeo } from 'next-seo'
 import { PostListType } from 'utils/types'
 
-const OthersPage = ({ posts, categories }: PostListType) => {
+const OthersPage = (props: PostListType) => {
+  const { posts, categories } = props
   return (
     <>
       <NextSeo
@@ -22,7 +23,9 @@ const OthersPage = ({ posts, categories }: PostListType) => {
 export const getStaticProps = async () => {
   const files = fs.readdirSync(path.join('posts', 'others'))
 
-  const posts = files.map(filename => {
+  const filteredFiles = files.filter(file => file.includes('.md'))
+
+  const posts = filteredFiles.map(filename => {
     const slug = filename.replace('.md', '')
 
     const markdownWithMeta = fs.readFileSync(
@@ -38,9 +41,12 @@ export const getStaticProps = async () => {
     }
   })
 
-  const categorySet = new Set(['All'])
+  const defaultCategory = posts.length ? ['All'] : null
+  const categorySet = new Set(defaultCategory)
 
-  posts.forEach(post => categorySet.add(post.frontmatter.category))
+  if (posts.length) {
+    posts.forEach(post => categorySet.add(post.frontmatter.category ?? null))
+  }
 
   return {
     props: {
