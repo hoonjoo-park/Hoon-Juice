@@ -7,9 +7,9 @@ import { PostDetailType } from 'utils/types'
 import Prism from '../../utils/prism'
 
 const renderer = {
-  image(href: string, title: string, text: string) {
+  image(href: string, title: string) {
     return `
-      <img class="lazyImage" src="/images/lazy-loading.png" alt=${title} data-src=${href} width="700px" height="auto" />
+      <img class="lazyImage" src="/images/lazy-loading.svg" alt=${title} data-src=${href} width="700px" height="auto" />
     `
   },
 }
