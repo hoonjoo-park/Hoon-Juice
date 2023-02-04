@@ -3,7 +3,7 @@ title: '워렌버핏과 그레이엄의 투자론'
 date: '2023.02.03'
 category: 'Economics'
 excerpt: '주식의 대가 워렌버핏과 벤자민 그레이엄은, 청산가치 계산을 통한 차익 실현으로 꾸주하고 쏠쏠한 수익을 낼 수 있었다고 한다. 청산가치란 뭘까?'
-thumbnail: '/images/liquidation-value.png'
+thumbnail: '/images/liquidation-value.webp'
 ---
 
 ## 청산가치 ?

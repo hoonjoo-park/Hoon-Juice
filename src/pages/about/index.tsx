@@ -44,7 +44,7 @@ const About = () => {
             className={
               'desktop:w-52 mobile:w-full h-52 rounded-xl shadow-md aspect-square object-cover mr-7 desktop:mb-0 mobile:mb-6'
             }
-            src={'/images/profile-vietnam.avif'}
+            src={'/images/profile-vietnam.webp'}
             alt="profile-image"
           />
 
@@ -106,7 +106,7 @@ const About = () => {
           className={
             'relative flex desktop:flex-row mobile:flex-col items-center justify-between p-12 rounded-3xl shadow-lg my-7 bg-no-repeat bg-cover'
           }
-          style={{ backgroundImage: 'url(/images/green.png)' }}
+          style={{ backgroundImage: 'url(/images/green.webp)' }}
         >
           <div
             className={
