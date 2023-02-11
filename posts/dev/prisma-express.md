@@ -13,6 +13,8 @@ thumbnail: '/images/prisma-express.webp'
 
 그냥 백엔드 개발에도 흥미가 있었기에, "기초적인 것부터 이렇게 만들어 나가면 점차 성장할 수 있지 않을까?" 라는 생각에서였을 뿐이다.
 
+---
+
 ## Prisma?
 
 ![](https://user-images.githubusercontent.com/67448481/218266387-fb22911b-aaf4-4294-b842-e164a5673a87.png)
@@ -52,7 +54,7 @@ $ yarn add prisma @prisma/cli express @types/node @types/express nodemon
 $ npx tsc --init
 ```
 
-```json
+```bash
 {
   "compilerOptions": {
     "target": "es6",
@@ -87,7 +89,7 @@ $ npx prisma init
 
 ### schema.prisma 세팅
 
-```json
+```javascript
 // 기본적으로 아래와 같은 코드가 세팅되어 있을 텐데 provider를 mysql로 변경해주기만 하면 된다
 generator client {
 	provider = "prisma-client-js"
@@ -103,12 +105,12 @@ datasource db {
 
 > 그리고 위의 파일 안에 model을 하나 생성해주자.
 
-```json
+```typescript
 model Menu {
-	id                 Int @id @default(autoincrement())
-	name          String
-	price           Int
-	imageUrl    String
+	id  Int @id @default(autoincrement())
+	name  String
+	price Int
+	imageUrl  String
 }
 ```
 
@@ -143,12 +145,12 @@ export default prisma
 > 다시 프로젝트 루트 디렉토리로 돌아가보자.  
 > 그러면 .env라는 파일이 보일텐데 해당 파일을 클릭한다.
 
-```json
-// 그리고 아래와 같은 양식으로 DB URL을 작성해주면 된다.
+```bash
+# 그리고 아래와 같은 양식으로 DB URL을 작성해주면 된다.
 DATABASE_URL="mysql://USERNAME:PASSWORD@HOSTNAME:PORT/CONNECTION_NAME"
 
-// 나의 경우는 이렇게 설정했다.
-DATABASE_URL='mysql://root:mypassword@localhost:3306/dama_db
+# 나의 경우는 이렇게 설정했다.
+DATABASE_URL="mysql://root:mypassword@localhost:3306/dama_db"
 ```
 
 ### Prisma Migrate하기

@@ -83,8 +83,11 @@
   }
 
   @media (min-width: 1024px) {
-    .post p {
-      font-size: 17px;
+    .post blockquote > p {
+      margin: 8px 0px;
+    }
+    .post h2 {
+      font-size: 30px;
     }
   }
 
