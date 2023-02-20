@@ -75,9 +75,9 @@ const Header = () => {
                 className={
                   'desktop:px-2 hover:text-blue desktop:w-20 transition mobile:px-3 mobile:py-4 text-center'
                 }
-                href={'/others'}
+                href={'/projects'}
               >
-                Others
+                Projects
               </Link>
             </li>
             <li className={'font-semibold text-base mobile:w-full flex'}>

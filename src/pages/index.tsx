@@ -1,8 +1,8 @@
 import Router from 'next/router'
-import { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 
 const Home = () => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     Router.replace('/dev')
   }, [])
 
