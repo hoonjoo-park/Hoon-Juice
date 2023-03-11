@@ -15,15 +15,12 @@ const OthersPage = (props: PostListType) => {
           Projects
         </h1>
 
+        <h2>준비 중입니다...</h2>
+
         <div>
           {MY_PROJECTS.map(project => (
             <CarouselCard key={project.title} project={project} />
           ))}
-        </div>
-
-        <div>
-          <button>{'<'}</button>
-          <button>{'>'}</button>
         </div>
       </article>
     </>
