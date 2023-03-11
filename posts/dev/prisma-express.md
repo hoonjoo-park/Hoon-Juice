@@ -201,7 +201,7 @@ app.listen(PORT, () => console.log(`🦁 Server is running on ${PORT}`))
 
 ## 간단한 GET, POST 요청 엔드포인트 만들기
 
-![](https://user-images.githubusercontent.com/67448481/218266377-47d05d7a-d88d-4b66-b411-8dbcee200c98.png)
+![](https://user-images.githubusercontent.com/67448481/224503746-72594336-fef4-4847-8261-23e8db991b5b.png)
 
 > 드디어..... 이제 모든 세팅이 끝났다!!  
 > 간단한 GET, POST 요청 엔드포인트 구현을 통해 고됐던 초기 세팅에 대한 성취감을 만끽해보도록 하자!
