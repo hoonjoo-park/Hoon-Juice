@@ -40,12 +40,12 @@ const PostList = ({ post, title }: PostListProps) => {
           <div>
             <h3
               className={
-                'max-h-16 mobile:mb-[10px] desktop:mb-4 desktop:text-3xl mobile:text-2xl font-bold text-ellipsis break-keep'
+                'max-h-16 mobile:mb-[10px] desktop:mb-4 desktop:text-3xl mobile:text-2xl font-bold text-ellipsis break-keep line-clamp-2'
               }
             >
               {frontmatter.title}
             </h3>
-            <p className={'max-h-24 mb-3 text-base text-gray'}>
+            <p className={'max-h-24 mb-3 text-base text-gray line-clamp-4'}>
               {frontmatter.excerpt}
             </p>
             <span className={'text-sm text-lightGray'}>{frontmatter.date}</span>
