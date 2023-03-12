@@ -40,7 +40,7 @@ const PostList = ({ post, title }: PostListProps) => {
           <div>
             <h3
               className={
-                'max-h-16 mobile:mb-[10px] desktop:mb-4 desktop:text-3xl mobile:text-2xl font-bold text-ellipsis break-keep line-clamp-2'
+                'max-h-20 mobile:mb-[10px] desktop:mb-4 desktop:text-3xl mobile:text-2xl font-bold text-ellipsis break-keep line-clamp-2'
               }
             >
               {frontmatter.title}
