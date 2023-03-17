@@ -13,7 +13,7 @@ const CategoryButton = ({
 }: CategoryButtonProps) => {
   return (
     <button
-      className={`relative p-2 desktop:mr-9 mobile:mr-6 text-base font-semibold hover:text-white transition-all duration-200 ${
+      className={`relative p-2 desktop:mr-9 mobile:mr-6 text-base font-semibold hover:text-white transition-all duration-300 ${
         isSelected ? 'text-white' : 'text-lightGray'
       }`}
       disabled={isSelected}
@@ -21,13 +21,11 @@ const CategoryButton = ({
     >
       {title}
 
-      {isSelected && (
-        <span
-          className={
-            'absolute top-full left-0 bottom-0 w-full h-[3px] bg-yellow'
-          }
-        />
-      )}
+      <span
+        className={`absolute top-full left-1/2 -translate-x-1/2 bottom-0 h-[3px] bg-yellow ${
+          isSelected ? 'animate-stretch w-full' : 'animate-shrink w-0'
+        }`}
+      />
     </button>
   )
 }
