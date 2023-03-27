@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Badge from '@/components/public/Badge'
 import { NextSeo } from 'next-seo'
-import React, { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 
 const About = () => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const body = document.querySelector('body')
 
     if (!body) return
@@ -93,9 +93,11 @@ const About = () => {
           </h3>
 
           <article className={'flex flex-wrap gap-3'}>
+            <Badge title="Swift" image="/images/swift.svg" />
+            <Badge title="RxSwift" image="/images/reactive.svg" />
+            <Badge title="Quick & Nimble" image="/images/quick.svg" />
             <Badge title="NextJS" image="/images/nextjs.svg" />
             <Badge title="React Native" image="/images/react-native.svg" />
-            <Badge title="Swift" image="/images/swift.svg" />
             <Badge title="React-Query" image="/images/react-query.svg" />
             <Badge title="Redux" image="/images/redux.svg" />
             <Badge title="SCSS" image="/images/scss.svg" />
