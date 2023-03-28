@@ -51,9 +51,7 @@ Swift는 멀티스레드 기반의 언어로, 크게 main-thread와 background-t
 
 > 우선, RxSwift 라이브러리를 CocoaPod을 통해 프로젝트에 설치하는 방법은 아래와 같다.
 
-1. 프로젝트 생성
-   가장 먼저, 원하는 디렉토리에 프로젝트를 생성해주자.
-2. cocoaPod 설치
+1. 프로젝트 생성 -> cocoaPod 설치
 
 ```shell
 brew install cocoapods
@@ -61,7 +59,7 @@ brew install cocoapods
 brew link --overwrite cocoapods
 ```
 
-3. `pod init`
+2. `pod init`
 
 ```shell
 # 프로젝트 루트 디렉토리로 이동
@@ -71,13 +69,13 @@ cd yourProjectName
 pod init
 ```
 
-4. Podfile 열기
+3. Podfile 열기
 
 ```shell
 open Podfile
 ```
 
-5. Podfile에 라이브러리 dependency 작성
+4. Podfile에 라이브러리 dependency 작성
 
 ```shell
 # 아래 코드들을 작성해주면 된다.
@@ -88,7 +86,7 @@ pod 'RxSwift'
 pod 'RxCocoa'
 ```
 
-6. `pod install`
+5. `pod install`
 
 ```shell
 pod install
