@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import useLazyLoad from 'hooks/useLazyLoad'
 import { marked } from 'marked'
-import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import BlogSEO from 'utils/seo'
 import { PostDetailType } from 'utils/types'
 import Prism from '../../utils/prism'
 
@@ -16,6 +17,7 @@ const renderer = {
 
 const PostContent = ({ frontmatter, content }: PostDetailType) => {
   const { title, date, thumbnail } = frontmatter
+  const router = useRouter()
 
   const [lazyImages, setLazyImages] =
     useState<NodeListOf<HTMLImageElement> | null>(null)
@@ -30,7 +32,11 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
 
   return (
     <>
-      <NextSeo title={title} description="HoonJuice Personal Blog." />
+      <BlogSEO
+        title={title}
+        description={frontmatter.excerpt}
+        path={router.asPath}
+      />
       <div
         className={
           'post w-full flex justify-center desktop:my-9 mobile:mt-3 mobile:mb-12 mobile:px-4'

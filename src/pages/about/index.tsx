@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Badge from '@/components/public/Badge'
-import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import BlogSEO from 'utils/seo'
 
 const About = () => {
+  const router = useRouter()
   useEffect(() => {
     const body = document.querySelector('body')
 
@@ -18,10 +20,7 @@ const About = () => {
 
   return (
     <>
-      <NextSeo
-        title="About - 훈쥬스 블로그"
-        description="HoonJuice Personal Blog."
-      />
+      <BlogSEO title="About - 훈쥬스 블로그" path={router.asPath} />
       <div
         className={
           'flex flex-col justify-center desktop:max-w-[980px] mobile:w-screen mobile:px-6 mb-16 desktop:m-auto desktop:pb-14 mobile:pb-0'

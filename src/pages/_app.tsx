@@ -5,12 +5,12 @@ import type { AppProps } from 'next/app'
 
 import Footer from '@/components/public/Footer'
 import Header from '@/components/public/Header'
-import { NextSeo } from 'next-seo'
+import BlogSEO from 'utils/seo'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <NextSeo title="훈쥬스 블로그" description="HoonJuice Personal Blog." />
+      <BlogSEO title="훈쥬스 블로그" path="/" />
       <div className={'flex flex-col min-w-[320px] min-h-screen'}>
         <Header />
         <main className={'flex-grow'}>
