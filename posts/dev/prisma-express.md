@@ -45,13 +45,16 @@ yarn init
 
 ```bash
 ### 만약 본인이 Typescript를 사용하지 않는다면 앞에 @types가 붙은 것들은 무시해줘도 된다.
-$ yarn add prisma @prisma/cli express @types/node @types/express nodemon
+$ yarn add prisma @prisma/client nodemon express @types/express @types/node
 ```
 
 ### tsconfig 생성
 
 ```bash
 $ npx tsc --init
+
+### yarn을 사용할 경우
+$ yarn tsc --init
 ```
 
 ```bash
@@ -64,7 +67,7 @@ $ npx tsc --init
     "strict": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
   }
 }
 ```
@@ -78,13 +81,13 @@ $ npx prisma init
 
 ```
 
-> 위의 명령어를 입력하면 prisma 폴더가 생성되며 schema.prisma 파일이 생성될 것이다. (만약 안됐다면 직접 생성해주자!)
+> 위의 명령어를 입력하면 prisma 폴더가 생성되며 schema.prisma 파일이 생성될 것이다. (만약 안됐다면 직접 생성해줘도 된다)
 
 ---
 
 ## Prisma로 스키마 만들기
 
-> 자, 이제 초기세팅의 절반정도를 해냈다!  
+> 자, 이제 초기세팅의 절반정도를 해냈다  
 > 이제는 Model과 Schema를 작성해보도록 하자.
 
 ### schema.prisma 세팅
