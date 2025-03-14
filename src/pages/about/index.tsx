@@ -50,12 +50,11 @@ const About = () => {
           <article className={'flex flex-col justify-center basis-full'}>
             <h4 className={'text-navy text-base font-medium mb-3'}>박훈주</h4>
             <h4 className={'text-navy text-2xl font-bold mb-3'}>
-              Frontend, iOS Engineer
+              iOS, React Native Engineer
             </h4>
             <p className={'text-navy mobile:text-justify'}>
-              경영학과 프로그래밍의 조화를 통해, 비즈니스 밸류 전달의 길라잡이가
-              되고싶은 프론트엔드 & iOS 개발자입니다. 꾸준히 성장하고 배우며
-              사회에 유의미한 가치를 창출하는데 일조하고 싶습니다.
+              Software Engineer로서 꾸준히 성장하고 배우며 사회에 유의미한
+              가치를 창출하는데 일조하고 싶습니다.
             </p>
           </article>
         </section>
@@ -76,8 +75,12 @@ const About = () => {
             <p className={'text-navy text-base font-medium mb-3'}>
               - 바이브 컴퍼니 인공지능 LAB 인턴 (2019 ~ 2021)
             </p>
+            <p className={'text-navy text-base font-medium mb-3'}>
+              - (주)더블엔씨 니콘내콘 서비스 모바일 & 웹 프론트엔드 개발
+              (2022.05 ~ 2023.08)
+            </p>
             <p className={'text-navy text-base font-medium'}>
-              - (주)더블엔씨 니콘내콘 서비스 프론트엔드 개발 (2022.05 ~)
+              - (주)매스프레소 콴다 앱 iOS, React Native 개발 (2023.09 ~)
             </p>
           </article>
         </section>
