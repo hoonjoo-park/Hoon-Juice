@@ -1,34 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
-import useLazyLoad from 'hooks/useLazyLoad'
 import { marked } from 'marked'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import BlogSEO from 'utils/seo'
 import { PostDetailType } from 'utils/types'
 import Prism from '../../utils/prism'
-
-const renderer = {
-  image(href: string, title: string) {
-    return `
-      <img class="lazyImage" src="/images/lazy-loading.svg" alt=${title} data-src=${href} width="700px" height="auto" />
-    `
-  },
-}
 
 const PostContent = ({ frontmatter, content }: PostDetailType) => {
   const { title, date, thumbnail } = frontmatter
   const router = useRouter()
 
-  const [lazyImages, setLazyImages] =
-    useState<NodeListOf<HTMLImageElement> | null>(null)
-
   useEffect(() => {
     Prism.highlightAll()
-    setLazyImages(document.querySelectorAll('.lazyImage'))
   }, [])
-
-  marked.use({ renderer })
-  useLazyLoad(lazyImages)
 
   return (
     <>
