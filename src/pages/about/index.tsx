@@ -50,11 +50,11 @@ const About = () => {
           <article className={'flex flex-col justify-center basis-full'}>
             <h4 className={'text-navy text-base font-medium mb-3'}>박훈주</h4>
             <h4 className={'text-navy text-2xl font-bold mb-3'}>
-              iOS, React Native Engineer
+              iOS, ReactNative Engineer
             </h4>
             <p className={'text-navy mobile:text-justify'}>
               Software Engineer로서 꾸준히 성장하고 배우며 사회에 유의미한
-              가치를 창출하는데 일조하고 싶습니다.
+              가치를 창출하는 데 일조하고 싶습니다.
             </p>
           </article>
         </section>
@@ -80,7 +80,8 @@ const About = () => {
               (2022.05 ~ 2023.08)
             </p>
             <p className={'text-navy text-base font-medium'}>
-              - (주)매스프레소 콴다 앱 iOS, React Native 개발 (2023.09 ~)
+              - (주)매스프레소 코어그룹 소속. 콴다 앱 iOS, React Native 개발
+              (2023.09 ~)
             </p>
           </article>
         </section>
