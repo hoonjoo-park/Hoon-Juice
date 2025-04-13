@@ -78,7 +78,7 @@
 
   .post p {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -140,7 +140,7 @@
     margin: 18px 0px;
 
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .post li > strong {
@@ -188,10 +188,10 @@
 
   .post strong {
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
     padding: 2px 3px;
     border-radius: 4px;
-    background-color: #ffc93c;
+    background-color: #facf61;
   }
 
   .post a {
