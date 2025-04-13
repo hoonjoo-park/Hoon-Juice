@@ -2,7 +2,7 @@
 title: 'Javascript와 This'
 date: '2023.05.01'
 category: 'Javascript'
-excerpt: '앱 아이콘과 런치스크린은 내가 만든 어플리케이션의 첫 인상이 될 수 있다. 이 중요한 첫 인상을 어떻게 구현할 수 있을지 알아보자.'
+excerpt: '헷갈리기 쉬운 this를 이해해 보자'
 thumbnail: '/images/this.webp'
 ---
 
