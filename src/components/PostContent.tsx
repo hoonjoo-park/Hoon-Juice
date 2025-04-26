@@ -22,7 +22,7 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
       />
       <div
         className={
-          'post w-full flex justify-center desktop:my-9 mobile:mt-3 mobile:mb-12 mobile:px-4'
+          'w-full flex justify-center desktop:my-9 mobile:mt-3 mobile:mb-12 mobile:px-4'
         }
       >
         <div className={'desktop:w-[700px] mobile:w-full'}>
@@ -40,7 +40,7 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
           </h1>
           <div className={'mb-8 text-gray'}>{date}</div>
 
-          <div>
+          <div className="post">
             <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
           </div>
         </div>
