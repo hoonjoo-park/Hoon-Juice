@@ -40,8 +40,11 @@ const PostContent = ({ frontmatter, content }: PostDetailType) => {
           </h1>
           <div className={'mb-8 text-gray'}>{date}</div>
 
-          <div className="post">
-            <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
+          <div>
+            <article
+              className="post"
+              dangerouslySetInnerHTML={{ __html: marked(content) }}
+            />
           </div>
         </div>
       </div>
